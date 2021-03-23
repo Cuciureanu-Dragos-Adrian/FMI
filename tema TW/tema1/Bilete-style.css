@@ -1,3 +1,8 @@
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
 html {
     
     height: 100%;
@@ -15,12 +20,28 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    grid-template-rows: 25% 8% 55% 12%;
+    grid-template-rows: 15% 8% 65% 12%;
 }
 
 .header {
-    margin-top: 50px;
     grid-row: 1/2;
+    display: grid;
+    grid-template-rows: 20% 35% 45%;
+}
+
+.sus{
+    grid-row: 1/2;
+}
+
+.meniu-sus{
+    float: right;
+    padding: 12px 20px 12px 20px;
+    border: white 1px solid;
+    border-radius: 2vh;
+    margin: 10px 10px 0px 0px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 .title {
@@ -41,10 +62,11 @@ body {
     margin-top: 1em;
     margin-bottom: 1em;
     font-family: 'Lato', sans-serif;
-    font-size: 1.5em;
+    font-size: 30px;
     line-height: 1em;
-    text-transform: uppercase;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -102,7 +124,7 @@ p {
     text-align: left;
     font-family: 'Lato', sans-serif;
     line-height: 1em;
-    margin: 0 0 1.5em 0;
+    margin: 0 1.5em 0.5em 1.5em;
 } 
 
 
@@ -136,8 +158,11 @@ p {
     }
     p{
         line-height: 1em;
-        margin: 0 0 1em 0;
+        margin: 0 1em 1em 0;
         display: block;
+    }
+    .meniu-sus{
+        font-size: 14px;
     }
     .meniu {
         font-size: 12px;
@@ -162,6 +187,7 @@ p {
     .page-grid{
         display:block;
         height: 100%;
+        overflow-y: scroll;
     }
     .meniu-item {
         display: block;
@@ -169,7 +195,7 @@ p {
     }
     p{
         line-height: 1em;
-        margin: 0 0 1em 0;
+        margin: 0 1.5em 1em 0;
     }
 }
 

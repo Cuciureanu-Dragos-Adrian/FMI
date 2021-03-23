@@ -15,15 +15,32 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    grid-template-rows: 25% 8% 55% 12%;
+    grid-template-rows: 15% 8% 65% 12%;
 }
 
 .header {
-    margin-top: 50px;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-rows: 20% 35% 45%;
+}
+
+.sus{
     grid-row: 1/2;
 }
 
+.meniu-sus{
+    float: right;
+    padding: 12px 20px 12px 20px;
+    border: black 1px solid;
+    border-radius: 2vh;
+    margin: 10px 10px 0px 0px;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
 .title {
+    grid-row: 2/3;
     transition: 3s;
     margin: 0;
     margin-top: 10px;
@@ -36,17 +53,18 @@ body {
 }
 
 .subtitle {
+    grid-row: 3/4;
     transition: 3s;
     color: black;
     margin-top: 1em;
     margin-bottom: 1em;
     font-family: 'Lato', sans-serif;
-    font-size: 1.5em;
+    font-size: 30px;
     line-height: 1em;
-    text-transform: uppercase;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 
 .meniu {
     grid-row: 2/3;
@@ -83,28 +101,36 @@ body {
 }
 
 .page-grid {
-    height: 60%;
+    height: 90%;
     width: 70%;
     transition: 3s;
     grid-row: 3/4;
-    display: flex;
-    justify-content: space-between;
     margin-top: 0;
     margin-left: 13.5%;
     background: transparent;
-    padding: 30px 20px;
+    padding: 10px 20px;
     border: 1px solid black;
     color: black;
     font-size: 20px;
+}
+
+.paranjate{
+    display: flex;
+    justify-content: space-between;
 }
 
 p {
     text-align: left;
     font-family: 'Lato', sans-serif;
     line-height: 1em;
-    margin: 0 0 1.5em 0;
+    margin: 0 1.5em 0 1.5em;
 } 
 
+.harta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .footer {
     grid-row: 4/5;
@@ -130,13 +156,16 @@ p {
         margin-right: 50px;
         border-left: none;
         border-right: none;
-        height: 90%;
+        height: 105%;
         width: 98%;
     }
     p{
         line-height: 1em;
-        margin: 0 0 1em 0;
         display: block;
+        margin: 0 1em 1em 0;
+    }
+    .meniu-sus{
+        font-size: 14px;
     }
     .meniu {
         font-size: 12px;
@@ -160,7 +189,6 @@ p {
     }
     .page-grid{
         display:block;
-        height: 100%;
     }
     .meniu-item {
         display: block;
@@ -168,7 +196,7 @@ p {
     }
     p{
         line-height: 1em;
-        margin: 0 0 1em 0;
+        margin: 0 1.5em 1em 0;
     }
 }
 
