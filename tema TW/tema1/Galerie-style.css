@@ -15,7 +15,6 @@ body {
     padding: 0;
     display:grid;
     height: 100%;
-    opacity: initial;
     background: url('bck2.1.png');
     background-attachment: fixed;
     background-position: center;
@@ -162,6 +161,7 @@ h3{
     padding: 10px 0px 10px 0px;
 } 
 
+
 @media (max-width: 1280px) {
     .page-grid {
         margin-left: 0px;
@@ -213,3 +213,15 @@ h3{
     }
 }
 
+@media (max-width: 550px) {
+    .meniu-item{
+        padding: initial;
+    }
+    .poze{
+        height: 63%;
+        width: 90%;
+    }
+    .meniu-item:hover{
+        border-radius: initial;
+    }
+}

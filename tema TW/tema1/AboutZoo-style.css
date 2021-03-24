@@ -101,7 +101,8 @@ body {
 .meniu-item:hover{
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border-radius: 2000000px;
-    background-color: whitesmoke;
+    background-color: rgb(58, 12, 12);
+    color: white;
     transition: 3s;
     transition-delay: 0.2s;
 }
@@ -207,3 +208,14 @@ p {
     }
 }
 
+@media (max-width: 550px) {
+    .meniu-item{
+        padding: initial;
+    }
+    .page-grid{
+        height: 67%;
+    }
+    .meniu-item:hover{
+        border-radius: initial;
+    }
+}

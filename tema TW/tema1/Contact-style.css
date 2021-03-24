@@ -94,8 +94,8 @@ body {
 .meniu-item:hover{
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border-radius: 2000000px;
-    background-color: whitesmoke;
-    color: black;
+    background-color: rgb(58, 12, 12);
+    color: white;
     transition: 3s;
     transition-delay: 0.2s;
 }
@@ -189,6 +189,7 @@ p {
     }
     .page-grid{
         display:block;
+        overflow-y: scroll;
     }
     .meniu-item {
         display: block;
@@ -200,3 +201,25 @@ p {
     }
 }
 
+@media (max-width: 550px) {
+    .meniu-item{
+        padding: initial;
+    }
+    .page-grid{
+        height: 100%;
+    }
+    .paranjate{
+        display: block;
+    }
+    .marime-harta{
+        height: 80%;
+        width: 80%;
+    }
+    p{
+        line-height: 0.5em;
+        margin: 0 1.5em 1em 0;
+    }
+    .meniu-item:hover{
+        border-radius: initial;
+    }
+}

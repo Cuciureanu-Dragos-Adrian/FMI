@@ -4,7 +4,6 @@
   }
 
 html {
-    
     height: 100%;
     font-family: 'Open Sans', sans-serif;
     color: black;
@@ -45,6 +44,7 @@ body {
 }
 
 .title {
+    grid-row: 2/3;
     transition: 3s;
     margin: 0;
     margin-top: 10px;
@@ -57,6 +57,7 @@ body {
 }
 
 .subtitle {
+    grid-row: 3/4;
     transition: 3s;
     color: white;
     margin-top: 1em;
@@ -199,3 +200,11 @@ p {
     }
 }
 
+@media (max-width: 550px) {
+    .meniu-item{
+        padding: initial;
+    }
+    .meniu-item:hover{
+        border-radius: initial;
+    }
+}
