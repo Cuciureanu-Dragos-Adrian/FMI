@@ -102,7 +102,7 @@ bool Mealy(string cuvant, string& afisare, int nod_curent, vector <int>& traseu)
 	else
 	{
 		for (int i = 0; i < m; i++)
-			if ((muchii[i].get_start() == nod_curent) & (muchii[i].get_simbol() == cuvant[0]))
+			if ((muchii[i].get_start() == nod_curent) && (muchii[i].get_simbol() == cuvant[0]))
 			{
 				afisare += muchii[i].get_afis();
 				traseu.push_back(muchii[i].get_end());
