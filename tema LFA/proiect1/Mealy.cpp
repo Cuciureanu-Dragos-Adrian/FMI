@@ -2,6 +2,8 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <limits>
+#include <exception>
 
 using namespace std;
 
@@ -77,6 +79,17 @@ bool comp(Muchie a, Muchie b)
 	return a.get_start() < b.get_start();
 }
 
+int toint(string aux) {
+	int x;
+	try {
+		x = stoi(aux);
+		return x;
+	}
+	catch (exception& ia) {
+		return -1;
+	}
+}
+
 bool Mealy(string cuvant, string& afisare, int nod_curent, vector <int>& traseu)
 {
 	if (cuvant.size() == NULL)
@@ -104,9 +117,31 @@ bool Mealy(string cuvant, string& afisare, int nod_curent, vector <int>& traseu)
 void meniu()
 {
 	cout << "\nIntroduceti numarul de noduri: \nn = ";
-	cin >> n;
+	string nr_nod;
+	cin >> nr_nod;
+	while (toint(nr_nod) <= 0)
+	{
+		cout << "Input invalid";
+		cout << "\nIntroduceti numarul de noduri: \nn = ";
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		cin >> nr_nod;
+	}
+	n = toint(nr_nod);
+
+
 	cout << "\nIntroduceti numarul de muchii: \nm = ";
-	cin >> m;
+	string nr_muc;
+	cin >> nr_muc;
+	while (toint(nr_muc) < 0)
+	{
+		cout << "Input invalid";
+		cout << "\nIntroduceti numarul de muchii: \nm = ";
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		cin >> nr_muc;
+	}
+	m = toint(nr_muc);
 
 	muchii = new Muchie[m];
 
@@ -148,6 +183,7 @@ void meniu()
 		}
 	}
 
+	/*
 	good = false;
 	while (good == false)
 	{
@@ -157,8 +193,22 @@ void meniu()
 			cout << "Input invalid";
 		else
 			good = true;
-	}
+	}*/
 
+	cout << "\nstare initiala = ";
+	string sti;
+	cin >> sti;
+	while (toint(sti) < 0 || toint(sti) >= n)
+	{
+		cout << "Input invalid";
+		cout << "\nstare initiala = ";
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		cin >> sti;
+	}
+	stare_initiala = toint(sti);
+
+	/*
 	good = false;
 	while (good == false)
 	{
@@ -169,27 +219,40 @@ void meniu()
 		else
 			good = true;
 	}
-	cout << "\n";
+	cout << "\n";*/
+
+	cout << "\nnumar stari finale = ";
+	string nr_stf;
+	cin >> nr_stf;
+	while (toint(nr_stf) < 0 || toint(nr_stf) > n)
+	{
+		cout << "Input invalid";
+		cout << "\nnumar stari finale = ";
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		cin >> nr_stf;
+	}
+	nr_stari_finale = toint(nr_stf);
 
 	sf = new int[nr_stari_finale];
 	vector <int> fr(n, 0);
 	for (int i = 0; i < nr_stari_finale; i++)
 	{
-		good = false;
-		while (good == false)
+
+		cout << "starea finala " << i + 1 << " = ";
+		string stf;
+		cin >> stf;
+		while (toint(stf) < 0 || toint(stf) >= n || fr[toint(stf)] == 1)
 		{
-			cout << "starea finala " << i + 1 << " = ";
-			cin >> sf[i];
-			if ((sf[i] < 0) || (sf[i] >= n))
-				cout << "Input invalid\n";
-			else if (fr[sf[i]] == 1)
-				cout << "Acest nod este deja stare finala\n";
-			else
-			{
-				good = true;
-				fr[sf[i]] = 1;
-			}
+			cout << "Input invalid";
+			cout << "\nstarea finala " << i + 1 << " = ";
+			cin.clear();
+			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+			cin >> stf;
 		}
+		sf[i] = toint(stf);
+		fr[sf[i]] = 1;
+
 	}
 
 	sort(muchii, muchii + m, comp);
@@ -199,7 +262,18 @@ void meniu()
 	while (optiune)
 	{
 		cout << "\nIntroduceti numarul de cuvinte ce doriti sa fie verificate: \nnumar de cuvinte = ";
-		cin >> nr_cuvinte;
+		string nrc;
+		cin >> nrc;
+		while (toint(nrc) < 0)
+		{
+			cout << "Input invalid";
+			cout << "\nIntroduceti numarul de cuvinte ce doriti sa fie verificate: \nnumar de cuvinte = ";
+			cin.clear();
+			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+			cin >> nrc;
+		}
+		nr_cuvinte = toint(nrc);
+
 		cin.ignore();
 
 		for (int i = 0; i < nr_cuvinte; i++)
@@ -228,18 +302,19 @@ void meniu()
 		cout << "1 - testati alte cuvinte\n";
 		cout << "2 - introduceti alt Mealy\n";
 
-		good = false;
-		while (good == false)
+		cout << "\nOptiunea dumneavoatra = ";
+		string op;
+		cin >> op;
+		while (toint(op) < 0 || toint(op) > 2)
 		{
-			good = true;
-			cout << "Optiunea dumneavoatra = ";
-			cin >> optiune;
-			if ((optiune < 0) || (optiune > 2))
-			{
-				cout << "Input invalid\n";
-				good = false;
-			}
+			cout << "Input invalid";
+			cout << "\nOptiunea dumneavoatra = ";
+			cin.clear();
+			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+			cin >> op;
 		}
+		optiune = toint(op);
+
 		if (optiune == 2)
 		{
 			meniu();
