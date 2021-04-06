@@ -1,3 +1,8 @@
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
 html {
     
     height: 100%;
@@ -15,7 +20,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    grid-template-rows: 15% 8% 65% 12%;
+    grid-template-rows: 15% 1% 8% 64% 12%;
 }
 
 .header {
@@ -66,8 +71,12 @@ body {
     align-items: center;
 }
 
-.meniu {
+.nothing{
     grid-row: 2/3;
+}
+
+.meniu {
+    grid-row: 3/4;
     margin-bottom: 0;
     display: flex;
     justify-content: center;
@@ -104,7 +113,7 @@ body {
     height: 90%;
     width: 70%;
     transition: 3s;
-    grid-row: 3/4;
+    grid-row: 4/5;
     margin-top: 0;
     margin-left: 13.5%;
     background: transparent;
@@ -112,6 +121,7 @@ body {
     border: 1px solid black;
     color: black;
     font-size: 20px;
+    overflow-y: scroll;
 }
 
 .paranjate{
@@ -133,7 +143,7 @@ p {
 }
 
 .footer {
-    grid-row: 4/5;
+    grid-row: 5/6;
     display: flex;
     justify-content: center;
     padding: 15px;
@@ -204,6 +214,8 @@ p {
 @media (max-width: 550px) {
     .meniu-item{
         padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
     }
     .page-grid{
         height: 100%;
@@ -221,5 +233,36 @@ p {
     }
     .meniu-item:hover{
         border-radius: initial;
+    }
+}
+
+@media (max-height: 800px){
+    body {
+        background: white;
+        grid-template-rows: 15% 10% 8% 55% 12%;
+    }
+    .title {
+        display: none;
+    }
+    .subtitle{
+        color: black;
+    }
+    .page-grid{
+        height: 100%;
+        overflow-y: scroll;
+    }
+    .meniu-sus{
+        font-size: 16px;
+        padding: initial;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .footer {
+        display: none;
+    }
+    .meniu-item{
+        padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
     }
 }

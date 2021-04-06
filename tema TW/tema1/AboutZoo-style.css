@@ -1,10 +1,13 @@
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
 html {
     
     height: 100%;
     color: black;
 }
-
-
 
 body {
     transition: 3s;
@@ -16,7 +19,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    grid-template-rows: 15% 8% 65% 12%;
+    grid-template-rows: 15% 1% 8% 64% 12%;
 }
 
 .header {
@@ -73,8 +76,12 @@ body {
     transition-delay: 0.2s;
 }
 
-.meniu {
+.nothing{
     grid-row: 2/3;
+}
+
+.meniu {
+    grid-row: 3/4;
     margin-bottom: 0;
     display: flex;
     justify-content: center;
@@ -111,7 +118,7 @@ body {
     height: 40%;
     width: 80%;
     transition: 3s;
-    grid-row: 3/4;
+    grid-row: 4/5;
     display: grid;
     margin-top: 0;
     margin-left: 8%;
@@ -131,7 +138,7 @@ p {
 } 
 
 .footer {
-    grid-row: 4/5;
+    grid-row: 5/6;
     display: flex;
     background: transparent;
     justify-content: center;
@@ -163,11 +170,11 @@ p {
         margin: 0 0 1em 0;
         display: block;
     }
-    .meniu {
-        font-size: 12px;
-    }
     .meniu-sus{
         font-size: 14px;
+    }
+    .meniu {
+        font-size: 12px;
     }
     .footer {
         display: none;
@@ -179,7 +186,6 @@ p {
 @media (max-width: 768px) {
     body {
         background: none;
-        grid-template-rows: 0%, 30%, 70%, 0%;
     }
     .title {
         display: none;
@@ -188,18 +194,11 @@ p {
         color: black;
     }
     .page-grid{
-        height: 35%;
-    }
-    .subtitle{
-        color: black;
+        height: 50%;
     }
     .meniu-item {
         display: block;
-        width: 100%;
-        margin: 0;
-        padding: 15px 40px 15px 40px;
-        border-top: 1px solid #ccc;
-        text-align: center;
+        margin: initial;
     }
     p{
         line-height: 1em;
@@ -211,11 +210,47 @@ p {
 @media (max-width: 550px) {
     .meniu-item{
         padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
     }
     .page-grid{
         height: 67%;
     }
     .meniu-item:hover{
         border-radius: initial;
+    }
+}
+
+@media (max-height: 800px){
+    body {
+        background: none;
+        grid-template-rows: 15% 10% 8% 55% 12%;
+    }
+    .title {
+        display: none;
+    }
+    .subtitle{
+        color: black;
+    }
+    .page-grid{
+        height: 70%;
+    }
+    .meniu-sus{
+        font-size: 16px;
+        padding: initial;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .footer {
+        display: none;
+    }
+    .meniu-item{
+        font-size: 12px;
+        padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .page-grid{
+        overflow-y: scroll;
     }
 }
