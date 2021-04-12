@@ -917,6 +917,7 @@ void meniu()
 			{
 				for (int i = 0; i < a.get_nr_locuinte(); i++)
 				{
+					cout << "\n\nLocuinta " << i + 1 << ":\n";
 					if (typeid(*a.get_entitate(i)) == typeid(Apartament))
 					{
 						afis(dynamic_cast<Apartament*>(a.get_entitate(i)));
@@ -1286,7 +1287,7 @@ void meniu()
 					}
 					case 4:
 					{
-						int nr;
+						int adanc;
 						cout << "\nadancime: ";
 						string ad;
 						cin >> ad;
@@ -1297,9 +1298,9 @@ void meniu()
 							cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 							cin >> ad;
 						}
-						nr = toint(ad);
+						adanc = toint(ad);
 
-						(*dynamic_cast<Bunker*>(a.get_entitate(nr - 1))).set_adancime(nr);
+						(*dynamic_cast<Bunker*>(a.get_entitate(nr - 1))).set_adancime(adanc);
 						break;
 					}
 					case 5:
