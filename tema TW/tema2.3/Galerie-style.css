@@ -1,0 +1,415 @@
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+html {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+body {
+    transition: 3s;
+    margin: 0;
+    padding: 0;
+    display:grid;
+    height: 100%;
+    background: url('images/bck2.1.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    grid-template-rows: 15% 1% 8% 20% 24% 20% 12%;
+}
+
+.header {
+    grid-row: 1/2;
+    display: grid;
+    grid-template-rows: 20% 35% 45%;
+}
+
+.sus{
+    grid-row: 1/2;
+}
+
+.meniu-sus{
+    float: right;
+    padding: 12px 20px 12px 20px;
+    border: black 1px solid;
+    border-radius: 2vh;
+    margin: 10px 10px 0px 0px;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.title {
+    grid-row: 2/3;
+    transition: 3s;
+    margin: 0;
+    margin-top: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 38px;
+    font-weight: 900px;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+}
+
+.subtitle {
+    grid-row: 3/4;
+    transition: 3s;
+    color: black;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-family: 'Lato', sans-serif;
+    font-size: 30px;
+    line-height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nothing{
+    grid-row: 2/3;
+}
+
+.meniu {
+    grid-row: 3/4;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.meniu-item {
+    transition: 3s;
+    font-weight: bold;
+    border: black 1px solid;
+    border-bottom: none;
+    margin: 10px 30px 0px 30px;
+    padding: 22px 40px 22px 40px;
+    text-decoration: none;
+    color:black;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+}
+
+.meniu-item-active {
+    color: rgb(18, 5, 194);
+    box-shadow: rgba(160, 160, 179, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.meniu-item:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 2000000px;
+    background-color: rgb(58, 12, 12);
+    color: white;
+    transition: 3s;
+    transition-delay: 0.2s;
+}
+
+.page-grid {
+    height: 85%;
+    width: 70%;
+    transition: 3s;
+    grid-row: 4/7;
+    margin-top: 0;
+    margin-left: 8%;
+    background: transparent;
+    padding: 30px 20px;
+    border: 1px solid black;
+    color: black;
+    font-size: 20px;
+    overflow-y: scroll;
+}
+
+.add{
+    position: absolute;
+    right: 6%;
+    top: 50%;
+}
+
+div:nth-child(odd) {
+    color: rgb(95, 11, 11);
+  }
+
+.album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+p {
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    line-height: 1em;
+    margin: 0 0 1em 0;
+} 
+
+h3{
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    grid-row: 7/8;
+    display: flex;
+    background: transparent;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgba(128, 128, 128, 0.479);
+    box-shadow: 0px 4px 16px gray inset ;
+}
+
+.poza{
+    border-radius: 60%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 10px 0px;
+} 
+
+
+@media (max-width: 1280px) {
+    .page-grid {
+        margin-left: 0px;
+        margin-right: 60px;
+        border-left: none;
+        border-right: none;
+        height: 90%;
+        width: 98%;
+    }
+    p{
+        line-height: 1em;
+        margin: 0 0 1em 0;
+        display: block;
+    }
+    .meniu {
+        font-size: 12px;
+    }
+    .meniu-sus{
+        font-size: 14px;
+    }
+    .footer {
+        display: none;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    body {
+        background: white;
+    }
+    .title {
+        display: none;
+    }
+    .subtitle{
+        color: black;
+    }
+    .page-grid{
+        display:block;
+        height: 100%;
+    }
+    .meniu-item {
+        display: block;
+        margin: initial;
+    }
+    p{
+        line-height: 1em;
+        margin: 0 0 1em 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .meniu-item{
+        padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .poze{
+        height: 63%;
+        width: 90%;
+    }
+    .meniu-item:hover{
+        border-radius: initial;
+    }
+}
+
+@media (max-height: 800px){
+    body {
+        background: white;
+        grid-template-rows: 15% 10% 8% 55% 12%;
+    }
+    .title {
+        display: none;
+    }
+    .subtitle{
+        color: black;
+    }
+    .page-grid{
+        height: 80%;
+        overflow-y: scroll;
+    }
+    .meniu-sus{
+        font-size: 16px;
+        padding: initial;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .footer {
+        display: none;
+    }
+    .meniu-item{
+        padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+.login_tab{
+    width:27.5%;
+    position:absolute;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    padding:1%;
+    top:3%;
+    background-color:rgba(245,245,245,0.75);
+    border: .25vw dashed rgba(25, 51, 77, 0.75);
+}
+
+input{
+    width: 34%;
+}
+
+.button{
+    margin-top:1.5%;
+    display:inline-block;
+    border: none;
+    color: white;
+    padding: 2% 7% 2% 7%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button:hover{
+    transform:scale(1.15);
+}
+
+.logoutButton{
+    width:10%;
+    height:auto;
+}
+
+.logoutButton:hover{
+    transform:scale(1.15);
+}
+
+.edit_button{
+    position:absolute;
+    left:73%;
+    top:2.5%;
+    width:10%;
+}
+
+.edit_button:hover{
+    transform:scale(1.15);
+}
+
+.delete_button{
+    position:absolute;
+    left:85%;
+    top:2.5%;
+    width:10%;
+}
+
+.delete_button:hover{
+    transform:scale(1.15);
+}
+
+.insertMenu{
+    display:flex;
+    position:fixed;
+    flex-direction:column;
+    padding:1%;
+    left:-4%;
+    top:50%;
+    background-color:rgba(245,245,245,0.75);
+    border: .25vw dashed rgba(25, 51, 77, 0.75);
+}
+
+.insertMenu:hover{
+    transform: translate(50%);
+}
+
+.login{
+    background-color: #fc352b;
+    float:left;
+    margin-left:30%;
+}
+
+.add{
+    background-color:#4CAF50;
+    float:right;
+
+}
+
+.container{
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.logTab{
+    width:37.5%;
+    position:absolute;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    padding:1%;
+    top:3%;
+    background-color:rgba(245,245,245,0.75);
+    border: .25vw solid rgba(0, 4, 8, 0.75);
+}
+
+.animal{
+    display:flex;
+    position:relative;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
+    width:20%;
+    border:2px solid rgba(25, 51, 77, 0.75);
+    background-color:rgba(245,245,245,0.75);
+    box-shadow: .5vw .5vw rgba(25, 51, 77, 0.75 );
+    margin:1%;
+}
+
+.animal-icon{
+    float:left;
+    position: relative;
+    width:96.68%;
+    padding-bottom : 96.68%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-color:rgba(25, 51, 77, 0.75 );
+}
+
+.animal-name{
+    margin-top:1%;
+    margin-bottom:0%;
+    font-size:1.15vw;
+    margin-left:2%;
+}
+
+.animal-content{
+    margin-top:5%;
+    font-size:1vw;
+    margin-bottom:0%;
+}

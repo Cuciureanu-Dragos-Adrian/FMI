@@ -1,0 +1,10 @@
+{
+    "animals": [],
+    "users": [{
+        "name": "cristi",
+        "pass": "nelu",
+        "rol": "admin",
+        "id": "02d70d5f-f645-44c0-b068-3224edb807a0"
+      }],
+    "logged": []
+}
