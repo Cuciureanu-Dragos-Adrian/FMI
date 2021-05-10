@@ -1,6 +1,6 @@
 var body = document.getElementsByTagName("body")[0];
 
-    window.onload = function pageLoad(){
+    window.onload = function (){
     var logTab = document.createElement("div");
     logTab.classList.add("logTab");
     logTab.id = "logTab";
@@ -8,14 +8,16 @@ var body = document.getElementsByTagName("body")[0];
     body.appendChild(logTab);
 
       
-    fetch('http:/localhost:3000/logged', {
+    fetch('http://localhost:3000/logged', {
         method: 'get'
     }).then((response)=> {
         response.json().then((logged)=>{
             if(logged.state==0){
-            logTab.style.left="65.5%";
+            console.log("aici");
 
-            let br = document.createElement("br");
+            logTab.style.left="82%";
+            logTab.style.width = "15%";
+            logTab.style.height = "auto";
 
             let userLabel= document.createElement("label");
             userLabel.setAttribute("for", "userInput");
@@ -24,36 +26,37 @@ var body = document.getElementsByTagName("body")[0];
             let passwordLabel= document.createElement("label");
             passwordLabel.setAttribute("for", "passwordInput");
             passwordLabel.innerText="Password: ";
-            passwordLabel.style.marginLeft="2%";
 
             let roleLabel= document.createElement("label");
             roleLabel.setAttribute("for", "roleInput");
             roleLabel.innerText="Role: ";
-            roleLabel.style.marginLeft="1%";
             
             let userInput= document.createElement("input");
             userInput.setAttribute("type","text");
             userInput.id="User";
+            userInput.style.width = "100%";
+            userInput.placeholder = "Username";
 
             let passwordInput= document.createElement("input");
             passwordInput.setAttribute("type","password");
             passwordInput.id="Password";
+            passwordInput.style.width = "100%";
+            passwordInput.placeholder = "Password";
 
             let roleInput= document.createElement("input");
             roleInput.setAttribute("type","text");
             roleInput.id="Role";
+            roleInput.style.width = "100%";
+            roleInput.placeholder = "Role (complete only if you want to sign up)";
 
             let addButton= document.createElement("button");
             addButton.classList.add("button");
-            addButton.classList.add("add");
             addButton.innerText="Sign up";
             addButton.setAttribute("onClick","addUser()");
             addButton.onclick = function(){addUser()};
 
-
             let loginButton= document.createElement("button");
             loginButton.classList.add("button");
-            loginButton.classList.add("login");
             loginButton.innerText="Log in";
             loginButton.onclick = function(){tryLogin()};
 
@@ -63,35 +66,37 @@ var body = document.getElementsByTagName("body")[0];
             logTab.appendChild(passwordInput);
             logTab.appendChild(roleLabel);
             logTab.appendChild(roleInput);
-            logTab.appendChild(addButton);
             logTab.appendChild(loginButton);
+            logTab.appendChild(addButton);
 
-            document.addEventListener('keypress', function(e){
-                console.log(e.key);
-
-                if(e.key === 'Enter'){
+            document.addEventListener('keypress', function(enter)
+            {
+                if(enter.key === 'Enter')
+                {
                     tryLogin();
-                    }
+                }
             })
             
             }
 
-            else if(logged.state==0 && logged.rol == "admin"){
+            else if(logged.state== 1 && logged.rol == "admin"){
             //
+            console.log("aici");
 
-            logTab.style.left="78%";
+            logTab.style.left="82%";
             logTab.style.width = "15%";
-            logTab.style.padding = "1%";
+            logTab.style.height = "6%";
+            logTab.style.padding = "0.5%";
             logTab.style.justifyContent = "space-between";
 
             let welcomeText = document.createElement("p");
             welcomeText.innerText="Logged in as an " + logged.rol + ", " + logged.name+ "!";
             welcomeText.style.margin = "0";
 
-            let logoutButton = document.createElement("img");
-            logoutButton.setAttribute("src","Images/logout.png");
-            logoutButton.onclick=function(){logOut()};
-            logoutButton.classList.add("logoutButton");
+            let logoutButton= document.createElement("button");
+            logoutButton.classList.add("button");
+            logoutButton.innerText="Log out";
+            logoutButton.onclick = function(){logOut()};
 
             logTab.appendChild(welcomeText);
             logTab.appendChild(logoutButton);
@@ -101,6 +106,10 @@ var body = document.getElementsByTagName("body")[0];
             let insertMenu = document.createElement("div");
             insertMenu.classList.add("insertMenu");
 
+            let name = document.createElement("label");
+            name.innerText="Insert";
+            name.style.marginLeft = "35%";
+            
             let nameLabel= document.createElement("label");
             nameLabel.setAttribute("for", "nameInput");
             nameLabel.innerText="Name: ";
@@ -139,10 +148,11 @@ var body = document.getElementsByTagName("body")[0];
 
             let addButton= document.createElement("button");
             addButton.classList.add("button");
-            addButton.classList.add("add");
-            addButton.innerText="Inserare";
-            addButton.onclick=function(){addCar()};
+            addButton.innerText="Insert";
+            addButton.onclick = function(){add_animal()};
+            addButton.style.width = "104.4%";
             
+            insertMenu.appendChild(name);
             insertMenu.appendChild(nameLabel);
             insertMenu.appendChild(nameInput);
             insertMenu.appendChild(imgLabel);
@@ -154,9 +164,88 @@ var body = document.getElementsByTagName("body")[0];
             insertMenu.appendChild(addButton);
 
             body.append(insertMenu);
+
+            // celalalt meniu
+
+            let alterMeniu = document.createElement("div");
+            alterMeniu.classList.add("alterMeniu");
+
+            let name1 = document.createElement("label");
+            name1.innerText="Alter";
+            name1.style.marginLeft = "35%";
+            
+            let nameLabel1 = document.createElement("label");
+            nameLabel1.setAttribute("for", "nameAlter");
+            nameLabel1.innerText="Name: ";
+
+            let imgLabel1= document.createElement("label");
+            imgLabel1.setAttribute("for", "imgAlter");
+            imgLabel1.innerText="Link image: ";
+
+            let descriptionLabel1= document.createElement("label");
+            descriptionLabel1.setAttribute("for", "descriptionAlter");
+            descriptionLabel1.innerText="Description: ";
+            
+            let rateLabel1= document.createElement("label");
+            rateLabel1.setAttribute("for", "rateAlter");
+            rateLabel1.innerText="Rate: ";
+            
+            let nameInput1= document.createElement("input");
+            nameInput1.setAttribute("type","text");
+            nameInput1.id="nameAlter";
+            nameInput1.style.width="100%";
+
+            let imgInput1= document.createElement("input");
+            imgInput1.setAttribute("type","text");
+            imgInput1.id="imgAlter";
+            imgInput1.style.width="100%";
+
+            let descriptionInput1= document.createElement("input");
+            descriptionInput1.setAttribute("type","text");
+            descriptionInput1.id="descriptionAlter";
+            descriptionInput1.style.width="100%";
+
+            let rateInput1= document.createElement("input");
+            rateInput1.setAttribute("type","text");
+            rateInput1.id="rateAlter";
+            rateInput1.style.width="100%";
+            
+            alterMeniu.appendChild(name1);
+            alterMeniu.appendChild(nameLabel1);
+            alterMeniu.appendChild(nameInput1);
+            alterMeniu.appendChild(imgLabel1);
+            alterMeniu.appendChild(imgInput1);
+            alterMeniu.appendChild(descriptionLabel1);
+            alterMeniu.appendChild(descriptionInput1);
+            alterMeniu.appendChild(rateLabel1);
+            alterMeniu.appendChild(rateInput1);
+
+            body.append(alterMeniu);
+            }
+            else if(logged.state== 1){
+                //
+                console.log("aici");
+    
+                logTab.style.left="81%";
+                logTab.style.width = "15%";
+                logTab.style.padding = "1%";
+                logTab.style.justifyContent = "space-between";
+    
+                let welcomeText = document.createElement("p");
+                welcomeText.innerText="Logged in as an " + logged.rol + ", " + logged.name+ "!";
+                welcomeText.style.margin = "0";
+    
+                let logoutButton= document.createElement("button");
+                logoutButton.classList.add("button");
+                logoutButton.innerText="Log out";
+                logoutButton.onclick = function(){logOut()};
+
+                logTab.appendChild(welcomeText);
+                logTab.appendChild(logoutButton);
+
+                console.log("acolo");
             }
         })
-    
     })
 
 
@@ -203,13 +292,13 @@ var body = document.getElementsByTagName("body")[0];
         console.log(user);
     
         if(user.length==0){
-            window.alert("Campul user nu poate fi gol!");
+            window.alert("User can't be empty!");
         }
         else if(password.length==0){
-            window.alert("Campul parola nu poate fi gol!");
+            window.alert("Password can't be empty!");
         }
         else if(role.length==0){
-            window.alert("Campul role nu poate fi gol!");
+            window.alert("Role can't be empty!");
         }
         else{
             var newUser={
@@ -229,7 +318,7 @@ var body = document.getElementsByTagName("body")[0];
                     
                     function search(item){
                         if(item.name==newUser.name&&OK!=0){
-                            window.alert("Username deja existent!");
+                            window.alert("Username already exists!");
                             OK=0;
                         }
                     }
@@ -243,7 +332,7 @@ var body = document.getElementsByTagName("body")[0];
                             body: JSON.stringify(newUser)
                         }).then(function(response){
                             console.log(response);
-                            window.alert("User creat cu succes!");
+                            window.alert("User created!");
                         })
                     }
                 })
@@ -270,7 +359,7 @@ var body = document.getElementsByTagName("body")[0];
                         OK=1;
                         
                         if(item.pass!=password){
-                        window.alert("Parola incorecta!");
+                        window.alert("Wrong password!");
                         }
                         else{
                             logUser(item.name, item.rol);
@@ -279,7 +368,7 @@ var body = document.getElementsByTagName("body")[0];
                 }
                 
                 if(OK==0)
-                window.alert("User inexistent!");
+                window.alert("User does not exist!");
             })
         })
     

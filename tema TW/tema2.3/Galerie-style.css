@@ -129,10 +129,6 @@ body {
     top: 50%;
 }
 
-div:nth-child(odd) {
-    color: rgb(95, 11, 11);
-  }
-
 .album {
     display: flex;
     flex-wrap: wrap;
@@ -170,6 +166,21 @@ h3{
     padding: 10px 0px 10px 0px;
 } 
 
+.poze{
+    margin-top: 100px;
+    height: 300px;
+    width: 500px;
+    object-fit: cover;
+    background: no-repeat;
+}
+
+.scris{
+    text-align: left;
+    font-size: 20px;   
+    font-family: 'Lato', sans-serif;
+    line-height: 1em;
+    margin: 0.5em 0 0.5em 0;
+}
 
 @media (max-width: 1280px) {
     .page-grid {
@@ -268,44 +279,31 @@ h3{
     }
 }
 
-.login_tab{
-    width:27.5%;
-    position:absolute;
-    display:flex;
-    flex-direction:row;
-    justify-content:space-around;
-    flex-wrap:wrap;
-    padding:1%;
-    top:3%;
-    background-color:rgba(245,245,245,0.75);
-    border: .25vw dashed rgba(25, 51, 77, 0.75);
-}
-
 input{
     width: 34%;
 }
 
 .button{
-    margin-top:1.5%;
-    display:inline-block;
-    border: none;
-    color: white;
+    margin-top:2.5%;
     padding: 2% 7% 2% 7%;
-    text-align: center;
     text-decoration: none;
-}
-
-.button:hover{
-    transform:scale(1.15);
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
+    width: 100%;
+    border: .1vw solid black;
 }
 
 .logoutButton{
-    width:10%;
+    width:40%;
     height:auto;
 }
 
-.logoutButton:hover{
-    transform:scale(1.15);
+.login{
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
+    width: 100%;
+    border: .1vw solid black;
+    /*margin-left:30%;*/
 }
 
 .edit_button{
@@ -313,10 +311,6 @@ input{
     left:73%;
     top:2.5%;
     width:10%;
-}
-
-.edit_button:hover{
-    transform:scale(1.15);
 }
 
 .delete_button{
@@ -334,27 +328,32 @@ input{
     display:flex;
     position:fixed;
     flex-direction:column;
-    padding:1%;
-    left:-4%;
-    top:50%;
+    padding: 20px;
+    right: 3%;
+    height: auto;
+    top:24%;
     background-color:rgba(245,245,245,0.75);
-    border: .25vw dashed rgba(25, 51, 77, 0.75);
+    border: .25vw solid rgba(2, 15, 29, 0.75);
 }
 
-.insertMenu:hover{
-    transform: translate(50%);
-}
-
-.login{
-    background-color: #fc352b;
-    float:left;
-    margin-left:30%;
+.alterMeniu{
+    display:flex;
+    position:fixed;
+    flex-direction:column;
+    padding: 20px;
+    right: 3%;
+    top:57%;
+    height: auto;
+    background-color:rgba(245,245,245,0.75);
+    border: .25vw solid rgba(2, 15, 29, 0.75);
 }
 
 .add{
-    background-color:#4CAF50;
-    float:right;
-
+    background-color:#ffffff;
+    color:rgb(0, 0, 0);
+    width: 100%;
+    display: inline;
+    border: .1vw solid black;
 }
 
 .container{
@@ -364,16 +363,16 @@ input{
 }
 
 .logTab{
-    width:37.5%;
-    position:absolute;
+    transition: 3s;
+    position:fixed;
     display:flex;
     flex-direction:row;
-    justify-content:space-around;
     flex-wrap:wrap;
-    padding:1%;
-    top:3%;
+    padding: 0.5%;
+    top:1%;
+    right: 50%;
     background-color:rgba(245,245,245,0.75);
-    border: .25vw solid rgba(0, 4, 8, 0.75);
+    border: .25vw solid rgba(0, 0, 0, 0.75);
 }
 
 .animal{
@@ -382,34 +381,6 @@ input{
     flex-direction:column;
     justify-content: center;
     text-align: center;
-    width:20%;
-    border:2px solid rgba(25, 51, 77, 0.75);
-    background-color:rgba(245,245,245,0.75);
-    box-shadow: .5vw .5vw rgba(25, 51, 77, 0.75 );
-    margin:1%;
-}
-
-.animal-icon{
-    float:left;
-    position: relative;
-    width:96.68%;
-    padding-bottom : 96.68%; /* = width for a 1:1 aspect ratio */
-    margin:1.66%;
-    background-position:center center;
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-color:rgba(25, 51, 77, 0.75 );
-}
-
-.animal-name{
-    margin-top:1%;
-    margin-bottom:0%;
-    font-size:1.15vw;
-    margin-left:2%;
-}
-
-.animal-content{
-    margin-top:5%;
-    font-size:1vw;
-    margin-bottom:0%;
+    /* width:500px;
+    height: 600px; */
 }
