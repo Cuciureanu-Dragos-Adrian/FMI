@@ -73,11 +73,17 @@
             "pass": "popescu",
             "rol": "admin",
             "id": "1qs7wpo"
+        },
+        {
+            "name": "prof",
+            "pass": "prof",
+            "rol": "admin",
+            "id": "6a2fd03a-7e84-48ec-8be5-efe92f67e5be"
         }
     ],
     "logged": {
         "state": 1,
-        "name": "fane",
+        "name": "prof",
         "rol": "admin"
     }
 }

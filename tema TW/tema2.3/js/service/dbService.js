@@ -29,7 +29,7 @@ module.exports.addAnimal = (newAnimal) => {
 module.exports.addUser = (newUser) => {
     const usersList = dbRepository.readJSONFileUsers();
     newUser.id = uuid.v4.apply();
-    adminList.push(newUser);
+    usersList.push(newUser);
     dbRepository.writeJSONFileUsers(usersList);
 
     return newUser;
