@@ -2,6 +2,8 @@ const uuid = require("uuid");
 
 let dbRepository = require("../repository/dbRepository");
 
+//get
+
 module.exports.getAllAnimals = () => {
     const animalsList = dbRepository.readJSONFileAnimals();
     return animalsList;
@@ -16,6 +18,8 @@ module.exports.getLogged = () => {
     const logged = dbRepository.readJSONFileLogged();
     return logged;
 }
+
+//add
 
 module.exports.addAnimal = (newAnimal) => {
     const animalsList = dbRepository.readJSONFileAnimals();
@@ -34,6 +38,8 @@ module.exports.addUser = (newUser) => {
 
     return newUser;
 }
+
+//change
 
 module.exports.changeLogged = (newLogged) => {
     dbRepository.writeJSONFileLogged(newLogged);
