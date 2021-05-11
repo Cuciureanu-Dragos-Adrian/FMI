@@ -21,9 +21,14 @@ fetch('http://localhost:3000/animals', {
                     let animal_div = document.createElement("div");
                     animal_div.classList.add("animal");
 
+                    let image = document.createElement("img");
+                    image.setAttribute("src", animals[i].img);
+                    image.className = "image";
+
                     let animal_image = document.createElement("div");
                     animal_image.classList.add("poze");
-                    animal_image.style.backgroundImage=`url("${animals[i].img}")`;
+                    // animal_image.style.backgroundImage=`url("${animals[i].img}")`;
+                    animal_image.appendChild(image);
                     
                     let animal_name = document.createElement("p");
                     animal_name.classList.add("scris");
@@ -57,7 +62,7 @@ fetch('http://localhost:3000/animals', {
                     animal_div.appendChild(editButton);
                 }
             }
-            else
+            else if(logged.state==1)
             {
                 console.log("asd");
                 for(let i = 0 ; i < animals.length ; i++)
