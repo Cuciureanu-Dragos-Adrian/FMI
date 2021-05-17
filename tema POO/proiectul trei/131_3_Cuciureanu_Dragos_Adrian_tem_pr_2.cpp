@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <list>
 #include <limits>
 #include <exception>
 
@@ -497,6 +498,7 @@ float Bunker::CalculChirie()
 template <class Tip_Locuinta>
 class Gestiune
 {
+protected:
 	vector <Tip_Locuinta*> v;
 	int index;
 	static int id;
@@ -592,13 +594,12 @@ template <class Tip_Locuinta>
 class Mini_Gestiune : public Gestiune<Tip_Locuinta>
 {
 	static const int limita = 5;
-	vector <Tip_Locuinta*> v;
 	int index;
 	static int id;
 
 public:
-	Mini_Gestiune() : v(0) { index = 0; };
-	~Mini_Gestiune() { index = 0;  v.clear(); };
+	Mini_Gestiune() { index = 0; };
+	~Mini_Gestiune() { index = 0;  this->v.clear(); };
 
 	void operator+=(Tip_Locuinta&);
 	void afisare();
@@ -614,7 +615,7 @@ void Mini_Gestiune<Tip_Locuinta>::operator +=(Tip_Locuinta& tl)
 {
 	Tip_Locuinta* aux = new Tip_Locuinta(tl);
 
-	if (v.size() == limita)
+	if (this->v.size() == limita)
 	{
 		cout << "\n\nLimita acestei mini gestiuni din pacate a fost atinsa :(\n";
 		cout << "Doriti sa dati overwrite la un element din gestiune sau sa nu adaugati ultimul element citit?\n";
@@ -653,12 +654,12 @@ void Mini_Gestiune<Tip_Locuinta>::operator +=(Tip_Locuinta& tl)
 			}
 			idx = toint(id);
 
-			v[idx - 1] = aux;
+			this->v[idx - 1] = aux;
 		}
 	}
 	else
 	{
-		v.push_back(aux);
+		this->v.push_back(aux);
 		index++;
 	}
 }
@@ -672,13 +673,13 @@ void Mini_Gestiune <Tip_Locuinta>::afisare()
 		cout << "\n\nLantul " << id << " are " << index << " bunkere";
 
 	/*
-	for (int i = 0; i < v.size(); i++)
-		cout << *dynamic_cast<Tip_Locuinta*>(v[i]);
+	for (int i = 0; i < this->v.size(); i++)
+		cout << *dynamic_cast<Tip_Locuinta*>(this->v[i]);
 	*/
 
 	int i = 1;
 
-	for_each(v.begin(), v.end(), [&i](Tip_Locuinta* tl)
+	for_each(this->v.begin(), this->v.end(), [&i](Tip_Locuinta* tl)
 		{
 			if (typeid(Tip_Locuinta) == typeid(Apartament))
 				cout << "\n\n\nApartamentul " << i++ << ":\n";
@@ -698,13 +699,13 @@ void Mini_Gestiune <Tip_Locuinta>::afisare_locuinte()
 		cout << "\n\nLantul " << id << " are " << index << " bunkere(locuinte)";
 
 	/*
-	for (int i = 0; i < v.size(); i++)
-		cout << *dynamic_cast<Tip_Locuinta*>(v[i]);
+	for (int i = 0; i < this->v.size(); i++)
+		cout << *dynamic_cast<Tip_Locuinta*>(this->v[i]);
 	*/
 
 	int i = 1;
 
-	for_each(v.begin(), v.end(), [&i](Locuinta* l)
+	for_each(this->v.begin(), this->v.end(), [&i](Locuinta* l)
 		{
 			if (typeid(Tip_Locuinta) == typeid(Apartament))
 				cout << "\n\n\nApartamentul(locuinta) " << i++ << ":\n";
@@ -718,7 +719,7 @@ void Mini_Gestiune <Tip_Locuinta>::afisare_locuinte()
 template <class Tip_Locuinta>
 void Mini_Gestiune <Tip_Locuinta>::sort_by_chirie()
 {
-	sort(v.begin(), v.end(), [](Tip_Locuinta* a, Tip_Locuinta* b)
+	sort(this->v.begin(), this->v.end(), [](Tip_Locuinta* a, Tip_Locuinta* b)
 		{
 			return (*a).CalculChirie() < (*b).CalculChirie();
 		});
@@ -731,7 +732,7 @@ void Mini_Gestiune <Tip_Locuinta>::sort_by_chirie()
 template <>
 class Gestiune<Casa>
 {
-	vector <Casa*> v;
+	list <Casa*> v;
 	static const int id = 202;
 	int index;
 
