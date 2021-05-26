@@ -162,7 +162,7 @@ void insert(vector <int>& v, int i)
 {
 	if (i != 1)
 	{
-		if (det_lvl(0) == 0)
+		if (det_lvl(i) == 0)
 		{
 			if (v[i] > v[i / 2])
 			{
@@ -188,8 +188,6 @@ void insert(vector <int>& v, int i)
 		}
 	}
 }
-
-
 
 void afisare_min(vector <int>& v)
 {
@@ -227,7 +225,6 @@ void delete_max(vector <int>& v)
 	}
 }
 
-
 void afisare(vector <int>& v)
 {
 	int nr = v.size() - 1;
@@ -251,7 +248,9 @@ void afisare(vector <int>& v)
 	fout << "\n\n";
 }
 
-void meniu ()
+
+
+void meniu()
 {
 	vector <int> mmh;
 	int nr_optiuni;
@@ -297,10 +296,10 @@ void meniu ()
 			int n;
 			fin >> n;
 
-			mmh.assign(n+1, 0);
+			mmh.assign(n + 1, 0);
 
 			for (int i = 1; i <= n; i++)
-			{	
+			{
 				fin >> mmh[i];
 			}
 
@@ -315,6 +314,8 @@ void meniu ()
 
 	}
 }
+
+
 
 int main()
 {
