@@ -41,6 +41,13 @@
             "description": "foxy",
             "rate": "fox/fox",
             "id": "03e55371-0524-4d36-9e90-26f47a1791d5"
+        },
+        {
+            "img": "",
+            "name": "a",
+            "description": "",
+            "rate": "",
+            "id": "9620b98b-1c6d-43df-b570-88a38604b645"
         }
     ],
     "users": [
@@ -91,11 +98,16 @@
             "pass": "tuka",
             "rol": "admin",
             "id": "04b189ae-98b5-4c4e-a284-4640610b6bf5"
+        },
+        {
+            "name": "prof1",
+            "pass": "prof1",
+            "rol": "admin",
+            "id": "3e222ba4-958c-4951-87ac-354032e3f0a6"
         }
     ],
     "logged": {
-        "state": 1,
-        "name": "fane",
-        "rol": "admin"
+        "state": 0,
+        "name": "None"
     }
 }

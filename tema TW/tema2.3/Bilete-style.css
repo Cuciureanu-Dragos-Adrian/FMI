@@ -171,6 +171,11 @@ p {
     .meniu {
         font-size: 12px;
     }
+    .meniu-item{
+        padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
     .footer {
         display: none;
     }
@@ -204,10 +209,8 @@ p {
 }
 
 @media (max-width: 550px) {
-    .meniu-item{
-        padding: initial;
-        padding-right: 10px;
-        padding-left: 10px;
+    .page-grid{
+        height: 67%;
     }
     .meniu-item:hover{
         border-radius: initial;
@@ -229,10 +232,7 @@ p {
         height: 80%;
     }
     .meniu-sus{
-        font-size: 16px;
-        padding: initial;
-        padding-right: 5px;
-        padding-left: 5px;
+        display: none;
     }
     .footer {
         display: none;
@@ -244,5 +244,24 @@ p {
     }
     .page-grid{
         overflow-y: scroll;
+    }
+}
+
+@media (max-height: 300px) {
+    body {
+        grid-template-rows: 25% 6% 12% 55% 2%;
+    }
+    .subtitle{
+    font-size: 10vh;
+    }
+    .header {
+        grid-template-rows: 10% 25% 65%;
+    }
+    .meniu-item{
+        font-size: 5vh;
+        padding: initial;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin: initial;
     }
 }
