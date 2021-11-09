@@ -4,14 +4,14 @@ public:
     vector< vector<int> > neighborList;	
 
     vector<int> discoveryOrder;				
-	vector<int> lowestDepthReacheable;	
+    vector<int> lowestDepthReacheable;	
 
     stack<int> nodeStack;
     
     int currentTime = 0;
     
     
-    void TDFS_criticalConnections(int currentNode, int parentNode)
+    void TDFS(int currentNode, int parentNode)
     {
         discoveryOrder[currentNode] = currentTime;									
         lowestDepthReacheable[currentNode] = currentTime;
@@ -59,7 +59,7 @@ public:
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) 
     {								
         discoveryOrder.assign(n, -1);				
-	    lowestDepthReacheable.assign(n, -1);
+	lowestDepthReacheable.assign(n, -1);
         
         for (int i = 0; i < n; i++) 
         {
