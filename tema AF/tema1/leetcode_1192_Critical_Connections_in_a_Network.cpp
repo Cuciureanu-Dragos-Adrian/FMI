@@ -5,8 +5,6 @@ public:
 
     vector<int> discoveryOrder;				
     vector<int> lowestDepthReacheable;	
-
-    stack<int> nodeStack;
     
     int currentTime = 0;
     
@@ -15,7 +13,6 @@ public:
     {
         discoveryOrder[currentNode] = currentTime;									
         lowestDepthReacheable[currentNode] = currentTime;
-        nodeStack.push(currentNode);
         currentTime++;																
 
         for (auto neighbor : neighborList[currentNode])							
@@ -41,18 +38,6 @@ public:
             {
                 lowestDepthReacheable[currentNode] = min(lowestDepthReacheable[currentNode], discoveryOrder[neighbor]);
             }
-        }
-        if (lowestDepthReacheable[currentNode] == discoveryOrder[currentNode])		
-	    {																				
-
-            int node = nodeStack.top();
-            nodeStack.pop();
-
-            while (node != currentNode)										
-            {
-                node = nodeStack.top();
-                nodeStack.pop();
-            }									
         }
     }
     
