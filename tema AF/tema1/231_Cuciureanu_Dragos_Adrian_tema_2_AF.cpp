@@ -8,29 +8,51 @@
 
 using namespace std;
 
-ifstream fin("citire.in");
-ofstream fout("afisare.out");
+ifstream fin("bellmanford.in");
+ofstream fout("bellmanford.out");
+
+
+auto cmp = [](pair <int, int> x, pair <int, int> y)																				//this is used for sorting the min heap in Dijkstra's Algorithm
+{
+	return x.second > y.second;
+};
 
 
 class Graph
 {
+public:
+	struct Edge 
+	{
+		int m_destinationNode, m_distance;
+
+		Edge(int destinationNode, int distance = 0) : m_destinationNode(destinationNode), m_distance(distance) {}
+
+		operator int() 
+		{ 
+			return m_distance; 
+		}
+	};
+
 private:
 	bool m_oriented;
+	bool m_weighted;
 
 	int m_nrNodes;
 	int m_nrEdges;
 	
-	vector < vector <int> > m_neighborList;
+	vector < vector <Edge> > m_neighborList;
 
-	void BFS(vector<bool>& visitedNodes, vector<int>& distances, int startNode = 0);
-	void DFS(vector<bool>& visitedNodes, int currentNode = 0);
+	void BFS(vector<bool>& visitedNodes, vector<int>& distances, int startNode);
+	void DFS(vector<bool>& visitedNodes, int currentNode);
 	void BCDFS(vector< vector <int> >& bcc, stack<int>& nodeStack, vector<bool>& visited, vector<int>& depth, vector<int>& lowestDepthReacheable, int currentNode, int parentNode, int currentDepth);
 	void TDFS(vector< vector <int> >& scc, stack<int>& nodeStack, vector<bool>& stackMember, vector<int>& discoveryOrder, vector<int>& lowestDepthReacheable, int currentNode, int& currentTime);
 	void TDFS_criticalConnections(vector< vector<int> >& solution, stack<int>& nodeStack, vector<int>& discoveryOrder, vector<int>& lowestDepthReacheable, int currentNode, int parentNode, int& currentTime);
 	void STDFS(stack<int>& result, vector<bool>& visitedNodes, int currentNode);
+	void Dijkstra(priority_queue < pair<int, int>, vector< pair<int, int> >, decltype(cmp) >& heap, vector<bool>& visitedNodes, vector<int>& distances);
+	void BellmanFord(queue<int>& nodeOrder, vector<bool>& inQueue, vector<int>& distances, vector<int>& numberOfAparitions, int startNode);
 
 public:
-	Graph(int nrNodes = 0, int nrEdges = 0, bool oriented = false);
+	Graph(int nrNodes = 0, int nrEdges = 0, bool oriented = false, bool weighted = false);
 	~Graph() {}
 
 #pragma region Setters&Getters
@@ -71,15 +93,19 @@ public:
 	vector<int> minimalDistanceBetweenTwoNodes(int startNode, int finishNode);
 	bool HavelHakimi(istream& input);
 	vector<int> topologicalSort();
+	vector<int> minimalWeightedDistances(int startNode);
+	vector<int> minimalNegativeWeightedDistances(int startNode);
 };
 
-Graph::Graph(int nrNodes, int nrEdges, bool oriented)
+Graph::Graph(int nrNodes, int nrEdges, bool oriented, bool weighted)
 {
 	m_nrNodes = nrNodes;
 	m_nrEdges = nrEdges;
-	m_oriented = oriented;
 
-	vector <int> emptyVector;
+	m_oriented = oriented;
+	m_weighted = weighted;
+
+	vector <Edge> emptyVector;
 
 	for (int i = 0; i < nrNodes; i++)
 	{
@@ -273,34 +299,105 @@ void Graph::STDFS(stack<int>& result, vector<bool>& visitedNodes, int currentNod
 	result.push(currentNode);
 }
 
+void Graph::Dijkstra(priority_queue < pair<int, int>, vector< pair<int, int> >, decltype(cmp) > &heap, vector<bool>& visitedNodes, vector<int>& distances)
+{
+	while (heap.empty() == false)																									//while the heap has elements
+	{
+		pair <int, int> currentPair = heap.top();
+		heap.pop();
+
+		int currentNode = currentPair.first;
+		int currentDistance = currentPair.second;
+
+		visitedNodes[currentNode] = true;
+			
+		if (currentDistance == distances[currentNode])																				//if the current distance is not the same as the one we have in the distance vector it means that we have 
+		{																															//already found a better way
+			for (auto neighborPair : m_neighborList[currentNode])																	//visit all neibors
+			{
+				int neighborNode = neighborPair.m_destinationNode;
+				int edgeDistance = neighborPair.m_distance;
+
+				if (visitedNodes[neighborNode] == false)																			//if the node has been visited we already know the minimal distance to it
+				{
+					if (distances[neighborNode] > currentDistance + edgeDistance)													//test if we can find a smaller distance
+					{
+						distances[neighborNode] = currentDistance + edgeDistance;													//update the minimal distance if we've found a new one
+						heap.push(make_pair(neighborNode, distances[neighborNode]));												//push the node and it's distance in the heap
+					}
+				}
+			}
+		}
+	}
+}
+
+void Graph::BellmanFord(queue<int>& nodeOrder, vector<bool>& inQueue, vector<int>& distances, vector<int>& numberOfAparitions, int startNode)
+{
+	while (nodeOrder.empty() == false)
+	{
+		int currentNode = nodeOrder.front();
+		nodeOrder.pop();
+
+		inQueue[currentNode] = false;
+		numberOfAparitions[currentNode]++;
+
+		if (numberOfAparitions[currentNode] == m_nrNodes)																		//if we've encountered the same node (number of nodes - 1) times it means we are in a negative loop
+		{
+			distances[startNode] = -1;
+			break;
+		}
+
+		for (auto neighborPair : m_neighborList[currentNode])																		//visit all neibors
+		{
+			int neighborNode = neighborPair.m_destinationNode;
+			int edgeDistance = neighborPair.m_distance;
+
+			if (distances[neighborNode] > distances[currentNode] + edgeDistance)													//test if we can find a smaller distance
+			{
+				distances[neighborNode] = distances[currentNode] + edgeDistance;													//update the minimal distance if we've found a new one
+
+				if (inQueue[neighborNode] == false)
+				{
+					nodeOrder.push(neighborNode);																					//if it's not in the queue to be processed, we push it
+					inQueue[neighborNode] = true;																					//and check it
+				}
+			}
+		}
+	}
+}
+
+
+
 
 void Graph::buildNeighborList(istream& input)
 {
-	if (m_oriented == false)
+	int node1, node2, distance;
+
+	for (int i = 0; i < m_nrEdges; i++)
 	{
-		for (int i = 0; i < m_nrEdges; i++)
+		input >> node1 >> node2;
+
+		node1--;
+		node2--;
+
+		if (m_weighted == true)
 		{
-			int node1, node2;
-			input >> node1 >> node2;
-
-			node1--;
-			node2--;
-
-			m_neighborList[node1].push_back(node2);
-			m_neighborList[node2].push_back(node1);
+			fin >> distance;
 		}
-	}
-	else
-	{
-		for (int i = 0; i < m_nrEdges; i++)
+		else
 		{
-			int node1, node2;
-			input >> node1 >> node2;
+			distance = 0;
+		}
 
-			node1--;
-			node2--;
+		Edge newEdge(node2, distance);
 
-			m_neighborList[node1].push_back(node2);
+		m_neighborList[node1].push_back( newEdge );
+
+		if (m_oriented == false)
+		{
+			Edge newEdge(node1, distance);
+
+			m_neighborList[node2].push_back( newEdge );
 		}
 	}
 }
@@ -507,12 +604,70 @@ vector<int> Graph::topologicalSort()
 	return solution;
 }
 
+vector<int> Graph::minimalWeightedDistances(int startNode)
+{
+	priority_queue < pair<int, int>, vector< pair<int, int> >, decltype(cmp) > heap(cmp);
+
+	vector <bool> visited(m_nrNodes, false);
+	vector <int> distances(m_nrNodes, 2e9);
+
+	distances[startNode] = 0;
+
+	heap.push(make_pair(startNode, 0));
+
+	Dijkstra(heap, visited, distances);
+
+	return distances;
+}
+
+vector<int> Graph::minimalNegativeWeightedDistances(int startNode)
+{
+	queue<int> nodeOrder;
+
+	vector <bool> inQueue(m_nrNodes, false);
+	vector <int> distances(m_nrNodes, 2e9);
+	vector <int> numberOfAparitions(m_nrNodes, 0);
+
+	distances[startNode] = 0;																										//initialize the distance from the starting node to himself
+	nodeOrder.push(startNode);																										//push it in the queue
+	inQueue[startNode] = true;																										//and check it
+
+	BellmanFord(nodeOrder, inQueue, distances, numberOfAparitions, startNode);
+
+	return distances;
+}
+
+
 
 
 int main()
 {
-	//cod problema
+	int nrNodes, nrEdges, startNode = 0;
+	vector <int> distances;
 
+	fin >> nrNodes >> nrEdges;
+
+	Graph graph(nrNodes, nrEdges, true, true);
+
+	graph.buildNeighborList(fin);
+
+	distances = graph.minimalNegativeWeightedDistances(startNode);
+
+	if (distances[startNode] == 0)
+	{
+		for (int i = 0; i < nrNodes; i++)
+		{
+			if (i != startNode)
+			{
+				fout << distances[i] << ' ';
+			}
+		}
+	}
+	else
+	{
+		fout << "Ciclu negativ!";
+	}
+	
 	fin.close();
 	fout.close();
 
