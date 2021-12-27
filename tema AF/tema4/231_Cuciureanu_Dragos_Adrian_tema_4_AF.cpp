@@ -577,7 +577,7 @@ void Graph::EulerCycle(vector<bool>& visitedEdges, vector<int>& solution, int& e
 
 bool Graph::checkNode_HopcroftKarp(vector<int>& leftGraph, vector<int>& rightGraph, vector<bool>& visitedNodes,  int currentNode)
 {
-	if (visitedNodes[currentNode] == true)
+	if (visitedNodes[currentNode] == true)								//return if the node is already visited
 	{
 		return false;
 	}
@@ -588,10 +588,10 @@ bool Graph::checkNode_HopcroftKarp(vector<int>& leftGraph, vector<int>& rightGra
 	{
 		int destinationNode = edge._destinationNode;
 		
-		if (rightGraph[destinationNode] == -1)
+		if (rightGraph[destinationNode] == -1)							//if we find a node without match
 		{
-			leftGraph[currentNode] = destinationNode;
-			rightGraph[destinationNode] = currentNode;
+			leftGraph[currentNode] = destinationNode;					//we match them
+			rightGraph[destinationNode] = currentNode;					//we match them
 			
 			return true;
 		}
@@ -626,7 +626,7 @@ void Graph::HopcroftKarp(vector<int>& leftGraph, vector<int>& rightGraph)
 
 		for (int i = 0; i < _nrNodes; i++)
 		{
-			if (leftGraph[i] == -1) 
+			if (leftGraph[i] == -1)																		//check if a node is already matched
 			{ 
 				if (checkNode_HopcroftKarp(leftGraph, rightGraph, visitedNodes, i) == true)
 				{
@@ -1225,8 +1225,8 @@ vector<int> Graph::buildEulerCycle()
 
 vector<int> Graph::maximumBipartiteMatching(int nrNodesRightGraph)
 {
-	vector<int> leftGraph(_nrNodes, -1);
-	vector<int> rightGraph(nrNodesRightGraph, -1);
+	vector<int> leftGraph(_nrNodes, -1);							//initialize left subgraph
+	vector<int> rightGraph(nrNodesRightGraph, -1);					//initialize right subgraph
 	
 	HopcroftKarp(leftGraph, rightGraph);
 	
