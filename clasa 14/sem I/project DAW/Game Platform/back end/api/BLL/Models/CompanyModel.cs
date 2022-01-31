@@ -10,11 +10,5 @@ namespace api.BLL.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
-
-        public CompanyModel (Company company)
-        {
-            Id = company.Id;
-            Name = company.Name;
-        }
     }
 }

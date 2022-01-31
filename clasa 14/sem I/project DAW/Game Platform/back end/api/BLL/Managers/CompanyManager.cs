@@ -49,14 +49,29 @@ namespace api.BLL.Managers
             repository.Create(model);
         }
 
+        public void CreateCompanyAndHeadquarter(CompanyAndHeadquarterModel model)
+        {
+            repository.CreateCompanyAndHeadquarter(model);
+        }
+
         public void Update(CompanyModel model)
         {
             repository.Update(model);
         }
 
+        public void UpdateCompanyAndHeadquarter(CompanyHeadquarterModel model)
+        {
+            repository.UpdateCompanyAndHeadquarter(model);
+        }
+
         public void Delete(string id)
         {
             repository.Delete(id);
+        }
+
+        public void DeleteCompanyAndHeadquarter(string id)
+        {
+            repository.DeleteCompanyAndHeadquarter(id);
         }
     }
 }

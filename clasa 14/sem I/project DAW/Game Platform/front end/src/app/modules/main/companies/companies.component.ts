@@ -39,11 +39,12 @@ export class CompaniesComponent implements OnInit {
 
   public openModal(company? : any): void {
     const data = {
-      company
+      company,
     }
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '300px';
-    dialogConfig.height = '200px';
+    dialogConfig.height = '500px';
     dialogConfig.data = data;
 
     const dialogRef = this.dialog.open(AddEditCompanyComponent, dialogConfig);
@@ -70,12 +71,17 @@ export class CompaniesComponent implements OnInit {
   public deleteCompany(company : any): void{
     this.companiesService.deleteCompany(company).subscribe({
       next:(result) =>{
+        console.log(result);
         this.companies = result;
       },
       error:(error) => {
         console.log(error);
       }
     })
+  }
+
+  public companyProfile(id : any): void{
+    this.router.navigate(['/company', id]);
   }
 
   ngOnDestroy(): void {

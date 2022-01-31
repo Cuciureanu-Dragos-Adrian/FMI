@@ -1,0 +1,29 @@
+<div class = "container">
+    <mat-card>
+        <h1 class = "title">
+            Company: {{company.name}} 
+        </h1>
+
+        <p>
+            Country: {{company.headquarter.country}}
+        </p>
+        <p>
+            City: {{company.headquarter.city}}
+        </p>
+        <p>
+            Street: {{company.headquarter.street}}
+        </p>
+        <p>
+            Games:
+        </p>
+        <p *ngFor = "let game of company.games; index as i">
+            {{i + 1}}. {{game.name}} <br>
+            Release Date: {{game.releaseDate}} <br>
+            Review: {{game.review}}/10 <br>
+            Price: {{game.price}}$ <br>
+        </p>
+        <p *ngIf = "company.games.length == 0">
+            No games currently
+        </p>
+    </mat-card>
+</div>

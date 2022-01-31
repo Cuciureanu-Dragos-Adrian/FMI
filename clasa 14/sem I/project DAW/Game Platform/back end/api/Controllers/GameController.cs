@@ -129,7 +129,8 @@ namespace api.Controllers
         {
             manager.UpdateJustGame(gameModel);
 
-            return Ok();
+            var games = manager.GetGamesJoined();
+            return Ok(games);
         }
 
         [HttpDelete("{id}")]

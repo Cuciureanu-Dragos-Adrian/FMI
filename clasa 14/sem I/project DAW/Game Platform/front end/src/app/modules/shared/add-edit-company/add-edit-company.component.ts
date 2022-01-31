@@ -14,6 +14,9 @@ export class AddEditCompanyComponent implements OnInit {
     {
     id: new FormControl(''), 
     name: new FormControl(''),
+    country: new FormControl(''),
+    city: new FormControl(''),
+    street: new FormControl(''),
     }
   );
   public title : any;
@@ -40,10 +43,21 @@ export class AddEditCompanyComponent implements OnInit {
   {
     return this.companyForm.get('id')!;
   }
-
   get name(): AbstractControl
   {
     return this.companyForm.get('name')!;
+  }
+  get country(): AbstractControl
+  {
+    return this.companyForm.get('country')!;
+  }
+  get city(): AbstractControl
+  {
+    return this.companyForm.get('city')!;
+  }
+  get street(): AbstractControl
+  {
+    return this.companyForm.get('street')!;
   }
 
   ngOnInit(): void {

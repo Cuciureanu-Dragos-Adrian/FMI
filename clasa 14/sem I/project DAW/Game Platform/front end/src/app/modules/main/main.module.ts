@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IndexPipe } from '../pipes/index.pipe';
+import { CompanyComponent } from './company/company.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { IndexPipe } from '../pipes/index.pipe';
     HomeComponent,
     DashboardComponent,
     IndexPipe,
+    CompanyComponent,
   ],
   imports: [
     CommonModule,

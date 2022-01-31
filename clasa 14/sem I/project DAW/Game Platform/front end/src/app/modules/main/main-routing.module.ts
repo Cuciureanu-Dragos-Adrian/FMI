@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompaniesComponent } from './companies/companies.component';
+import { CompanyComponent } from './company/company.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventsComponent } from './events/events.component';
 import { GamesComponent } from './games/games.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-  
-    children: [
+    {
+      path: 'dashboard',
+      component: DashboardComponent,
+    
+      children: [
       {
         path: '',
         redirectTo: 'home',
@@ -34,9 +35,17 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'games',
+        redirectTo: 'home',
       }]
-    }
+    },
+    {
+      path: 'company/:id',
+      component: CompanyComponent,
+    },
+    // {
+    //   path: '**',
+    //   redirectTo: 'dashboard'
+    // }
 ];
 
 @NgModule({

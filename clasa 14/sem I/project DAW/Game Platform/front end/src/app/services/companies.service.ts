@@ -20,16 +20,19 @@ export class CompaniesService {
     return this.http.get(`${this.url}companies`, {headers : this.authService.generateHeader()});
   }
 
+  public getCompanyById(id : any): Observable<any>{
+    return this.http.get(`${this.url}filterById/${id}`, {headers : this.authService.generateHeader()});
+  }
+
   public addCompany(company: any): Observable<any>{
-    return this.http.post(`${this.url}company`, company, {headers : this.authService.generateHeader()});
+    return this.http.post(`${this.url}companyAndHeadquarter`, company, {headers : this.authService.generateHeader()});
   }
 
   public editCompany(company: any): Observable<any>{
-    console.log(company);
-    return this.http.put(`${this.url}company`, company, {headers : this.authService.generateHeader()});
+    return this.http.put(`${this.url}companyAndHeadquarter`, company, {headers : this.authService.generateHeader()});
   }
 
   public deleteCompany(company: any): Observable<any>{
-    return this.http.delete(`${this.url}${company.id}`, {headers : this.authService.generateHeader()});
+    return this.http.delete(`${this.url}companyAndHeadquarter${company.id}`, {headers : this.authService.generateHeader()});
   }
 }

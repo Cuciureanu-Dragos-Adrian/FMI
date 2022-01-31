@@ -12,9 +12,11 @@ namespace api.BLL.Interfaces
         Company GetCompanyById(string id);
         List<CompanyHeadquarterModel> GetCompanies();
         List<CompanyNameIdModel> GetCompanyByEventId(string eventId);
-        //Company Join cu Headquarter
         void Create(CompanyWithoutIdModel model);
+        void CreateCompanyAndHeadquarter(CompanyAndHeadquarterModel model);
         void Update(CompanyModel model);
+        void UpdateCompanyAndHeadquarter(CompanyHeadquarterModel model);
         void Delete(string id);
+        void DeleteCompanyAndHeadquarter(string id);
     }
 }

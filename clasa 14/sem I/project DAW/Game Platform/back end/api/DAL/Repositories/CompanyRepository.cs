@@ -21,6 +21,8 @@ namespace api.DAL.Repositories
         public Company GetCompanyById(string id)
         {
             var company = db.Companies
+                .Include(x => x.Games)
+                .Include( x=> x.Headquarter)
                 .FirstOrDefault(x => x.Id == id);
 
             return company;
@@ -34,7 +36,8 @@ namespace api.DAL.Repositories
                     Id = c.Id,
                     Name = c.Name,
                     Country = h.Country,
-                    City = h.City
+                    City = h.City,
+                    Street = h.Street
                 }).ToList();
 
 
@@ -66,6 +69,29 @@ namespace api.DAL.Repositories
             db.SaveChanges();
         }
 
+        public void CreateCompanyAndHeadquarter(CompanyAndHeadquarterModel model)
+        {
+            var newHeadquarter = new Headquarter
+            {
+                Id = Guid.NewGuid().ToString(),
+                Country = model.Country,
+                City = model.City,
+                Street = model.Street
+            };
+
+            var newCompany = new Company
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = model.Name,
+                HeadquarterId = newHeadquarter.Id
+            };
+
+            db.Headquarters.Add(newHeadquarter);
+            db.Companies.Add(newCompany);
+
+            db.SaveChanges();
+        }
+
         public void Update(CompanyModel model)
         {
             var company = GetCompanyById(model.Id);
@@ -77,11 +103,47 @@ namespace api.DAL.Repositories
             db.SaveChanges();
         }
 
+        public Headquarter GetHeadquarterById(string id)
+        {
+            var headquarter = db.Headquarters
+                .FirstOrDefault(x => x.Id == id);
+
+            return headquarter;
+        }
+
+        public void UpdateCompanyAndHeadquarter(CompanyHeadquarterModel model)
+        {
+            var company = GetCompanyById(model.Id);
+            var headquarter = GetHeadquarterById(company.HeadquarterId);
+
+            company.Name = model.Name;
+
+            headquarter.Country = model.Country;
+            headquarter.City = model.City;
+            headquarter.Street = model.Street;
+
+            db.Companies.Update(company);
+            db.Headquarters.Update(headquarter);
+
+            db.SaveChanges();
+        }
+
         public void Delete(string id)
         {
             var company = GetCompanyById(id);
 
             db.Companies.Remove(company);
+
+            db.SaveChanges();
+        }
+
+        public void DeleteCompanyAndHeadquarter(string id)
+        {
+            var company = GetCompanyById(id);
+            var headquarter = GetHeadquarterById(company.HeadquarterId);
+
+            db.Companies.Remove(company);
+            db.Headquarters.Remove(headquarter);
 
             db.SaveChanges();
         }

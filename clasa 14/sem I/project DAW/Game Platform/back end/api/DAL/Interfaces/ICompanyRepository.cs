@@ -13,7 +13,10 @@ namespace api.DAL.Interfaces
         List<CompanyHeadquarterModel> GetCompanies();
         List<Company> GetCompanyByEventId(string eventId);
         void Create(CompanyWithoutIdModel model);
+        void CreateCompanyAndHeadquarter(CompanyAndHeadquarterModel model);
         void Update(CompanyModel model);
+        void UpdateCompanyAndHeadquarter(CompanyHeadquarterModel model);
         void Delete(string id);
+        void DeleteCompanyAndHeadquarter(string id);
     }
 }

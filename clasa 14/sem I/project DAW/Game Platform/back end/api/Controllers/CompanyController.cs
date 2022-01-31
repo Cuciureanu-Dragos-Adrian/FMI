@@ -57,6 +57,16 @@ namespace api.Controllers
             return Ok();
         }
 
+        [HttpPost("companyAndHeadquarter")]
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> CreateCompanyAndHeadquarter([FromBody] CompanyAndHeadquarterModel model)
+        {
+            manager.CreateCompanyAndHeadquarter(model);
+
+            var companies = manager.GetCompanies();
+            return Ok(companies);
+        }
+
         [HttpPut("company")]
         [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Update([FromBody] CompanyModel model)
@@ -66,6 +76,16 @@ namespace api.Controllers
             return Ok();
         }
 
+        [HttpPut("companyAndHeadquarter")]
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> UpdateCompanyAndHeadquarter([FromBody] CompanyHeadquarterModel model)
+        {
+            manager.UpdateCompanyAndHeadquarter(model);
+
+            var companies = manager.GetCompanies();
+            return Ok(companies);
+        }
+
         [HttpDelete("{id}")]
         [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Delete([FromRoute] string id)
@@ -73,6 +93,16 @@ namespace api.Controllers
             manager.Delete(id);
 
             return Ok();
+        }
+
+        [HttpDelete("companyAndHeadquarter{id}")]
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> DeleteCompanyAndHeadquarter([FromRoute] string id)
+        {
+            manager.DeleteCompanyAndHeadquarter(id);
+
+            var companies = manager.GetCompanies();
+            return Ok(companies);
         }
     }
 }

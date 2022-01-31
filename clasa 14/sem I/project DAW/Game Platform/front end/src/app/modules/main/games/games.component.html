@@ -71,7 +71,7 @@
                             Company: {{game.company}} <br>
                             Genres: {{game.genres}} <br>
                             <tr *ngIf = "game.genres.length == 0">
-                                {{'No Genres'}}
+                                {{'No genres'}}
                             </tr>
                             Awards:
                             <tr *ngFor = "let award of game.awards; index as j">
@@ -81,7 +81,7 @@
                             </tr>
 
                             <tr *ngIf = "game.awards.length == 0">
-                                {{'No Awards'}}
+                                {{'No awards'}}
                             </tr>
                             
                         </p>

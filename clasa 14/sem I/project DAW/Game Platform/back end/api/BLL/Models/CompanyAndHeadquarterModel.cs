@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace api.BLL.Models
 {
-    public class CompanyHeadquarterModel
+    public class CompanyAndHeadquarterModel
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
