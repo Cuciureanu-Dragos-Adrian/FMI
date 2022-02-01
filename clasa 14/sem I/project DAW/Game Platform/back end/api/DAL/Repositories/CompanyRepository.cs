@@ -142,7 +142,7 @@ namespace api.DAL.Repositories
             var company = GetCompanyById(id);
             var headquarter = GetHeadquarterById(company.HeadquarterId);
 
-            db.Companies.Remove(company);
+            /*db.Companies.Remove(company);*/
             db.Headquarters.Remove(headquarter);
 
             db.SaveChanges();

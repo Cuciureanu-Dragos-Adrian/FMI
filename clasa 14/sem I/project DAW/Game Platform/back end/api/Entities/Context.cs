@@ -29,16 +29,19 @@ namespace api.Entities
             //One to One
             builder.Entity<Company>()
                 .HasOne(company => company.Headquarter)
-                .WithOne(headquarter => headquarter.Company);
+                .WithOne(headquarter => headquarter.Company)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //One to Many
             builder.Entity<Company>()
                 .HasMany(c => c.Games)
-                .WithOne(g => g.Company);
+                .WithOne(g => g.Company)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Game>()
                 .HasMany(g => g.Awards)
-                .WithOne(a => a.Game);
+                .WithOne(a => a.Game)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //Many to Many
             builder.Entity<GameGenre>().HasKey(gg => new { gg.GameId, gg.GenreId });
@@ -46,12 +49,14 @@ namespace api.Entities
             builder.Entity<GameGenre>()
                 .HasOne(gg => gg.Game)
                 .WithMany(g => g.GameGenres)
-                .HasForeignKey(gg => gg.GameId);
+                .HasForeignKey(gg => gg.GameId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<GameGenre>()
                 .HasOne(gg => gg.Genre)
                 .WithMany(g => g.GameGenres)
-                .HasForeignKey(gg => gg.GenreId);
+                .HasForeignKey(gg => gg.GenreId)
+                .OnDelete(DeleteBehavior.Cascade);
 
 
             builder.Entity<CompanyEvent>().HasKey(ce => new { ce.CompanyId, ce.EventId });
@@ -59,12 +64,14 @@ namespace api.Entities
             builder.Entity<CompanyEvent>()
                 .HasOne(ce => ce.Company)
                 .WithMany(c => c.CompanyEvents)
-                .HasForeignKey(ce => ce.CompanyId);
+                .HasForeignKey(ce => ce.CompanyId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<CompanyEvent>()
                 .HasOne(ce => ce.Event)
                 .WithMany(e => e.CompanyEvents)
-                .HasForeignKey(ce => ce.EventId);
+                .HasForeignKey(ce => ce.EventId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
