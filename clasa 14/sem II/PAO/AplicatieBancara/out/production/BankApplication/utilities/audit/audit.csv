@@ -1,0 +1,56 @@
+action,timestamp
+read manager,21-05-2022 11:44:28
+read all managers,21-05-2022 11:44:31
+read manager,21-05-2022 11:48:51
+read all managers,21-05-2022 11:48:52
+read all managers,21-05-2022 13:03:11
+raise all managers salary,21-05-2022 13:04:01
+read all managers,21-05-2022 13:04:14
+read all managers,21-05-2022 13:06:23
+raise all managers salary,21-05-2022 13:06:34
+read all managers,21-05-2022 13:06:40
+sort all managers by salary ascending,21-05-2022 13:08:29
+sort all managers by salary descending,21-05-2022 13:08:39
+raise all managers salary,21-05-2022 13:18:23
+read all managers,21-05-2022 13:18:27
+read manager,21-05-2022 13:20:33
+raise a manager salary,21-05-2022 13:20:44
+read manager,21-05-2022 13:20:48
+read all managers,21-05-2022 13:33:10
+read all managers,21-05-2022 13:34:20
+read all managers,21-05-2022 13:35:51
+read all banker,21-05-2022 13:37:53
+sort all managers by salary ascending,21-05-2022 13:59:02
+sort all managers by total salary ascending,21-05-2022 13:59:15
+sort all managers by total salary ascending,21-05-2022 13:59:53
+sort all managers by total salary descending,21-05-2022 14:00:00
+create banker,21-05-2022 14:04:51
+sort all bankers by total salary ascending,21-05-2022 14:05:02
+sort all bankers by total salary descending,21-05-2022 14:05:14
+read all managers,21-05-2022 16:46:24
+raise all managers salary,21-05-2022 16:46:39
+read all managers,21-05-2022 16:46:44
+decrease a manager salary,21-05-2022 16:47:48
+read manager,21-05-2022 16:47:55
+raise a manager salary,21-05-2022 16:48:11
+read all managers,21-05-2022 16:48:19
+read all managers,21-05-2022 16:53:19
+read all managers,21-05-2022 16:53:58
+read all managers,21-05-2022 16:56:37
+raise a manager salary,21-05-2022 16:56:56
+read all managers,21-05-2022 16:57:00
+read all credit account,21-05-2022 17:19:20
+read credit account,21-05-2022 17:22:40
+read all credit account,21-05-2022 17:22:43
+create credit account,21-05-2022 17:23:02
+read all credit account,21-05-2022 17:23:21
+get a customer credit accounts,21-05-2022 17:23:38
+read all debit account,21-05-2022 17:33:48
+create debit account,21-05-2022 17:34:56
+create debit account,21-05-2022 17:35:51
+get a customer debit accounts,21-05-2022 17:36:03
+get all customers debit accounts,21-05-2022 17:38:45
+add the interest on a debit account's amount,21-05-2022 17:52:22
+read all debit account,21-05-2022 17:52:31
+add the interest on all debit accounts' amount,21-05-2022 17:52:47
+read all debit account,21-05-2022 17:52:52
