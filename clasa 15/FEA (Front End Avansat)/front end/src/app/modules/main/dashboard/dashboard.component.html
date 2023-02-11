@@ -1,0 +1,12 @@
+<div class = "navbarZone">   
+    <mat-tab-group (selectedTabChange) = "navbarSelect($event)" backgroundColor = "accent">
+
+        <mat-tab label = "Home"></mat-tab>
+        <mat-tab label = "Games"></mat-tab>
+        <mat-tab label = "Companies"></mat-tab>
+        <mat-tab label = "Events"></mat-tab>
+
+    </mat-tab-group>
+</div>
+
+<router-outlet></router-outlet>

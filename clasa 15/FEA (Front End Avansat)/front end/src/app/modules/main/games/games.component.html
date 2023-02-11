@@ -1,0 +1,94 @@
+<div class = "container">
+    <div class = "logoutZone">
+        <p>
+            Logged as: {{loggedUser.username}}
+        </p>
+
+        <button mat-raised-button (click) = "logout()">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
+
+    <div class = "centerZone">
+        <div class = "filterZone">
+            <div calss = "filterBox">
+                <mat-form-field appearance="fill">
+                    <mat-label>
+                        Filter
+                    </mat-label>
+
+                    <mat-select [(ngModel)] = "selectedFilter" name = "option" disableOptionCentering>
+                        <mat-option *ngFor = "let option of filterOptions" [value] = "option.value">
+                            {{option.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button (click) = "filterAccordion()" class = "filterButton">
+                <mat-icon>filter_list</mat-icon>
+            </button>
+
+            <button mat-raised-button (click) = "addNewGame()" class = "addButton">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </div>
+
+        <div class = "accordionPlace">
+            <mat-accordion class = "accordion">
+                <mat-expansion-panel hideToggle *ngFor = "let game of games; index as i">
+                  
+                    <mat-expansion-panel-header class = "gameHeader">
+                        <!-- <div class = "gameCard"> -->
+                            <mat-panel-title class = "gameTitle">
+                                {{i + 1 | index}}
+                            </mat-panel-title>
+
+                            <mat-panel-description class = "gameTitle">
+                                {{game.name}}
+                            </mat-panel-description>
+
+                            <mat-panel-description class = "gameEditer">
+                                <button mat-flat-button (click) = "editGame(game)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </mat-panel-description>
+
+                            <mat-panel-description class = "gameDeleter">
+                                <button mat-flat-button (click) = "deleteGame(game)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </mat-panel-description>
+                        <!-- </div> -->
+                    </mat-expansion-panel-header>
+
+                    <div class = "game">
+                        <p>
+                            Name: {{game.name}} <br>
+                            Release Date: {{game.releaseDate}} <br>
+                            Review: {{game.review}}/10 <br>
+                            Price: {{game.price}}$<br>
+                            Company: {{game.company}} <br>
+                            Genres: {{game.genres}} <br>
+                            <tr *ngIf = "game.genres.length == 0">
+                                {{'No genres'}}
+                            </tr>
+                            Awards:
+                            <tr *ngFor = "let award of game.awards; index as j">
+                                <td>
+                                    {{j + 1 + '. ' + award.name + ' ' + award.year}}
+                                </td>
+                            </tr>
+
+                            <tr *ngIf = "game.awards.length == 0">
+                                {{'No awards'}}
+                            </tr>
+                            
+                        </p>
+                    </div>
+
+                </mat-expansion-panel>
+              </mat-accordion>
+        </div> 
+    </div>
+</div>

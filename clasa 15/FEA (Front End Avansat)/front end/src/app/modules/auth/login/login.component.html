@@ -1,0 +1,30 @@
+<div class = "container">
+    <div class = "form-sections">
+        <p class = "title">
+            G1A
+        </p>
+
+        <p class = "subtitle">
+            -Game Platform-
+        </p>
+
+        <form [formGroup] = "loginForm" class = "form">
+
+            <mat-form-field appearance = "outline" class = "tabs">
+                <mat-label> Username/Email</mat-label>
+                <input matInput placeholder = "Username" formControlName = "username" />
+            </mat-form-field>
+
+            <mat-form-field appearance = "outline" class = "tabs">
+                <mat-label> Password</mat-label>
+                <input matInput placeholder = "Password" type = "password" formControlName = "password" />
+            </mat-form-field>
+
+        </form>
+
+        <button mat-raised-button (click) = "login()" class = "loginButton">
+            Login
+        </button>
+        <p class = "bottomText">Or if you don't have an account you can <button (click) = "signup()" class = "signupButton"> Signup </button>!</p>
+    </div>
+</div>  

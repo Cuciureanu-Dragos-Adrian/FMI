@@ -1,0 +1,61 @@
+<div class = "container">
+    <div class = "logoutZone">
+        <p>
+            Logged as: {{loggedUser.username}}
+        </p>
+
+        <button mat-raised-button (click) = "logout()">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
+
+    <div class = "centerZone">
+        <div class = "filterZone">
+            <button mat-raised-button (click) = "addNewCompany()" class = "addButton">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </div>
+        
+        <div class = "accordionPlace">
+            <mat-accordion class = "accordion">
+                <mat-expansion-panel hideToggle *ngFor = "let company of companies; index as i">
+                  
+                    <mat-expansion-panel-header class = "gameHeader">
+                        <!-- <div class = "gameCard"> -->
+                            <mat-panel-title class = "gameTitle">
+                                {{i + 1 | index}}
+                            </mat-panel-title>
+
+                            <mat-panel-description class = "gameTitle">
+                                {{company.name}}
+                            </mat-panel-description>
+
+                            <mat-panel-description class = "gameEditer">
+                                <button mat-raised-button (click) = "editCompany(company)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </mat-panel-description>
+
+                            <mat-panel-description class = "gameDeleter">
+                                <button mat-raised-button (click) = "deleteCompany(company)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </mat-panel-description>
+                        <!-- </div> -->
+                    </mat-expansion-panel-header>
+
+                    <div class = "company">
+                        <p>
+                            Country: {{company.country}} <br>
+                            City: {{company.city}} <br>
+                            Street: {{company.street}} <br>
+                            You can check out this company's games 
+                            <button (click) = "companyProfile(company.id)" class = "companyButton">here</button>!
+                        </p>
+                    </div>
+
+                </mat-expansion-panel>
+              </mat-accordion>
+        </div> 
+    </div>
+</div>

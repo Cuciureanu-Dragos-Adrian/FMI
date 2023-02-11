@@ -1,0 +1,39 @@
+<div class = "container"> 
+    <h1 class = "title">
+        {{title}}   
+    </h1>
+
+    <form [formGroup] = "gameForm" class = "form">
+        <mat-form-field appearance = "outline">
+            <mat-label>
+                Name
+            </mat-label>
+            <input matInput placeholder = "Name" formControlName = "name" />
+        </mat-form-field>
+
+        <mat-form-field appearance = "outline">
+            <mat-label>
+                ReleaseDate
+            </mat-label>
+            <input matInput placeholder = "ReleaseDate" formControlName = "releaseDate" />
+        </mat-form-field>
+
+        <mat-form-field appearance = "outline">
+            <mat-label>
+                Review
+            </mat-label>
+            <input matInput placeholder = "Review" formControlName = "review" />
+        </mat-form-field>
+
+        <mat-form-field appearance = "outline">
+            <mat-label>
+                Price
+            </mat-label>
+            <input matInput placeholder = "Price" formControlName = "price" />
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click) = "addGame()">
+        {{buttonTitle}}
+    </button>
+</div>
