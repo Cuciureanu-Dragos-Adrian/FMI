@@ -1,0 +1,20 @@
+modele pentru crossover:
+proiect_naive_bayes_bow_v1 - 74%
+proiect_gradient_bow_v1 - 62%
+proiect_decision_tree_bow_v1 - 32% (:)
+proiect_gradient_count_v1 - 65.8%
+proiect_xgboost_bow - 68.8%
+
+de incarcat maine:
+neural network
+crossover de 5 cu train 
+crossover de 5 cu train + validation
+crossover de 6 cu train + validation
+
+crossover de 6:
+multinomial nb
+complement nb
+bernoulli nb
+xgboost
+neural network
+gradient count
