@@ -1,2 +1,2 @@
 # FMI
-Se produce facultate.
+Univerity related work.
