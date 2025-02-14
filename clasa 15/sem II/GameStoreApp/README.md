@@ -12,4 +12,6 @@ The **Game Store App** is a mobile application built with **Kotlin** for managin
 ## 📱 Technologies Used
 - **Kotlin**, **Android SDK**
 - **Firebase Suite** (Authentication, Firestore, Push Notifications)
-- **RecyclerView**, **Material Design**, **MVVM Architecture**
+- **RecyclerView**
+- **Material Design**
+- **MVVM Architecture**
