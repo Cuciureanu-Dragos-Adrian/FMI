@@ -1,0 +1,24 @@
+val = [int(x) for x in input('valori=').split()]
+suma = int(input('suma='))
+
+n = len(val)
+nrmin = [suma+1] * (suma + 1)
+nrmin[0] = 0
+pred = [-1] * (suma + 1)
+
+
+for i in range(1, suma+1):
+    for moneda in val:
+        if moneda <= i and nrmin[i] > nrmin[i-moneda] + 1:
+            pred[i] = i - moneda
+            nrmin[i] = nrmin[i-moneda] + 1
+
+if nrmin[suma] == suma+1:
+    print('Nu poate fi obtinut')
+else:
+    print ('Suma poate fi obtinuta din', nrmin[suma], 'monezi')
+    print ('Suma poate fi obtinuta astfel: ', end='')
+    while suma != 0:
+        print(suma-pred[suma], end=' ')
+        suma = pred[suma]
+

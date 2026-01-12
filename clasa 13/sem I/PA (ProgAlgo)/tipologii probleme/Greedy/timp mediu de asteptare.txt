@@ -1,0 +1,19 @@
+def comp(lista):
+    return lista[1]
+
+
+def afisare(lista):
+    tast = 0
+    asttot = 0
+    for om in lista:
+        print('omul', om[0], 'a asteptat', tast)
+        tast += om[1]
+        asttot += tast
+    print('timpul mediu de asteptare:', round(asttot / len(xs), 2))
+
+
+xs = [int(x) for x in input('sir=').split()]
+xss = [(i + 1, xs[i]) for i in range(len(xs))]
+
+xss.sort(key=comp)
+afisare(xss)

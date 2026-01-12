@@ -1,0 +1,37 @@
+--tema: ex 3
+select e.last_name, e.salary, j.job_title, l.city, c.country_name 
+from employees e, employees m, jobs j , departments d, locations l, countries c 
+where m.last_name = 'King'
+and e.manager_id = m.employee_id
+and e.job_id = j.job_id
+and e.department_id (+)= d.department_id
+and l.location_id (+)= d.location_id
+and c.country_id (+)= l.country_id;
+
+--tema: ex 16 varianta DECODE
+select last_name as Nume, hire_date as "Data angajare", salary as "Salariu Vechi",
+decode (to_char (hire_date,'yyyy'), 1989, salary * 1.20, 1990, salary * 1.15, 1991, salary * 1.10, salary) as "Salariu nou"
+from employees
+order by 2;
+
+--tema: ex 16 varianta CASE 1
+select last_name as Nume, hire_date as "Data angajare", salary as "Salariu Vechi",
+case 
+    when to_char (hire_date,'yyyy') = 1989 then salary * 1.20
+    when to_char (hire_date,'yyyy') = 1990 then salary * 1.15
+    when to_char (hire_date,'yyyy') = 1991 then salary * 1.10
+    else salary
+end as "Salariu Nou"
+FROM employees
+order by 2;
+
+--tema: ex 16 varianta CASE 2
+select last_name as Nume, hire_date as "Data angajare", salary as "Salariu Vechi",
+case to_char (hire_date,'yyyy')
+    when '1989' then salary * 1.20
+    when '1990' then salary * 1.15
+    when '1991' then salary * 1.10
+    ELSE salary
+end as "Salariu Nou"
+from employees
+order by 2;

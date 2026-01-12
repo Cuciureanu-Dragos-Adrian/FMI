@@ -1,0 +1,32 @@
+fisier = open('input.txt')
+G = int(fisier.readline())
+
+c = [0]
+g = [0]
+for linie in fisier:
+    aux = linie.split()
+    g.append(int(aux[0]))
+    c.append(int(aux[1]))
+
+fisier.close()
+n = len(g) - 1
+
+cmax = [[0 for x in range(G + 1)] for x in range(n + 1)]
+# print (cmax)
+
+for i in range(n+1):
+    for j in range (G+1):
+        if g[i]<=j and cmax[i-1][j-g[i]] + c[i] > cmax[i-1][j]:
+            cmax[i][j] = cmax[i-1][j-g[i]] + c[i]
+        else:
+            cmax[i][j] = cmax[i-1][j]
+
+print('Castog naxim:', cmax[n][G])
+print ('Se folosesc obiectele cu indexii:', end=' ')
+i = n
+j = G
+while i!=0:
+    if cmax[i][j]!= cmax[i-1][j]:
+        print (i, end=' ')
+        j -= g[i]
+    i -= 1

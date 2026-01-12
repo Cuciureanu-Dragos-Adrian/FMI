@@ -1,0 +1,3 @@
+- refacut PK artificial la trie si scos dependentele totale
+- refacut FN5 (tr sa se repete toate atributele)
+- de modificat al doilea division (tr realizat pe un M:M)

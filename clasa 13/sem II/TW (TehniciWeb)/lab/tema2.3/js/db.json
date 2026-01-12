@@ -1,0 +1,113 @@
+{
+    "animals": [
+        {
+            "img": "https://dkt6rvnu67rqj.cloudfront.net/cdn/ff/T8cy0-640W8sartvA9TWmv08NbGPFxsVvf8gFtBDE08/1577112797/public/styles/600x400/public/media/int_files/elephant_in_tanzania.jpg?h=f507d761&itok=Ei8OXcGi",
+            "name": "elefant",
+            "description": "asta da mare",
+            "rate": "4/10",
+            "id": 1
+        },
+        {
+            "img": "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZWRpZ2lhbmltYWx3b3JsZC5y/Y3MtcmRzLnJvJTJGc3RvcmFnZSUyRjIw/MTklMkYxMiUyRjE4JTJGMTE0NDQwOF8x/MTQ0NDA4X21hbWlmZXItcXVva2thLmpw/ZyZ3PTc4MCZoPTYwMCZ6Yz0xJmhhc2g9/ZWVmN2QwY2JiNmUxNzY0MGMwNzVhMjkwNzk0NGZhN2Q=.thumb.jpg",
+            "name": "tigerr",
+            "description": "asta da animal",
+            "rate": "7/10",
+            "id": 2
+        },
+        {
+            "img": "https://www.apa.org/images/2020-03-feature-giraffe_tcm7-269465.png",
+            "name": "elal",
+            "description": "bbbbbbbb",
+            "rate": "12312",
+            "id": 3
+        },
+        {
+            "img": "https://cdn.discordapp.com/attachments/769230838541582377/841355636934967336/unknown.png",
+            "name": "Big giraffe",
+            "description": "da",
+            "rate": "nu",
+            "id": "2e5efcdb-5a39-4025-9265-1429f1231441"
+        },
+        {
+            "img": "https://images.vice.com/vice/images/articles/meta/2015/04/29/am-mancat-din-greseala-animalul-cel-mai-vanat-de-braconieri-593-1430323586.jpg?crop=1xw:0.8444444444444444xh;center,center",
+            "name": "armadillo",
+            "description": "roling",
+            "rate": "8/10",
+            "id": "66733e18-1b35-40e9-9543-ebc1e7a15b28"
+        },
+        {
+            "img": "https://hddesktopwallpapers.in/wp-content/uploads/2015/09/fox-animal.jpg",
+            "name": "foxy the fox",
+            "description": "foxy",
+            "rate": "fox/fox",
+            "id": "03e55371-0524-4d36-9e90-26f47a1791d5"
+        },
+        {
+            "img": "",
+            "name": "a",
+            "description": "",
+            "rate": "",
+            "id": "9620b98b-1c6d-43df-b570-88a38604b645"
+        }
+    ],
+    "users": [
+        {
+            "name": "cristi",
+            "pass": "nelu",
+            "rol": "admin",
+            "id": "02d70d5f-f645-44c0-b068-3224edb807a0"
+        },
+        {
+            "name": "gruia",
+            "pass": "gruai",
+            "rol": "elev",
+            "id": "YHG_oX4"
+        },
+        {
+            "name": "fane",
+            "pass": "fane",
+            "rol": "admin",
+            "id": "VzFZtNh"
+        },
+        {
+            "name": "petru",
+            "pass": "petru",
+            "rol": "elev",
+            "id": "O1MzjiW"
+        },
+        {
+            "name": "popescu",
+            "pass": "popescu",
+            "rol": "admin",
+            "id": "1qs7wpo"
+        },
+        {
+            "name": "prof",
+            "pass": "prof",
+            "rol": "admin",
+            "id": "6a2fd03a-7e84-48ec-8be5-efe92f67e5be"
+        },
+        {
+            "name": "tsuka",
+            "pass": "tsuka",
+            "rol": "apyr",
+            "id": "d252625d-f256-4982-9aaf-ab16e5ed50b6"
+        },
+        {
+            "name": "tuka",
+            "pass": "tuka",
+            "rol": "admin",
+            "id": "04b189ae-98b5-4c4e-a284-4640610b6bf5"
+        },
+        {
+            "name": "prof1",
+            "pass": "prof1",
+            "rol": "admin",
+            "id": "3e222ba4-958c-4951-87ac-354032e3f0a6"
+        }
+    ],
+    "logged": {
+        "state": 0,
+        "name": "None"
+    }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        
+        window.onload=function(){
+
+            var input = document.getElementById("numar");
+            
+            if(localStorage.getItem("ceva")){
+                input.value = localStorage.getItem("ceva");
+            }
+            else {
+                input.value = 0;
+            }
+
+        var ok = 1;
+
+        window.onkeydown=function(event){
+            if(event.key >= "a" && event.key <= "z"){
+                if(ok == 1){
+                    window.onkeydown=null;
+                    var paragrafe = document.getElementsByTagName("p");
+                    var nrinit = paragrafe.length;
+
+                    var c=setInterval(function(){
+                        var x;
+                        for(p of paragrafe)
+                        {
+                            if(p.innerHTML.split(" ").length >= parseInt(input.value) && p.innerHTML.charAt(0) == event.key)
+                            {
+                                x=p;
+                                break;
+                            }
+                        }
+                        if(x)
+                        {
+                            console.log(x);
+                            document.body.removeChild(x);
+                        }
+                        else 
+                        {
+                            clearInterval(c);
+                            localStorage.setItem("ceva", paragrafe.length);
+                        }
+                    }, 2000);
+                    ok = 0;
+                }
+            }
+        }
+    }
+
+    </script>
+
+</head>
+<body>
+    
+    <input type="range" min="0" max="5" id="numar">
+
+    <p>soare zi examen floare senin</p>
+    <p>soare zi examen floare senin</p>
+    <p>soare zi examen floare</p>
+    <p>loare zi examen floare senin</p>
+    <p>coare zi examen floare senin</p> 
+
+</body>
+</html>

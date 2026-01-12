@@ -1,0 +1,27 @@
+sir = input ()
+sir = [int(x) for x in sir.split()]
+
+n = len(sir)
+lmax = [0] * n
+pred = [-1] * n
+lmax[0] = 1
+
+for i in range(1, n):
+    for j in range(i):
+        if sir[i] >= sir[j] and lmax[i] < lmax[j] + 1:
+            pred[i] = j
+            lmax[i] = lmax[j] + 1
+
+idmax = 0
+for i in range(1, n):
+    if lmax[i] > lmax[idmax]:
+        idmax = i
+
+rez = []
+
+while idmax != -1:
+    rez.append(sir[idmax])
+    idmax = pred [idmax]
+
+rez.sort()
+print (*rez)

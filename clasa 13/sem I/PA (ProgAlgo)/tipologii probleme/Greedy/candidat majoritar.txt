@@ -1,0 +1,19 @@
+def castigator(voturi):
+    avantaj = 0
+    majoritar = None
+    for v in voturi:
+        if avantaj == 0:
+            avantaj = 1
+            majoritar = v
+        elif v == majoritar:
+            avantaj += 1
+        else:
+            avantaj -= 1
+    if avantaj == 0:
+        return 0
+    if voturi.count(majoritar) > len(voturi) // 2:
+        return majoritar
+    return 0
+
+xs= [int(x) for x in input('sir=').split()]
+print(castigator(xs))

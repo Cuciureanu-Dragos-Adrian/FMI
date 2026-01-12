@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercitiul 1</title>
+    <style>
+
+      #parinte
+      {
+        width: 75%;
+        height: 50vh;
+        border: solid 3px;
+        display: grid;
+        /*grid-template-columns: auto auto auto auto;*/
+        grid-template-areas:"el1 el2 el3 el4" ". . . .";
+      }
+
+
+        #parinte>div:nth-of-type(1)
+            {grid-area:el1;
+            }
+            #parinte>div:nth-of-type(2)
+                {grid-area:el2;
+                }
+                #parinte>div:nth-of-type(3)
+                    {grid-area:el3;
+                    }
+                    #parinte>div:nth-of-type(4)
+                        {grid-area:el4;
+                        }
+      #parinte>div
+      {
+
+        transition: background-color 4s;
+
+        border: dashed blue;
+      /*  height:50%;*/
+      }
+
+      #parinte>div:nth-of-type(2n)
+      {
+        background-color: orange;
+      }
+
+      #parinte>div:nth-of-type(2n+1)
+      {
+        background-color: yellow;
+      }
+
+      #parinte>div:hover
+      {
+        background-color: red;
+      }
+
+      @media screen and (min-width:400px) and (max-width:700px)
+      {
+        #parinte
+        {
+        /*  display:grid;*/
+          grid-template-areas: "el1 el2" "el3 el4";
+        }
+
+      #parinte>div
+        {
+        border:none;
+        }
+      }
+
+    </style>
+    </head>
+  <body>
+    <div id="parinte">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+  </body>
+  </html>

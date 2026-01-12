@@ -1,0 +1,42 @@
+import queue
+
+def cheieTermenLimitaProiect(p):
+    return -p[1]
+fin = open("input.txt")
+
+toate_liniile = fin.readlines()
+fin.close()
+n = len(toate_liniile)
+
+lsp = []
+for linie in toate_liniile:
+    aux = linie.split()
+    lsp.append((-float(aux[2]), min(int(aux[1]), n), aux[0]))
+
+fin.close()
+
+lsp.sort(key=cheieTermenLimitaProiect)
+
+print(lsp)
+
+planificare = {k: None for k in range(1, n + 1)}
+
+coada = queue.PriorityQueue()
+
+k = 0
+profitmax = 0
+for zcrt in range(n, 0, -1):
+    while k <= n-1 and lsp[k][1] == zcrt:
+        coada.put(lsp[k])
+        k += 1
+
+    if coada.qsize() > 0:
+        planificare[zcrt] = coada.get()
+        profitmax += abs(planificare[zcrt][0])
+
+fout = open("output.txt", "w")
+for z in planificare:
+    if planificare[z] != None:
+        fout.write("Ziua " + str(z) + ": " + planificare[z][2] + " " + str(abs(planificare[z][0])) + "\n")
+fout.write("\nProfit maxim: " + str(profitmax))
+fout.close()

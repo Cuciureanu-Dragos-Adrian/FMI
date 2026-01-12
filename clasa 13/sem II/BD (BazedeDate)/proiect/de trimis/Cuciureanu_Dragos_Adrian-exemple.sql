@@ -1,0 +1,226 @@
+select * 
+from rezervare;
+
+--11.1 afisati numele clientului si suma pe care aceasta a platit o pt o camera de tip royal(sau afisati 0 in caz de are null) intr un hotel de 7 stele, ordonat dupa nume
+select cl.nume as Nume, nvl(r.suma_achitata, 0) as Plata
+from rezervare r, client cl, camera c, tip_camera tc, hotel h, critic cr
+where cl.client_id = r.client_id
+and r.camera_id = c.camera_id
+and c.tip_camera_id = tc.tip_camera_id
+and c.hotel_id = h.hotel_id
+and h.critic_id = cr.critic_id
+and cr.nr_stele = 7
+and lower(tc.nume_tip_camera) = 'royal'
+order by 1;
+
+
+--11.2 afisati hotelul si cea mai scumpa camera ce a fost inchiriata in perioada anului 2021
+select h.nume as Nume, r.suma_achitata as Plata
+from hotel h, camera c, rezervare r
+where c.hotel_id = h.hotel_id
+and r.camera_id = c.camera_id
+and r.suma_achitata = (select max(r1.suma_achitata)
+                            from rezervare r1, camera c1
+                            where r1.camera_id = c1.camera_id
+                            and c1.hotel_id = h.hotel_id
+                            and 1 in (select 1
+                                        from rezervare r2
+                                        where r2.rezervare_id = r1.rezervare_id
+                                        and to_char(r2.data_inceput, 'YYYY') = '2021'
+                                        and to_char(r2.data_final, 'YYYY') = '2021'));
+                                        
+
+--11.3 pentru fiecare agent din cea mai buna agentie dupa nr de rezervari afisati fie peretul celei mai bune camere daca a ajutat la rezervarea unei camere extra 
+--fie pretul la cea mai ieftina camera
+with cmb_agenti as (select ag.agent_id
+                    from agent ag, agentie a
+                    where ag.agentie_id = a.agentie_id
+                    and a.nr_rezervari_facute = (select max(nr_rezervari_facute)
+                                                from agentie))
+select ag.agent_id as "Id agent", 
+case when exists (select 1
+                    from rezervare r, camera c, tip_camera tc
+                    where r.camera_id = c.camera_id
+                    and tc.tip_camera_id = c.tip_camera_id
+                    and lower(tc.nume_tip_camera) = 'extra'
+                    and r.agent_id = ag.agent_id)
+                    then (select max(r1.suma_achitata)
+                        from rezervare r1
+                        where r1.agent_id = ag.agent_id)
+else (select min(r2.suma_achitata)
+                        from rezervare r2
+                        where r2.agent_id = ag.agent_id)
+end as "Plata"
+from agent ag
+group by ag.agent_id
+having ag.agent_id in (select * from cmb_agenti);
+
+
+--11.4 sa se afiseze toti angajatii de la hotelele de 4 stele care au cel mai mare salariu care au fost evaluati de giuseppe, toti angajatii de la 
+--hotelele de 7 stele care au salariul minim si toti clientii care au fost la hotelul de 7 stele precinzand functia lor ordonati dupa functie
+select ang.nume as Nume, tj.nume_job as "Functie"
+from angajat ang, tip_job tj, hotel h, critic cr
+where ang.job_id = tj.job_id
+and ang.hotel_id = h.hotel_id
+and h.critic_id = cr.critic_id
+and tj.salariu_job = (select max(tj1.salariu_job)
+                        from tip_job tj1, angajat ang1, hotel h1, critic cr1
+                        where tj1.job_id = ang1.job_id
+                        and ang1.hotel_id = h1.hotel_id
+                        and h1.critic_id = cr1.critic_id
+                        and cr1.nr_stele = 4
+                        and lower(cr1.nume) = 'giuseppe')
+and cr.nr_stele = 4
+and lower(cr.nume) = 'giuseppe' 
+union
+select ang2.nume, tj2.nume_job as "Functie"
+from angajat ang2, tip_job tj2, hotel h2, critic cr2
+where ang2.job_id = tj2.job_id
+and ang2.hotel_id = h2.hotel_id
+and h2.critic_id = cr2.critic_id
+and tj2.salariu_job = (select min(tj3.salariu_job)
+                        from tip_job tj3, angajat ang3, hotel h3, critic cr3
+                        where tj3.job_id = ang3.job_id
+                        and ang3.hotel_id = h3.hotel_id
+                        and h3.critic_id = cr3.critic_id
+                        and cr3.nr_stele = 7)
+and cr2.nr_stele = 7
+union
+select cl.nume, 'client' as "Functie"
+from client cl, rezervare r, camera c, hotel h4, critic cr4
+where cl.client_id = r.client_id
+and r.camera_id = c.camera_id
+and c.hotel_id = h4.hotel_id 
+and h4.critic_id = cr4.critic_id
+and cr4.nr_stele = 7
+order by 2;
+              
+              
+--11.5 afisati numele, jobul, salariul vechi si salariul nou, pentru toti angajatii dintr-un hotel din bucuresti evaluat de cineva ce contine stringul 'ppe', unde 
+--salariul nou este cu 20% mai mic daca este manager sau cu 10% mai mare altfel 
+select ang.nume as Nume, tj.nume_job as Job, tj.salariu_job as "Salariu vechi", decode(tj.nume_job, 'manager', tj.salariu_job*0.8, tj.salariu_job*1.1) as "Salariu nou"
+from tip_job tj, angajat ang, hotel h, critic cr, locatie l
+where tj.job_id = ang.job_id
+and ang.hotel_id = h.hotel_id
+and h.critic_id = cr.critic_id
+and h.loc_id = l.loc_id
+and cr.nume like '%ppe%'
+and lower(l.oras) = 'bucuresti'
+order by 1;
+
+
+--12.1 update: tipului de angajat cu cel mai mic salariu li se mareste salariul cu 50
+update tip_job
+set salariu_job = salariu_job + 50
+where salariu_job = (select min(salariu_job)
+                    from tip_job);
+
+
+select * from tip_job;
+
+rollback;
+
+
+--12.2 delete: stergerea angajatilor care au salariu mai mare decat cel mediu
+delete from angajat
+where angajat_id in (select ang.angajat_id
+                    from angajat ang, tip_job tj
+                    where ang.job_id = tj.job_id
+                    and tj.salariu_job > (select avg(salariu_job)
+                                            from tip_job));
+
+select * from angajat;
+
+rollback;
+
+
+--12.3 update: adaugati 1000 la toata cazarile ce sunt efectuate intr un hotel de 7 stele si sunt incepute dupa data actuala
+update rezervare
+set suma_achitata = suma_achitata + 1000
+where camera_id in (select c.camera_id
+                    from camera c, hotel h, critic cr, rezervare r
+                    where c.hotel_id = h.hotel_id
+                    and h.critic_id = cr.critic_id
+                    and r.camera_id = c.camera_id
+                    and cr.nr_stele = 7
+                    and r.data_final > sysdate);
+
+select * from rezervare;
+
+rollback;
+
+
+--13 l-am folosit la crearea tabelelor
+create sequence valori
+start with 1
+increment by 1
+minvalue 0
+maxvalue 1000
+nocycle;
+
+drop sequence valori;
+
+
+--16.1 afisati pt fiecare agentie toate rezervarile pe care le-au facut agentii sai, iar in caz negativ afisati null
+select a.agentie_id as "Id agentie", ag.nume as "Nume agent", r.suma_achitata as Plata, cl.nume as "Nume client"
+from agent ag
+full outer join agentie a on ag.agentie_id = a.agentie_id
+full outer join rezervare r on ag.agent_id = r.agent_id
+full outer join client cl on r.client_id = cl.client_id
+order by 1;
+           
+           
+--16.2 sa se afiseze toti agentii care au ajutat la inchirierea unei camere la etajul 1
+select distinct r1.agent_id as "Id angajat", ag.nume as Nume, ag.prenume as Prenume
+from rezervare r1, agent ag
+where not exists 
+        (select 1
+        from camera c
+        where c.etaj_camera = 3
+        and not exists 
+                (select 1
+                from rezervare r2
+                where r2.camera_id = c.camera_id
+                and r1.agent_id = r2.agent_id))
+and r1.agent_id = ag.agent_id
+order by 1;
+
+
+--16.3 sa se afiseze caracteristicile hotelului ce are la descriere sirul de caracterer 'the actual'
+select distinct ch1.caracteristica_id as "Id caracteristica", c.nume_caracteristica as Caracteristica
+from carac_hotel ch1, caracteristica c
+where not exists
+        (select 1
+        from hotel h
+        where h.descriere like 'the actual%'
+        and not exists
+                (select 1
+                from carac_hotel ch2
+                where ch2.caracteristica_id = ch1.caracteristica_id
+                and ch2.hotel_id = h.hotel_id))
+and ch1.caracteristica_id = c.caracteristica_id
+order by 1;
+
+
+--17.1 arbore neoptimizat
+select r1.client_id, r1.suma_achitata
+from client cl, rezervare r1
+where cl.nume = 'Gruia'
+and r1.suma_achitata > 1000
+and cl.client_id = r1.client_id
+intersect
+select r2.client_id, r2.suma_achitata
+from camera c, rezervare r2
+where c.etaj_camera = 2
+and r2.camera_id = c.camera_id;
+
+
+--17.2 arbore optimizat
+select r.client_id, r.suma_achitata
+from client cl, rezervare r, camera c
+where cl.client_id = r.client_id
+and r.camera_id = c.camera_id
+and cl.nume = 'Gruia'
+and r.suma_achitata > 1000
+and c.etaj_camera = 2;
+

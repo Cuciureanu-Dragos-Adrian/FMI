@@ -1,0 +1,217 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
+}
+
+body {
+    background: url('https://raw.githubusercontent.com/WebToLearn/personal-page-css-workshop/master/img/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+
+.page-grid {
+    margin: 100px 0;
+    display: grid;
+    grid-template-columns: 1fr 990px 1fr;
+    grid-template-rows: fit-content fit-content;
+    grid-template-areas:
+        ". about-content ."
+        ". footer .";
+}
+
+.about-content {
+    grid-area: about-content;
+    background: white;
+}
+
+.footer {
+    grid-area: footer;
+    margin-top: 30px;
+    background: white;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    grid-template-rows: 1fr fit-content;
+    grid-template-areas:
+        "my-avatar my-info my-list"
+        "my-social my-social my-social";
+}
+
+.my-avatar {
+    grid-area: my-avatar;
+    width: 100%;
+}
+
+.my-info {
+    grid-area: my-info;
+}
+
+.my-list {
+    grid-area: my-list;
+}
+
+.my-social {
+    grid-area: my-social;
+}
+
+
+.my-social {
+    grid-area: my-social;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.my-social-item {
+    display: grid;
+    grid-template-columns: 45px 1fr ;
+    grid-template-rows: 45px fit-content;
+    grid-template-areas:
+        "my-icon my-icon-title"
+        "my-icon my-icon-subtitle";
+}
+
+.my-icon {
+    grid-area: my-icon;
+}
+
+.my-icon-title {
+    grid-area: my-icon-title;
+}
+
+.my-icon-subtitle {
+    grid-area: my-icon-subtitle;
+}
+
+.about-content {
+    padding: 30px 20px;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0px 6px #c0392b;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0px 4px #ccc;
+    border-radius: 4px;
+}
+
+.copyright {
+    margin: 0;
+}
+
+.my-info-title {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.my-info-subtitle {
+    color: #999;
+    font-size: 1.5em;
+    line-height: 1em;
+    margin: 0 0 1em 0;
+}
+
+.my-info-content {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-bottom: 0;
+}
+
+.my-list {
+    margin: 0 0 0 20px;
+    padding-left: 20px;
+    list-style-type: none;
+    border-left: 1px solid #f1f1f1;
+    align-self: center;
+}
+.my-list-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.my-list-link {
+    color: #c0392b;
+    text-decoration: none;
+}
+
+.my-social-item {
+    padding: 6px 6px 6px 10px;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+}
+
+.my-icon {
+    font-size: 40px;
+    align-self: center;
+    justify-self: left;
+}
+
+.my-icon-title {
+    text-decoration: none;
+    color: #E74C3C;
+    font-weight: 700;
+}
+
+.my-icon-subtitle {
+    color: #999;
+    font-size: 12px;
+    margin: 5px 0 0 0;
+}
+
+@media (max-width: 990px) {
+    .my-list {
+        display: none;
+    }
+    .page-grid {
+        display: block;
+    }
+    .about-content {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr fit-content;
+        grid-template-areas:
+            "my-avatar my-info"
+            "my-social my-social";
+        border-radius: 0;
+    }
+    .footer {
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background: none;
+    }
+    .about-content {
+        display: block;
+    }
+    .my-avatar {
+        display: block;
+        margin: 0 auto;
+    }
+    .my-info-title {
+        margin-top: 15px;
+        text-align: center;
+    }
+    .my-info-subtitle {
+        text-align: center;
+    }
+    .my-social {
+        display: block;
+    }
+    .my-social-item {
+        margin-top:10px;
+    }
+    .footer {
+        margin-top: 3px;
+    }
+}

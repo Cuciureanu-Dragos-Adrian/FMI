@@ -1,0 +1,20 @@
+cuv = input('cuvant:')
+
+n = len (cuv)
+perm = [0] * (n+1)
+rez = set()
+
+def bkt (k):
+    for i in range(1, n+1):
+        perm[k] = i
+        if perm[k] not in perm[:k]:
+            if k != n:
+                bkt(k + 1)
+            else:
+                anag = ""
+                for j in perm:
+                    anag += cuv[j-1]
+                rez.add(anag[1:])
+
+bkt(1)
+print (*rez)

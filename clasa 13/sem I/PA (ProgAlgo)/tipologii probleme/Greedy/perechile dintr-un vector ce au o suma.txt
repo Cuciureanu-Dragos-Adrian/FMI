@@ -1,0 +1,20 @@
+def perechi(L, S):
+    st = 0
+    dr = len(L) - 1
+    rez = []
+    while st < dr:
+        if L[st] + L[dr] < S:
+            st = st + 1
+        elif L[st] + L[dr] > S:
+            dr = dr - 1
+        else:
+            rez.append((L[st], L[dr]))
+            st = st + 1
+            dr = dr - 1
+    return rez
+
+
+xs = [int(x) for x in input('sir=').split()]
+s = int(input('suma='))
+
+print(*perechi(xs, s))

@@ -1,0 +1,27 @@
+def comp (sp):
+    return sp[2]
+
+fisier = open("input.txt")
+
+spectacole = []
+idx = 1
+
+for linie in fisier:
+    linie = linie.split('-')
+    spectacole.append((idx, linie[0], linie[1].strip()))
+    idx += 1
+
+spectacole.sort(key=comp)
+
+spectacole_programate = [spectacole[0]]
+
+n = len (spectacole)
+
+for i in range (1, n):
+    m = len(spectacole_programate)-1
+    if spectacole[i][1] >= spectacole_programate[m][2]:
+        spectacole_programate += [spectacole[i]]
+
+print ('nr spectacole:', len(spectacole_programate))
+for sp in spectacole_programate:
+    print(sp[1], sp[2], 'index =', sp[0])

@@ -1,0 +1,295 @@
+Notele la verificarea de Arhitectura sistemelor de calcul,
+ seriile 13, 14, 21, de sambata 16 ianuarie 2021.
+
+Am notat:
+  S = nota la proba scrisa, in intervalul [4, 10];
+  L = nota la laborator, in intervalul [4, 10];
+  B = punctele bonus obtinute la seminar, 0 sau 1, "-" este echivalent cu 0;
+      se acorda 1 celor care au >= 3 iesiri la tabla si 0 celorlalti;
+  F = nota finala, care se trece in catalog.
+
+Pentru cei care au facut laboratorul la grupele 141, 142, 143, 144, nota
+la laborator s-a calculat dupa regula:
+
+  L = (((nota_proiect_1 + nota_proiect_2) / 2) + nota_test) / 2.
+  
+Conditia de promovare a fost: S >= 5, L >= 5.
+
+Pentru cei promovati, regula de calcul a notei finale a fost:
+
+  F = rotunjire(min(((S + L) / 2) + B, 10))
+  
+unde rotunjirea in sus se face de la pragul 0.5
+
+Daniel Dragulici
+
+===========================================================
+
+
+Gr. 131:
+========
+
+Adimei Razvan-Valeriu (131) ------------------- S: 6.24 L: 6.52 B: - F: 6
+Ardeleanu Nicu Victor (131) ------------------- S: 7.74 L: 10   B: - F: 9
+Atudorei Miruna Gabriela (131) ---------------- S: 7.59 L: 9.25 B: - F: 8
+Belu Mara-Luciana (131) ----------------------- S: 6.47 L: 9.62 B: - F: 8
+Bina Mircea-Marian (131) ---------------------- S: 5.56 L: 9.69 B: - F: 8
+Bojici Valentin Gabriel (131) ----------------- S: 9.29 L: 10   B: - F: 10
+Caliman Iolanda (131) ------------------------- S: 6.94 L: 9.25 B: - F: 8
+Carpineanu Alexandru (131) -------------------- S: 7.3  L: 9.7  B: - F: 9
+Catarau Bianca (131) -------------------------- S: 6.93 L: 6.97 B: - F: 7
+Cuciureanu Dragos-Adrian (131) ---------------- S: 9.58 L: 10   B: - F: 10
+Geman Amalia-Alexandra (131) ------------------ S: 7.33 L: 9.69 B: - F: 9
+Gherghe Sebastian Adrian (131) ---------------- S: 5.67 L: 5    B: - F: 5
+Grigorescu Stefan-Dumitru (131) --------------- S: 6.79 L: 8.84 B: - F: 8
+Gruia Gabriel (131) --------------------------- S: 6.69 L: 8.9  B: - F: 8
+Hadirca Dionisie (131) ------------------------ S: 9.1  L: 10   B: - F: 10
+Ion Apelia-Cosmina (131) ---------------------- S: 6.59 L: 7.05 B: - F: 7
+Ionita Angel (131) ---------------------------- S: 6.34 L: 6.15 B: - F: 6
+Linte Robert-Ovidiu (131) --------------------- S: 8.26 L: 9.95 B: - F: 9
+Moraru Mihai-Liviu (131) ---------------------- S: 5.9  L: 6.78 B: - F: 6
+Nacu Andrei (131) ----------------------------- S: 6.72 L: 7.85 B: - F: 7
+Podaru Eduard-Cristian (131) ------------------ S: 8.95 L: 10   B: - F: 9
+Popescu Paullo Robertto Karloss (131) --------- S: 6.07 L: 9.54 B: - F: 8
+Popescu Petru (131) --------------------------- S: 7.14 L: 9.32 B: - F: 8
+Preoteasa Mihaela-Teodora (131) --------------- S: 8.34 L: 8.99 B: - F: 9
+Radu Mihaela (131) ---------------------------- S: 7.48 L: 9.51 B: - F: 8
+Stoica David (131) ---------------------------- S: 6.17 L: 8.75 B: - F: 7
+Troaca Denis (131) ---------------------------- S: 5.95 L: 8.95 B: - F: 7
+Vasile George-Cristian (131) ------------------ S: 7.9  L: 10   B: - F: 9
+Voiculescu Alina-Virginia (131) --------------- S: 8.99 L: 10   B: - F: 9
+
+
+Gr. 132:
+========
+
+Alexandrescu Paula (132) ---------------------- S: 8.16 L: 8.93 B: - F: 9
+Balan Paula (132) ----------------------------- S: 8.91 L: 9.45 B: - F: 9
+Berlinschi Stefan Cristian (132) -------------- S: 9    L: 8.54 B: - F: 9
+Cirlan Daniel (132) --------------------------- S: 9.18 L: 9.94 B: - F: 10
+Cordus Luca (132) ----------------------------- S: 9.05 L: 9.94 B: - F: 9
+Creita Andreea Georgiana (132) ---------------- S: 7.07 L: 9.02 B: - F: 8
+Huja Petru Alexandru (132) -------------------- S: 7.91 L: 10   B: - F: 9
+Jahaleanu Vlad Gabriel (132) ------------------ S: 6.74 L: 9.34 B: - F: 8
+Jarca Andrei (132) ---------------------------- S: 8.96 L: 9.81 B: - F: 9
+Mihai Radu-Ioan (132) ------------------------- S: 6.76 L: 8.24 B: - F: 8
+Mocanu Horia Tudor (132) ---------------------- S: 5.8  L: 5.89 B: - F: 6
+Neagu Matei (132) ----------------------------- S: 8.3  L: 9.91 B: - F: 9
+Nidelea Gabriela Andreea (132) ---------------- S: 8.44 L: 8.8  B: - F: 9
+Odagiu Andrei Alexandru (132) ----------------- S: 6.44 L: 5.4  B: - F: 6
+Oporanu Alexandru (132) ----------------------- S: 8.46 L: 10   B: - F: 9
+Pop Maria (132) ------------------------------- S: 9.11 L: 10   B: - F: 10
+Popa Anda-Ioana (132) ------------------------- S: 8.33 L: 9.93 B: - F: 9
+Popel Emil-Bogdan (132) ----------------------- S: 7.07 L: 7.48 B: - F: 7
+Popescu Mihnea Valentin (132) ----------------- S: 8.62 L: 10   B: - F: 9
+Potcoveanu Florin-Razvan (132) ---------------- S: 7.61 L: 9.94 B: - F: 9
+Stafie Calin (132) ---------------------------- S: 9.25 L: 10   B: - F: 10
+Stanescu Maria-Raluca (132) ------------------- S: 7.14 L: 7.55 B: - F: 7
+Stroe Mihalcea Gabriel (132) ------------------ S: 6.61 L: 5.57 B: - F: 6
+Sturzu Andrei (132) --------------------------- S: 7.48 L: 7.62 B: - F: 8
+Tiganus Alexandru Daniel (132) ---------------- S: 7.14 L: 10   B: - F: 9
+Velniceru Ioana-Alexandra (132) --------------- S: 9.28 L: 10   B: - F: 10
+Zaharia Diana Cristiana (132) ----------------- S: 8.03 L: 8.63 B: - F: 8
+
+
+Gr. 133:
+========
+
+Chiriac Octavian Andrei (133) ----------------- S: 8.23 L: 6.77 B: - F: 8
+Dancau Sebastian (133) ------------------------ S: 7.92 L: 7.87 B: - F: 8
+Dima Vlad (133) ------------------------------- S: 7.78 L: 8.11 B: - F: 8
+Falcescu Alexandru Antonio (133) -------------- S: 8.53 L: 7.34 B: - F: 8
+Feta Almar-Eran (133) ------------------------- S: 8.43 L: 8.25 B: - F: 8
+Furtuna Theodor Florentin (133) --------------- S: 8.36 L: 6.27 B: - F: 7
+Geamanu Andreea (133) ------------------------- S: 6.79 L: 6.75 B: - F: 7
+Georgescu Andreea Maria (133) ----------------- S: 7.74 L: 7.76 B: - F: 8
+Gogu Razvan-Costinel (133) -------------------- S: 7.92 L: 6.99 B: - F: 7
+Ilie Petre Cristian (133) --------------------- S: 6.96 L: 7.54 B: - F: 7
+Kopacz Madalina-Elena (133) ------------------- S: 8.55 L: 7.88 B: - F: 8
+Lazar Stefania Daniela (133) ------------------ S: 8.16 L: 8.73 B: - F: 8
+Mocanu Rares-Mihai (133) ---------------------- S: 6.47 L: 7.13 B: - F: 7
+Nastase Matei-Dorian (133) -------------------- S: 8.8  L: 10   B: - F: 9
+Negrut Maria Daniela (133) -------------------- S: 8.34 L: 9.72 B: - F: 9
+Oprea Ana-Maria (133) ------------------------- S: 7.8  L: 8.63 B: - F: 8
+Placintescu Stefan (133) ---------------------- S: 7.78 L: 7.25 B: - F: 8
+Scobiola Radu (133) --------------------------- S: 7.15 L: 5.39 B: - F: 6
+Soare Dennis Gabriel (133) -------------------- S: 6.78 L: 6.12 B: - F: 6
+Turcu Virgil (133) ---------------------------- S: 7.73 L: 8.87 B: - F: 8
+
+
+Gr. 134:
+========
+
+Baltatescu Delia Elena (134) ------------------ S: 6.91 L: 5.02 B: - F: 6
+Boghiu Alexandra Adriana (134) ---------------- S: 7.56 L: 6.43 B: - F: 7
+Chelaru Paul (134) ---------------------------- S: 7.23 L: 6.35 B: - F: 7
+Cristea Stefania Alexandra (134) -------------- S: 8.31 L: 8.74 B: - F: 9
+Cruceanu Calin Ionut (134) -------------------- S: 7.34 L: 5.97 B: - F: 7
+Culea Ionel-Alexandru (134) ------------------- S: 7.6  L: 8.03 B: - F: 8
+Hodoroaba Emanuel (134) ----------------------- S: 7.58 L: 8.64 B: - F: 8
+Lacatus Catalin-Petru (134) ------------------- S: 7.88 L: 6.65 B: - F: 7
+Lazar Mihai (134) ----------------------------- S: 7.25 L: 5.8  B: - F: 7
+Minciunescu Tudor (134) ----------------------- S: 7    L: 6.6  B: - F: 7
+Neagu Anastasia Elena (134) ------------------- S: 7.33 L: 8.00 B: - F: 8
+Niculae Tiberiu Constantin (134) -------------- S: 7.19 L: 5.32 B: - F: 6
+Podariu Flavia Maria (134) -------------------- S: 7.81 L: 7.49 B: - F: 8
+Sora Andreea Ioana (134) ---------------------- S: 8.78 L: 7.75 B: - F: 8
+
+
+Gr. 141:
+========
+
+Avian Silviu-Gabriel (141) -------------------- S: 8.31 L: 9.47 B: - F: 9
+Boboc_Stefan (141)  --------------------------- S: 8.82 L: 9.75 B: - F: 9
+Brandiburu Andreea Nicoleta (141) ------------- S: 6.69 L: 6.75 B: - F: 7
+Buta Gabriel-Sebastian (141) ------------------ S: 8.12 L: 8.45 B: - F: 8
+Cherim Erol (141) ----------------------------- S: 8.81 L: 7.88 B: - F: 8
+Ciobotaru Robert (141) ------------------------ S: 6.78 L: 5.50 B: - F: 6
+Dijmarescu Cristina Maria (141) --------------- S: 9.17 L: 7.00 B: - F: 8
+Dobre Adriana-Lia (141) ----------------------- S: 8.2  L: 9.00 B: - F: 9
+Dragulin Andrei (141) ------------------------- S: 6.78 L: 7.12 B: - F: 7
+Dumitrescu Dumitru-Dragos (141) --------------- S: 7.43 L: 9.97 B: - F: 9
+Dumitru Andrei Victor (141) ------------------- S: 7.58 L: 9.00 B: - F: 8
+Enasoaie Roxana-Adela (141) ------------------- S: 9.14 L: 9.00 B: - F: 9
+Ghidarcea Tudor-Alexandru (141) --------------- S: 8.34 L: 9.53 B: - F: 9
+Grigore Dragos-Gabriel (141) ------------------ S: 7.59 L: 6.25 B: - F: 7
+Gutu Stefania-Alexandra (141) ----------------- S: 8.63 L: 8.75 B: - F: 9
+Haiducu Stefan-Alexandru (141) ---------------- S: 6.39 L: 9.12 B: - F: 8
+Ioan Tudor Alexandru (141) -------------------- S: 8.7  L: 9.75 B: - F: 9
+Ionescu Alexandru (141) ----------------------- S: 6.77 L: 9.25 B: - F: 8
+Lazaroiu Teodora-Bianca (141) ----------------- S: 9.41 L: 8.50 B: - F: 9
+Manole Patricia Theodora (141) ---------------- S: 9.36 L: 8.80 B: - F: 9
+Martinas Paul (141) --------------------------- S: 7.3  L: 8.38 B: - F: 8
+Mitrica Octavian (141) ------------------------ S: 9.17 L: 8.62 B: - F: 9
+Pirlogea Luciana-Elena (141) ------------------ S: 9.16 L: 9.97 B: - F: 10
+Roman Andrei-Marian (141) --------------------- S: 6.9  L: 9.75 B: - F: 8
+Roman Iulian-Robert (141) --------------------- S: 7.31 L: 8.88 B: - F: 8
+Stan Ana Maria (141) -------------------------- S: 7.04 L: 8.25 B: - F: 8
+
+
+Gr. 142:
+========
+
+Budaca Razvan Gabriel (142) ------------------- S: 9.04 L: 9.88 B: - F: 9
+Catarama Antonia (142) ------------------------ S: 7.41 L: 9.93 B: - F: 9
+Constantin Filip-Damian (142) ----------------- S: 9.4  L: 9.62 B: - F: 10
+Cordun Diana Alexandra (142) ------------------ S: 9.32 L: 9.55 B: - F: 9
+Dinu Marinel-Gabriel (142) -------------------- S: 7.89 L: 9.25 B: - F: 9
+Dobre Talida-Marina (142) --------------------- S: 9.5  L: 9.45 B: - F: 9
+Doncea Beatrice-Anamaria (142) ---------------- S: 7.94 L: 9.25 B: - F: 9
+Dumitrescu Marius Cristian (142) -------------- S: 9.57 L: 9.75 B: - F: 10
+Ene Marius-Andrei (142) ----------------------- S: 8.14 L: 9.38 B: - F: 9
+Fierbinteanu David (142) ---------------------- S: 8.76 L: 8.50 B: - F: 9
+Florea Maria Alexandra (142) ------------------ S: 9.58 L: 10   B: - F: 10
+Ion Alexandra (142) --------------------------- S: 9.41 L: 8.75 B: - F: 9
+Ion Luca-Mihail (142) ------------------------- S: 7.37 L: 6.50 B: - F: 7
+Maxim Adriana-Stefania (142) ------------------ S: 9.62 L: 10   B: - F: 10
+Minciuna Adrian-Cezar (142) ------------------- S: 8.49 L: 10   B: - F: 9
+Neacsu Vlad (142) ----------------------------- S: 8.8  L: 9.88 B: - F: 9
+Oprea Laurentiu-Cristian (142) ---------------- S: 9.53 L: 9.88 B: - F: 10
+Patulea Maria (142) --------------------------- S: 9.73 L: 9.75 B: - F: 10
+Pletea Andi Emilian (142) --------------------- S: 8.08 L: 9.30 B: - F: 9
+Postolache Andreea Miruna (142) --------------- S: 9.42 L: 10   B: 1 F: 10
+Predescu Denisa (142) ------------------------- S: 9.05 L: 9.97 B: 1 F: 10
+Raducanu Andrei-Cosmin (142) ------------------ S: 6.78 L: 8.50 B: - F: 8
+Safta Adelin Gabriel (142) -------------------- S: 6.78 L: 8.55 B: - F: 8
+Sandu Daniel (142) ---------------------------- S: 9.35 L: 8.88 B: - F: 9
+Sandu Raluca Ioana (142) ---------------------- S: 9.43 L: 9.75 B: - F: 10
+Sasu Alexandru-Cristian (142) ----------------- S: 9.65 L: 9.75 B: - F: 10
+Stancu Denisa-Georgiana (142) ----------------- S: 6.87 L: 6.12 B: - F: 6
+Toader Vlad-Marian (142) ---------------------- S: 9.17 L: 10   B: - F: 10
+Voinea Stefania Alexandra (142) --------------- S: 6.99 L: 8.50 B: - F: 8
+Vrinceanu Vlad Florin (142) ------------------- S: 9.3  L: 8.65 B: - F: 9
+
+
+Gr. 143:
+========
+
+Baciu Daniel-Mihai (143) ---------------------- S: 9.17 L: 9.12 B: - F: 9
+Broscoteanu Daria Mihaela (143) --------------- S: 9.5  L: 9.97 B: - F: 10
+Butelca Radu Andrei (143) --------------------- S: 6.49 L: 10   B: - F: 8
+Buzescu Alexandru-Gabriel (143) --------------- S: 6.75 L: 9.88 B: - F: 8
+Capmare Alex Mihai (143) ---------------------- S: 7.12 L: 9.62 B: - F: 8
+Edu Matei-Andrei (143) ------------------------ S: 7.17 L: 9.00 B: - F: 8
+Fritz Raluca-Mihaela (143) -------------------- S: 7.76 L: 8.62 B: - F: 8
+Gherghescu Andreea Diana (143) ---------------- S: 9.55 L: 9.75 B: - F: 10
+Grosu Ilinca (143) ---------------------------- S: 7.35 L: 7.25 B: - F: 7
+Guleama Dan (143) ----------------------------- S: 7.28 L: 8.25 B: - F: 8
+Hirica Ioan Alexandru (143) ------------------- S: 7.35 L: 8.50 B: - F: 8
+Hongu Cosmin Tiberiu (143) -------------------- S: 7.1  L: 6.75 B: - F: 7
+Istrate Alexandru-Cristian (143) -------------- S: 7.42 L: 8.75 B: - F: 8
+Kayed Amar (143) ------------------------------ S: 7.93 L: 9.75 B: - F: 9
+Lascu Matei (143) ----------------------------- S: 6.66 L: 9.45 B: - F: 8
+Marton Alexandru Sergiu (143) ----------------- S: 7.73 L: 9.88 B: - F: 9
+Mihai Vlad-George (143) ----------------------- S: 7.69 L: 8.50 B: - F: 8
+Miu Elena Adania (143) ------------------------ S: 7.61 L: 7.88 B: - F: 8
+Pascu Aurelian Adrian (143) ------------------- S: 8.61 L: 9.95 B: - F: 9
+Radu Mihai Danut (143) ------------------------ S: 7.07 L: 9.00 B: - F: 8
+Rinu Alexandru-Ionut (143) -------------------- S: 7.54 L: 9.00 B: - F: 8
+Rotaru Radu-Stefan (143) ---------------------- S: 7.44 L: 10   B: - F: 9
+Selea Eduard (143) ---------------------------- S: 9.26 L: 9.50 B: - F: 9
+Stratan Ruxandra Ioana (143) ------------------ S: 7.91 L: 9.60 B: - F: 9
+Tabacaru Andrei (143) ------------------------- S: 7.75 L: 8.50 B: - F: 8
+Trandafir Dragos (143) ------------------------ S: 7.04 L: 8.38 B: - F: 8
+Visalon Giani FLorin (143) -------------------- S: 7.86 L: 9.75 B: - F: 9
+Vlad Melisa-Andra (143) ----------------------- S: 7.07 L: 9.00 B: - F: 8
+Vultur Sofia Maria (143) ---------------------- S: 7.9  L: 10   B: - F: 9
+Zabava Claudiu Alexandru (143) ---------------- S: 7.56 L: 9.50 B: - F: 9
+
+
+Gr. 144:
+========
+
+Arcalianu David (144) ------------------------- S: 7.25 L: 9.00 B: - F: 8
+Barbu Alexandru-Marian (144) ------------------ S: 5.58 L: 9.25 B: - F: 7
+Boroseanu Darius Ilie (144) ------------------- S: 7.28 L: 5.38 B: - F: 6
+Contor Flavius-Andrei (144) ------------------- S: 6.99 L: 9.75 B: - F: 8
+Cretoiu Patricia Elena (144) ------------------ S: 7.15 L: 9.88 B: - F: 9
+Culda Mara (144) ------------------------------ S: 7.14 L: 7.75 B: - F: 7
+Filote Petre Serban (144) --------------------- S: 8.88 L: 8.00 B: - F: 8
+Georgescu Alina-Mihaela (144) ----------------- S: 6.86 L: 8.60 B: - F: 8
+Hincu Adelina-Cristina (144) ------------------ S: 7.58 L: 9.70 B: - F: 9
+Horovei Iulian-Valentin (144) ----------------- S: 6.67 L: 8.12 B: - F: 7
+Ignat Eduardo (144) --------------------------- S: 6.75 L: 9.25 B: - F: 8
+Ilie Tudor Alexandru (144) -------------------- S: 6.54 L: 8.50 B: - F: 8
+Iojica Mattia (144) --------------------------- S: 7.15 L: 6.65 B: - F: 7
+Iordache Ovidiu (144) ------------------------- S: 7.92 L: 9.95 B: - F: 9
+Juganaru Adrian-Lucian (144) ------------------ S: 6.17 L: 5.50 B: - F: 6
+Matei Alina-Cristina (144) -------------------- S: 6.2  L: 7.75 B: - F: 7
+Neagu Marian-Madalin (144) -------------------- S: 6.8  L: 9.10 B: - F: 8
+Oprea Sergiu-Alexandru (144) ------------------ S: 6.89 L: 7.38 B: - F: 7
+Pislaru Alin Valentin (144) ------------------- S: 5.79 L: 9.44 B: - F: 8
+Polifronie Dragos Constantin (144) ------------ S: 6.96 L: 9.25 B: - F: 8
+Popa Rares-Teodor (144) ----------------------- S: 6.74 L: 8.25 B: - F: 7
+Radu George-Mihai (144) ----------------------- S: 8.59 L: 10   B: - F: 9
+Rohatin Andrei (144) -------------------------- S: 7.08 L: 7.50 B: - F: 7
+Rosca Alexandru (144) ------------------------- S: 6.16 L: 5.50 B: - F: 6
+Runceanu Stefania-Daria (144) ----------------- S: 6.67 L: 9.75 B: - F: 8
+Soare Cristian Alexandru (144) ---------------- S: 6.46 L: 9.50 B: - F: 8
+Solomon Flavius (144) ------------------------- S: 7.97 L: 9.38 B: - F: 9
+Zamora Ionut-Teodor (144) --------------------- S: 6.82 L: 8.00 B: - F: 7
+Zugravu Alexandru Stefan (144) ---------------- S: 7.62 L: 9.22 B: - F: 8
+
+
+Gr. 211:
+========
+
+Botez Adina Georgiana (211) ------------------- S: 9.08 L: 6.00 B: - F: 8
+Cataron Andrei-Vlad (211) --------------------- S: 8.59 L: 9.38 B: - F: 9
+Olaru Elena (211) ----------------------------- S: 9.11 L: 8.88 B: - F: 9
+Sina Sorin Marian (211) ----------------------- S: 8.13 L: 5.84 B: - F: 7
+Vladone Adriana (211) ------------------------- S: 6.9  L: 5.49 B: - F: 6
+
+
+Gr. 212:
+========
+
+Lungu Elena Izabela (212) --------------------- S: 5.95 L: 8.00 B: - F: 7
+Radu-Glavan Andrei (212) ---------------------- S: 8.37 L: 9.25 B: - F: 9
+
+
+Anul II:
+========
+
+Caldaruse Bianca Alexandra (132/244) ---------- S: 7.96 L: 9.5  B: - F: 9
+

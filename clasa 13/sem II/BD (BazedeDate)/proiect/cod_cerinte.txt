@@ -1,0 +1,97 @@
+select * 
+from rezervare;
+
+--11.1 afisati numele clientului si suma pe care aceasta a platit o pt o camera de tip royal(sau afisati 0 in caz de are null) intr un hotel de 7 stele, ordonat dupa nume
+select cl.nume, nvl(r.suma_achitata, 0) as Plata
+from rezervare r, client cl, camera c, tip_camera tc, hotel h, critic cr
+where cl.client_id = r.client_id
+and r.camera_id = c.camera_id
+and c.tip_camera_id = tc.tip_camera_id
+and c.hotel_id = h.hotel_id
+and h.critic_id = cr.critic_id
+and cr.nr_stele = 7
+and lower(tc.nume_tip_camera) = 'royal'
+order by 1;
+
+--11.2 afisati hotelul si cea mai scumpa camera ce a fost inchiriata in perioada anului 2021
+select h.nume, r.suma_achitata
+from hotel h, camera c, rezervare r
+where c.hotel_id = h.hotel_id
+and r.camera_id = c.camera_id
+and r.suma_achitata = (select max(r1.suma_achitata)
+                            from rezervare r1, camera c1
+                            where r1.camera_id = c1.camera_id
+                            and c1.hotel_id = h.hotel_id
+                            and 1 in (select 1
+                                        from rezervare r2
+                                        where r2.rezervare_id = r1.rezervare_id
+                                        and to_char(r2.data_inceput, 'YYYY') = '2021'
+                                        and to_char(r2.data_final, 'YYYY') = '2021'));
+                                        
+--11.3 pentru fiecare agent din cea mai buna agentie dupa nr de rezervari afisati fie peretul celei mai bune camere daca a ajutat la rezervarea unei camere extra 
+--fie pretul la cea mai ieftina camera
+with cmb_agenti as (select ag.agent_id
+                    from agent ag, agentie a
+                    where ag.agentie_id = a.agentie_id
+                    and a.nr_rezervari_facute = (select max(nr_rezervari_facute)
+                                                from agentie))
+select ag.agent_id, 
+case when exists (select 1
+                    from rezervare r, camera c, tip_camera tc
+                    where r.camera_id = c.camera_id
+                    and tc.tip_camera_id = c.tip_camera_id
+                    and lower(tc.nume_tip_camera) = 'extra'
+                    and r.agent_id = ag.agent_id)
+                    then (select max(r1.suma_achitata)
+                        from rezervare r1
+                        where r1.agent_id = ag.agent_id)
+else (select min(r2.suma_achitata)
+                        from rezervare r2
+                        where r2.agent_id = ag.agent_id)
+end
+from agent ag
+group by ag.agent_id
+having ag.agent_id in (select * from cmb_agenti);
+
+
+--11.4 sa se afiseze toti angajatii de la hotelele de 4 stele care au cel mai mare salariu care au fost evaluati de giuseppe, toti angajatii de la 
+--hotelele de 7 stele care au salariul minim si toti clientii care au fost la hotelul de 7 stele precinzand functia lor ordonati dupa functie
+select ang.nume, tj.nume_job as "Functie"
+from angajat ang, tip_job tj, hotel h, critic cr
+where ang.job_id = tj.job_id
+and ang.hotel_id = h.hotel_id
+and h.critic_id = cr.critic_id
+and tj.salariu_job = (select max(tj1.salariu_job)
+                        from tip_job tj1, angajat ang1, hotel h1, critic cr1
+                        where tj1.job_id = ang1.job_id
+                        and ang1.hotel_id = h1.hotel_id
+                        and h1.critic_id = cr1.critic_id
+                        and cr1.nr_stele = 4
+                        and lower(cr1.nume) = 'giuseppe')
+and cr.nr_stele = 4
+and lower(cr.nume) = 'giuseppe' 
+union
+select ang2.nume, tj2.nume_job as "Functie"
+from angajat ang2, tip_job tj2, hotel h2, critic cr2
+where ang2.job_id = tj2.job_id
+and ang2.hotel_id = h2.hotel_id
+and h2.critic_id = cr2.critic_id
+and tj2.salariu_job = (select min(tj3.salariu_job)
+                        from tip_job tj3, angajat ang3, hotel h3, critic cr3
+                        where tj3.job_id = ang3.job_id
+                        and ang3.hotel_id = h3.hotel_id
+                        and h3.critic_id = cr3.critic_id
+                        and cr3.nr_stele = 7)
+and cr2.nr_stele = 7
+union
+select cl.nume, 'client' as "Functie"
+from client cl, rezervare r, camera c, hotel h4, critic cr4
+where cl.client_id = r.client_id
+and r.camera_id = c.camera_id
+and c.hotel_id = h4.hotel_id 
+and h4.critic_id = cr4.critic_id
+and cr4.nr_stele = 7
+order by 2;
+                            
+                            
+                            

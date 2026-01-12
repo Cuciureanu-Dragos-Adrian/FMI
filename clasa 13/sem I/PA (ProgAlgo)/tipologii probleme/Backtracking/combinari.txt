@@ -1,0 +1,17 @@
+n = int(input('n='))
+m = int(input('m='))
+
+val = [0] * (m + 1)
+
+
+def bkt(k):
+    for i in range(val[k - 1] + 1, n + 1):
+        val[k] = i
+        if val[k] not in val[:k] and val[k] > val[k - 1]:
+            if k != m:
+                bkt(k + 1)
+            else:
+                print(*val[1:])
+
+
+bkt(1)

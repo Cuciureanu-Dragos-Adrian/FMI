@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .patrat{
+            width: 50px;
+            height: 50px;
+            border: 2px black solid;
+            background-color: green;
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script>
+        function rndminmax(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min; //nr random intre min si max
+        }
+
+        window.onload=function(){
+            var n = Math.floor(Math.random()*6 + 5);
+
+            for(let i=0;i<n;i++)
+            {
+                var pt = document.createElement("div");
+                pt.innerHTML = "div" + (i+1);
+
+                pt.className = "patrat";
+
+                document.body.appendChild(pt);
+
+                pt.style.position="relative";
+
+                var left = parseInt(window.getComputedStyle(pt).left);
+
+                pt.style.left = left + 0 + "px";
+                
+                pt.onclick = function(event){
+                    this.style.left = (parseInt(this.style.left)+10)+"px";
+                    event.stopPropagation();
+                }
+            }
+
+            document.body.onclick=function(event){
+                var rand=rndminmax(0,n);
+                var patrate=document.getElementsByClassName("patrat");
+                
+                patrate[rand].style.position="absolute";
+                patrate[rand].style.left=event.clientX + "px";
+                patrate[rand].style.top=event.clientY + "px";                
+            }
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

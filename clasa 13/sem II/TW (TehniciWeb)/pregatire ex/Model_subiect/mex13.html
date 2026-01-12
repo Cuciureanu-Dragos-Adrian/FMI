@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        
+        window.onload=function(){
+
+            var input = document.getElementById("numar");
+            
+            if(localStorage.getItem("ceva")){
+                input.value = localStorage.getItem("ceva");
+            }
+
+        window.onkeydown=function(event){
+            if(event.key == "s"){
+
+                window.onkeydown=null;
+                var paragrafe = document.getElementsByTagName("p");
+                var nrinit = paragrafe.length;
+
+                var c=setInterval(function(){
+                    var x;
+                    for(p of paragrafe)
+                    {
+                        if(p.innerHTML.split(" ").length > parseInt(input.value))
+                        {
+                            x=p;
+                            break;
+                        }
+                    }
+                    if(x)
+                    {
+                        console.log(x);
+                        document.body.removeChild(x);
+                    }
+                    else 
+                    {
+                        clearInterval(c);
+                        localStorage.setItem("ceva", nrinit-paragrafe.length);
+                    }
+                }, 1000);
+            }
+        }
+    }
+
+    </script>
+
+</head>
+<body>
+    
+    <input id="numar" type="text">
+
+    <p>Azi este o zi cu soare</p>
+    <p>Azi este o zi calduroasa</p>
+    <p>Azi este marti</p>
+    <p>Azi este o zi cu soare</p>
+    <p>Azi este o zi foarte calda</p>
+    <p>Azi este o zi cu soare</p>
+    <p>Azi este o zi</p>
+    <p>Azi</p>
+    <p>O zi cu soare</p>
+    <p>Azi este o zi cu soare</p>    
+
+</body>
+</html>

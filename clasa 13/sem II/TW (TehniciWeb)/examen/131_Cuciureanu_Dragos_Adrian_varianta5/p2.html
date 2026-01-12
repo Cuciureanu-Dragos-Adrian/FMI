@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function rng(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; 
+            //rng intre min si max inclusiv la ambele capete
+        }
+
+        window.onload=function(){
+            var n = rng(12, 17);
+
+            for(let i = 0 ; i < n ; i++)
+            {
+                var elem = document.createElement("li");
+                elem.innerHTML = "item " + i;
+
+                document.body.appendChild(elem);
+                
+                elem.onclick = function(event){
+                    if(this.innerHTML.charAt(this.innerHTML.length - 1)%2 == 0){
+                        var t = document.createElement("b");
+
+                        t.innerHTML = "element par ";
+                        t.style.color = "purple";
+
+                        this.insertBefore(t, this.firstChild);
+
+                        t.onclick = function(event){
+                            this.remove();
+                            event.stopPropagation();
+                        }
+                    }
+                    else{
+                        var t = document.createElement("b");
+
+                        t.innerHTML = "element impar ";
+                        t.style.color = "purple";
+
+                        this.insertBefore(t, this.firstChild);
+
+                        t.onclick = function(event){
+                            this.remove();
+                            event.stopPropagation();
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,16 @@
+def cautare_binara(t, x, st, dr):
+    if st > dr:
+        return -1
+    mij = (st + dr) // 2
+    if x == t[mij]:
+        return mij
+    elif x < t[mij]:
+        return cautare_binara(t, x, st, mij - 1)
+    else:
+        return cautare_binara(t, x, mij + 1, dr)
+
+
+xs = [int(x) for x in input('sir=').split()]
+elem = int(input('element='))
+
+print(cautare_binara(xs, elem, 0, len(xs) - 1))

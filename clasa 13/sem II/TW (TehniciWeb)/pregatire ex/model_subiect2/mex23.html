@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script>
+    window.onload=function(){
+
+        document.getElementById("culoare").onchange=function(){
+            localStorage.setItem("culoare",document.getElementById("culoare").value);
+        }
+
+        if(localStorage.getItem("culoare")){
+            document.body.style.backgroundColor=localStorage.getItem("culoare");
+        }
+
+        var x=0;
+        var c;
+
+        window.onkeydown=function(event){
+            if(event.key >= "0" && event.key <= "9"){
+                x++;
+                if(x==1)
+                    {
+                        var nr = parseInt(event.key)%2;
+                        var butoane = document.getElementsByTagName("button");
+
+                        c=setInterval(function(){
+                            butoane[nr].style.backgroundColor = document.getElementById("culoare").value;
+                            nr+=2;
+                    
+                        }, 1000);
+                    }
+                else 
+                    {
+                        clearInterval(c);
+                        var butoane = document.querySelectorAll("button");
+
+                        for(b of butoane){
+                            if(!b.style.backgroundColor){
+                                document.body.removeChild(b);
+                            }
+                        }
+                    }
+                
+            }
+        }
+    }
+</script>
+
+</head>
+<body>
+    <input type="text" id="culoare"/>
+    <button>0</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+</body>
+</html>

@@ -1,0 +1,36 @@
+fisier = open('input.txt')
+
+def comp (lista):
+    return lista[1]
+
+spectacole = []
+idx = 1
+for linie in fisier:
+    sp = linie.split('-')
+    spectacole.append((idx, sp[0].strip(), sp[1].strip()))
+    idx += 1
+
+spectacole.sort(key=comp)
+# print (spectacole)
+
+sala = [spectacole[0]]
+lista = [sala]
+# print (lista)
+
+for i in range (1, len(spectacole)):
+    pus = 0
+    for sali in lista:
+        if spectacole[i][1] >= sali[len(sali)-1][2] and pus == 0:
+            sali.append(spectacole[i])
+            pus = 1
+    if pus == 0 :
+        sala = [spectacole[i]]
+        lista.append(sala)
+
+idx = 1
+for sali in lista:
+    print('Sala ', idx,':', sep='')
+    for sp in sali:
+        print (sp[1], '-',sp[2], ' Spectacolul ', sp[0] , sep='')
+    print()
+    idx += 1

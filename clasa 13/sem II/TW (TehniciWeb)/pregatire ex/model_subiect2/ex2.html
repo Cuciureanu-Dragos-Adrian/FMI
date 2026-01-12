@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8"/>
+	<title>Exercitiul 3</title>
+	<style>
+	.patrat{
+		 border:3px solid black;
+		 width:100px;
+		 height:100px;
+		 background-color:pink;
+		 }
+
+	</style>
+	<script>
+
+		function rndminmax(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min; //nr random intre min si max
+}
+
+    window.onload = function(){
+
+    var n=rndminmax(5,10);
+		for(var i=0;i<n;i++)
+		{
+		var div=document.createElement("div");
+     div.className="patrat"; //div.classList.add("patrat")
+     div.innerHTML="Div"+(i+1);
+     div.style.position="relative";
+     div.style.left="0px";
+		 var stil=window.getComputedStyle(div);
+     document.body.appendChild(div);
+
+     div.onclick = function(event){
+                             this.style.left= (parseInt(this.style.left) + 10) + "px";
+														 if(!this.style.width) {this.style.width= parseInt(stil.width) + 20 + "px";}
+														 else {this.style.width= parseInt(this.style.width) + 20 + "px";}
+														 if(!this.style.height) {this.style.height= parseInt(stil.height) + 20 + "px";}
+														else {this.style.height= parseInt(this.style.height) + 20 + "px";}
+
+                             event.stopPropagation();
+                            }
+
+}
+   document.body.onclick=function(event){
+		// alert(event.clientX + ',' + event.clientY);
+   	var p=rndminmax(0,n-1);
+   	var divuri=document.getElementsByClassName("patrat");
+   	divuri[p].style.position="absolute";
+   	divuri[p].style.left=event.clientX + "px";
+   	divuri[p].style.top=event.clientY + "px";
+}
+}
+    </script>
+
+	</head>
+	<body>
+
+	</body>
+</html>

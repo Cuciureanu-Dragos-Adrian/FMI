@@ -1,0 +1,53 @@
+.resume-title{
+    margin-top: 60px;
+    font-family: "Open Sans";
+    size: 36px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.resume-subtitle{
+    line-height: 25px;
+    font-family: "Open Sans";
+    size: 21px;
+    font-weight: 700;
+    width: 50%;
+    margin: 0;
+}
+
+p{
+    line-height: 25px;
+    font-family: "Lato";
+    size: 16px;
+}
+
+.resume-date{
+    margin-top: -2%;
+    font-family: "Lato";
+    size: 12px;
+    font-weight: 700;
+    background-color: #5bc0de;
+    color: white;
+    display: inline;
+    float: right;
+}
+
+.skills{
+    padding: 0;
+    margin-bottom: 36px;
+    list-style-type: none;
+}
+
+.skills-item{
+    font-family: "Lato";
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.resume-aside{
+    border-left: 1px solid #f1f1f1;
+    margin-left: 15px;
+    padding-left: 20px;
+    width: 30%;
+}

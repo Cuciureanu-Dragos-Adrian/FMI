@@ -1,0 +1,147 @@
+/* nume: Cuciureanu Dragos-Adrian 131
+ * tutore de laborator: Dobrovat Anca Madalina
+ * compilator/IDE: CLion */
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <string>
+#include <limits>
+
+using namespace std;
+
+
+
+class CA {
+public:
+    virtual ~CA() {};
+
+    friend istream &operator>>(istream &, CA &);
+
+    friend ostream &operator<<(ostream &, CA &);
+
+    virtual void citire(istream &) = 0;
+
+    virtual void afisare(ostream &) = 0;
+};
+
+istream &operator>>(istream &in, CA &ca) {
+    ca.citire(in);
+    return in;
+}
+
+ostream &operator<<(ostream &out, CA &ca) {
+    ca.afisare(out);
+    return out;
+}
+
+
+
+//try catch pentru meniu
+int e_int(string aux) {
+    int x;
+    try {
+        x = stoi(aux);
+        return x;
+    }
+    catch (exception &ia) {
+        return -1;
+    }
+}
+
+
+
+//meniu singleton cu lamba expresii
+class Meniu {
+private:
+    Meniu();
+
+    Meniu(const Meniu &) = delete;
+
+    Meniu operator=(const Meniu &) = delete;
+
+    vector<pair<string, function<void()>>> operatii;
+
+    static Meniu *instance;
+
+public:
+    void run();
+
+    static Meniu *get_instance();
+
+    static void delete_instance();
+};
+
+Meniu *Meniu::instance = nullptr;
+
+Meniu::Meniu() {
+    operatii.push_back(make_pair(" adaugare", [&]() {
+        cout << 111;
+    }));
+
+    operatii.push_back(make_pair(" afisare", [&]() {
+        cout << 222;
+    }));
+}
+
+void Meniu::run() {
+    cout << 0 << " incheiere\n";
+
+    for (int i = 1; i <= operatii.size(); i++)
+        cout << i << operatii[i - 1].first << "\n";
+
+    cout << "optiune: ";
+    int optiune;
+    string op;
+    cin >> op;
+
+    while (e_int(op) < 0 || e_int(op) > operatii.size()) {
+        cout << "input invalid, reincercati";
+        cout << "\noptiune: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> op;
+    }
+    optiune = e_int(op);
+
+    while (optiune) {
+        operatii[optiune - 1].second();
+
+        cout << "\n\n";
+        cout << 0 << " incheiere\n";
+
+        for (int i = 1; i <= operatii.size(); i++)
+            cout << i << operatii[i - 1].first << "\n";
+
+        cout << "optiune: ";
+        cin >> op;
+
+        while (e_int(op) < 0 || e_int(op) > operatii.size()) {
+            cout << "input invalid, reincercati";
+            cout << "\noptiune: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> op;
+        }
+        optiune = e_int(op);
+    }
+}
+
+Meniu *Meniu::get_instance() {
+    if (!instance)
+        instance = new Meniu();
+
+    return instance;
+}
+
+void Meniu::delete_instance() {
+    delete instance;
+    instance = nullptr;
+}
+
+
+
+int main() {
+    Meniu::get_instance()->run();
+    Meniu::delete_instance();
+
+    return 0;
+}
