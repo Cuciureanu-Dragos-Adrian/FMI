@@ -1,0 +1,100 @@
+Subpunctul a)
+Folosind UTF-8 putem codifica orice sir de caractere pe unicode.
+
+nume: Cuciureanu Dragoș Adrian
+
+am realizat codificarea in hexa
+pentru a codifica am folosit urmatorul cod in python:
+
+str = "Cuciureanu Dragoș Adrian".encode('utf-8')
+print(str.hex())
+
+Astfel avem:
+C - \x43
+u - \x75
+c - \x63
+i - \x69
+u - \x75
+r - \x72
+e - \x65
+a - \x61
+n - \x6e
+u - \x75
+Space - \x20
+D - \x44
+r - \x72
+a - \x61
+g - \x67
+o - \x6f
+ș - \xc8\x99
+Space - \x20
+A - \x41
+d - \x64
+r - \x72
+i - \x69
+a - \x61
+n - \x6e
+
+
+Astfel codificarea este:
+\x43\x75\x63\x69\x75\x72\x65\x61\x6e\x75\x20\x44\x72\x61\x67\x6f\xc8\x99\x20\x41\x64\x72\x69\x61\x6e
+
+Mai usor de vazut:
+43 75 63 69 75 72 65 61 6e 75 20 44 72 61 67 6f c8 99 20 41 64 72 69 61 6e
+
+
+Subpunctul b)
+Lipim caractere 2 cate 2 (pentru a le face in format de 16 biti, mai putin la litara ș care este deja) si le adunam la suma, daca suma realizeaza overflow adaugam cel mai important bit la suma, iar la final realizam complementul fata de 1.
+
+
+Cu - 01000011 01110101 -> 0100001101110101
+ci - 01100011 01101001 -> 0110001101101001
+ur - 01110101 01110010 -> 0111010101110010
+ea - 01100101 01100001 -> 0110010101100001
+nu - 01101110 01110101 -> 0110111001110101
+ D - 00100000 01000100 -> 0010000001000100
+ra - 01110010 01100001 -> 0111001001100001
+go - 01100111 01101111 -> 0110011101101111
+ș -  11001000 10011001 -> 1100100010011001
+ A - 00100000 01000001 -> 0010000001000001
+dr - 01100100 01110010 -> 0110010001110010
+ia - 01101001 01100001 -> 0110100101100001
+n  - 01101110 00000000 -> 0110111000000000
+
+Cu + ci = 
+0100001101110101 + 0110001101101001 = 10100110 11011110
+
+Cuci + ur = 
+1010011011011110 + 0111010101110010 = 1 00011100 01010000 -> 00011100 01010001
+
+Cuciur + ea = 
+0001110001010001 + 0110010101100001 = 10000001 10110010
+
+Cuciurea + nu = 
+1000000110110010 + 0110111001110101 = 11110000 00100111
+
+Cuciureanu +  D = 
+1111000000100111 + 0010000001000100 = 1 00010000 01101011 -> 00010000 01101100
+
+Cuciureanu D + ra = 
+0001000001101100 + 0111001001100001 = 10000010 11001101
+
+Cuciureanu Dra + go = 
+1000001011001101 + 0110011101101111 = 11101010 00111100
+
+Cuciureanu Drago + ș = 
+1110101000111100 + 1100100010011001 = 1 10110010 11010101 -> 10110010 11010110
+
+Cuciureanu Dragoș +  A = 
+1011001011010110 + 0010000001000001 = 11010011 00010111
+
+Cuciureanu Dragoș Adr + ia = 
+1101001100010111 + 0110100101100001 = 1 00111100 01111000 -> 00111100 01111001
+
+Cuciureanu Dragoș Adria + n =
+0011110001111001 + 0110111000000000 = 10101010 01111001
+
+Numele meu are numar impar de bytes, asa ca am padduit la dreapta cu 00000000 ultima litera, adica n.
+
+Acum realizam complementul fata de 1 al lui 1010101001111001:
+01010101 10000110

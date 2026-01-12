@@ -1,0 +1,231 @@
+algoritmi:
+
+1. dfs
+complexitate: 
+a) lista de adiacenta: O(n + m)
+b) matrice de adiacenta: O(n^2)
+
+2. bfs
+complexitate:
+a) lista de adiacenta: O(n + m)
+b) matrice de adiacenta: O(n^2)
+
+3. prim: mst(apm) dintr un nod
+complexitate:
+a) heap: O(m logn)
+b) vectori: O(n^2)
+
+4. kruskal
+complexitate:
+a) vectori de reprezentanti: O(m logn + n^2)
+b) arbori Union/Find: O(m logn)
+
+5. sortare topologica
+complexitate:
+a) DFS: O(n + m)
+
+6. distanta minima de la un nod la celelalte fara muchii negative: dijkstra
+complexitate:
+a) vectori: O(n^2)
+b) min-heap: O(m logn)
+c) heap fibonacci: O(m + n logn)
+
+7. distanta minima de la un nod la celelalte cu muchii negative fara cicluri: DAG
+complexitate: O(n)
+
+8. distanta minima de la un nod la celelalte cu muchii negative fara cicluri negative: bellmanford
+complexitate:
+a) queue: O (n * m)
+
+9. maxflow
+complexitate:
+a) ford fulkerson: O(m * L-taietura minima) = )(n * m * C-capacitate max)
+b) edmonds karp: O((n + m) * n * m) = O(n * m^2)
+
+10. roy floyd
+complexitate: O(n^3) 
+
+11. euler
+complexitate: O(m)
+
+12. hamilton
+complexitate: O(m * 2^n)
+
+13. maximum bipartite matching
+complexitate:
+a) curs: O(m * n)
+b) hopcroft karp: O(m sqrt(n))
+
+
+Pseudocod:
+1. dfs
+...
+
+
+2. bfs
+...
+
+
+3. prim: mst(apm) dintr un nod
+s - vf start
+initial, T = ({s}, mult. vida)
+pentru i = 1, n - 1
+    alegem o muchie uv cu cost min din Gf a.i. u ap. V(T) si v nu ap. V(T)
+    V(T) = V(T) + {v}
+    E(T) = E(T) + uv
+
+Prim(G, w, s)
+    pentru fiecare u ∈ V executa
+	d[u] = ∞; tata[u] = 0
+    d[s] = 0
+    initializeaza Q cu V
+    cat timp Q ≠ ∅ executa
+	u = extrage varf cu eticheta minima din Q
+	pentru fiecare v adiacent cu u executa
+	    daca v ∈ Q si w(u, v) < d[v] atunci
+		d[v] = w(u, v)
+		tata[v] = u
+		// actualizeaza Q - pentru Q heap
+scrie (u, tata[u]), pentru u ≠ s
+
+
+4. kruskal
+initial, T = (V, mult. vida)
+pentru i = 1, n - 1
+    alegem o muchie uv cu cost min din Gf a.i. sunt din componente conexe dif. (T + uv aciclic)
+    E(T) = E(T) + uv
+
+sorteaza(E)
+for (v=1; v <= n; v++)
+    Initializare(v);
+nrmsel=0
+for (uv ∈ E)
+    if (Reprez(u) != Reprez(v)) {
+        E(T) = E(T) ∪ {uv};
+	Reuneste(u,v);
+	nrmsel = nrmsel + 1;
+	if (nrmsel == n-1)
+	    STOP; // break
+}
+
+void Initializare(int u) {
+    tata[u] = h[u] = 0;
+}
+int Reprez(int u) {
+    while (tata[u] != 0) 
+	u = tata[u];
+    return u;
+}
+
+void Reuneste(int u, int v) {
+    int ru, rv;
+    ru = Reprez(u);
+    rv = Reprez(v);
+    if (h[ru] > h[rv]) 
+	tata[rv] = ru;
+    else {
+	tata[ru] = rv;
+	if (h[ru] == h[rv])
+	    h[rv] = h[rv] + 1;
+    }
+}
+
+
+5.
+cât timp |V(G)|>0 execută
+    alege v cu d-(v)=0
+    adauga v in ordonare
+    G ← G - v
+
+
+6. dijkstra:
+Dijkstra(G, w, s)
+    inițializează mulțimea vârfurilor neselectate Q cu V
+    pentru fiecare u∈V execută
+	d[u] = ∞; tata[u] = 0
+    d[s] = 0
+    cât timp Q≠∅ execută
+	u = extrage vârf cu eticheta d minimă din Q
+	pentru fiecare uv∈E execută
+	    dacă d[u]+w(u,v) < d[v] atunci
+		d[v] = d[u]+w(u,v)
+		tata[v] = u
+
+scrie d, tata
+// scrie drum minim de la s la un vârf t dat folosind tata
+
+
+8.
+pentru fiecare u∈V executa
+    d[u] = infinit; tata[u]=0
+d[s] = 0
+pentru i = 1, |V|-1 executa
+    pentru fiecare uv ∈ E executa
+	daca d[u]+w(u,v)<d[v] atunci
+	    d[v] = d[u]+w(u,v)
+	    tata[v] = u
+
+
+9.
+9.1 Algoritm generic de determinare a unui flux maxim
+Fie f un flux în N (de exemplu, f ≡ 0 fluxul vid: f(e) = 0, ∀ e ∈ E )
+Cât timp există un s-t lanț f-nesaturat P în G
+    determinăm un astfel de lanț P
+    revizuiește fluxul f de-a lungul lanțului P
+returneaza f
+
+9.2 Schema:
+inițializează_flux_nul()
+cât timp (construiește_s-t_lanț_nesat_BF() == true) execută
+    revizuiește_flux_lanț()
+afișează_flux()
+
+
+9.3 revizuiește_flux_lanț():
+fie P s-t lanțul găsit în construiește_s-t_lanț_nesat_BF()
+calculăm i(P)
+pentru fiecare arc e al lanțului P
+    creștem cu i(P) fluxul pe e dacă este arc direct
+    scădem cu i(P) fluxul pe e dacă este arc invers
+
+9.4 construiește_s-t_lanț_nesat_BF()
+pentru v ∈ V execută
+    tata[v] ← 0; viz[v] ← 0
+coada C ← ∅
+adaugă(s, C)
+viz[s] ← 1
+cât timp C ≠ ∅ execută
+    i ← extrage(C)
+    pentru ij ∈ E execută // arc direct
+	dacă viz[j] = 0 și c(ij) > f(ij) atunci
+	    adaugă(j, C)
+	    viz[j] ← 1
+	    tata[j] ← i
+	    dacă j = t atunci
+		STOP și returnează true (1)
+	pentru ji ∈ E execută // arc invers
+	    dacă viz[j] = 0 și f(ji) > 0 atunci
+		adaugă(j, C)
+		viz[j] ← 1
+		tata[j] ← -i
+		dacă j = t atunci
+		    STOP și returnează true (1)
+returnează false (0)
+
+
+
+
+Teorema poliedrală a lui EULER:
+Fie G = (V, E) un graf planar conex și M = (V, E, F) o hartă a lui. 
+Are loc relația:
+    |V| - |E| + |F| = 2
+
+
+Flux:
+Fluxul este maxim - în mulțimea de arce evidențiată, toate arcele au 
+flux=capacitate și nu putem construi drumuri de la s la t care nu conțin 
+arce din această mulțime (s-t tăietură).
+
+Fie N o rețea.
+O tăietură K se numește tăietură minimă în N dacă
+c(K) = min { c(K) | K este tăietură în N }

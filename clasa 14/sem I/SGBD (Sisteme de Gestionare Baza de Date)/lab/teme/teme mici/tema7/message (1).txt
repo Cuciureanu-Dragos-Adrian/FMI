@@ -1,0 +1,255 @@
+set serveroutput on;
+-- nu am "tratat toate exceptiile" pentru ca nu stiu ce exceptii ar trebui sa tratez
+CREATE OR REPLACE PACKAGE tema7
+IS
+    --a
+    FUNCTION get_id_job(nume jobs.job_title%TYPE) RETURN jobs.JOB_ID%TYPE;
+    FUNCTION get_id_dep(nume departments.DEPARTMENT_NAME%TYPE) RETURN departments.DEPARTMENT_ID%TYPE;
+    FUNCTION get_id_angajat(nume employees.LAST_NAME%TYPE, prenume employees.first_name%TYPE) RETURN employees.EMPLOYEE_ID%TYPE;
+    FUNCTION get_salariu_minim(id_dep employees.department_id%TYPE, id_job employees.job_id%TYPE) RETURN employees.SALARY%TYPE;
+    PROCEDURE adauga_angajat(nume employees.last_name%TYPE, prenume employees.first_name%TYPE, telefon employees.phone_number%TYPE, email employees.email%TYPE);
+    --b
+    PROCEDURE muta_angajat(nume employees.last_name%TYPE, prenume employees.first_name%TYPE, nume_departament departments.department_id%TYPE, nume_job jobs.job_title%TYPE, nume_manager employees.last_name%TYPE, prenume_manager employees.first_name%TYPE);
+    --c
+    FUNCTION get_nr_subalterni(nume employees.last_name%TYPE, prenume employees.first_name%TYPE) RETURN number;
+    --e
+    PROCEDURE modifica_salariu(nume employees.last_name%TYPE, salariu_nou EMPLOYEES.salary%TYPE);
+    --f
+    CURSOR lista_angajati(id_job employees.job_id%TYPE) IS
+        SELECT *
+        FROM EMPLOYEES
+        WHERE job_id = id_job;
+    --g
+    CURSOR lista_joburi IS
+        SELECT *
+        FROM JOBS;
+    --h
+    PROCEDURE get_lista_joburi_si_angajati;
+END;
+/
+CREATE OR REPLACE PACKAGE BODY tema7
+IS
+    --a
+
+    FUNCTION get_id_job(nume jobs.job_title%TYPE)
+        RETURN jobs.JOB_ID%TYPE IS
+        cod_job jobs.JOB_ID%TYPE;
+    BEGIN
+        SELECT JOB_ID
+        INTO cod_job
+        FROM jobs
+        WHERE JOB_TITLE = nume;
+
+        RETURN cod_job;
+    END;
+
+    FUNCTION get_id_dep(nume departments.DEPARTMENT_NAME%TYPE)
+        RETURN departments.DEPARTMENT_ID%TYPE IS
+        cod_dep departments.DEPARTMENT_ID%TYPE;
+    BEGIN
+        SELECT department_id
+        INTO cod_dep
+        FROM departments
+        WHERE DEPARTMENT_NAME = nume;
+
+        RETURN cod_dep;
+    END;
+
+     FUNCTION get_id_angajat(nume employees.LAST_NAME%TYPE, prenume employees.first_name%TYPE)
+        RETURN employees.EMPLOYEE_ID%TYPE IS
+        cod_manager employees.EMPLOYEE_ID%TYPE;
+    BEGIN
+        SELECT employee_id
+        INTO cod_manager
+        FROM EMPLOYEES
+        WHERE FIRST_NAME = prenume AND LAST_NAME = nume;
+
+        RETURN cod_manager;
+    END;
+
+    FUNCTION get_salariu_minim(id_dep employees.department_id%TYPE, id_job employees.job_id%TYPE)
+        RETURN employees.SALARY%TYPE is
+        minim employees.SALARY%TYPE;
+    begin
+        select min(salary) into minim from employees where department_id = id_dep and job_id = id_job;
+        return minim;
+    end;
+
+    PROCEDURE adauga_angajat(nume employees.last_name%TYPE,
+                             prenume employees.first_name%TYPE,
+                             telefon employees.phone_number%TYPE,
+                             email employees.email%TYPE)
+    IS
+        emp_id employees.EMPLOYEE_ID%TYPE;
+        emp_hd employees.HIRE_DATE%TYPE;
+        emp_job_id employees.JOB_ID%TYPE;
+        emp_dep_id employees.DEPARTMENT_ID%TYPE;
+        emp_manager_id employees.MANAGER_ID%TYPE;
+        emp_comission employees.COMMISSION_PCT%TYPE;
+        emp_salary employees.SALARY%TYPE;
+    BEGIN
+        -- nu stiu cum se face cu secventa
+        SELECT MAX(employee_id) + 1
+        INTO emp_id
+        FROM employees;
+
+        emp_hd := sysdate;
+        emp_comission := 0;
+        emp_job_id := get_id_job('Sales Manager');
+        emp_dep_id := get_id_dep('Accounting');
+        emp_salary := get_salariu_minim(emp_dep_id, emp_job_id);
+        emp_manager_id := get_id_angajat('Mourgos', 'Kevin');
+
+        insert into employees (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id)
+        values (emp_id, nume, prenume, email, telefon, emp_hd, emp_job_id, emp_salary, emp_comission, emp_manager_id, emp_dep_id);
+    END;
+
+    --b
+    PROCEDURE muta_angajat(nume employees.last_name%TYPE,
+                           prenume employees.first_name%TYPE,
+                           nume_departament departments.department_id%TYPE,
+                           nume_job jobs.job_title%TYPE,
+                           nume_manager employees.last_name%TYPE,
+                           prenume_manager employees.first_name%TYPE)
+    IS
+        emp_id employees.employee_id%TYPE;
+        emp_manager_id employees.MANAGER_ID%TYPE;
+        emp_department_id employees.DEPARTMENT_ID%TYPE;
+        emp_job_id employees.job_id%TYPE;
+        emp_salary employees.salary%TYPE;
+        emp_new_salary employees.salary%TYPE;
+        emp_hd employees.hire_date%TYPE;
+        emp_comission employees.COMMISSION_PCT%TYPE;
+    BEGIN
+        emp_id := get_id_angajat(nume, prenume);
+        emp_department_id := get_id_dep(nume_departament);
+        emp_manager_id := get_id_angajat(nume_manager, prenume_manager);
+        emp_job_id := get_id_job(nume_job);
+        emp_new_salary := get_salariu_minim(emp_department_id, emp_job_id);
+
+        SELECT SALARY
+        INTO emp_salary
+        FROM EMPLOYEES
+        WHERE EMPLOYEE_ID = emp_id;
+
+        SELECT COMMISSION_PCT
+        INTO emp_comission
+        FROM EMPLOYEES
+        WHERE DEPARTMENT_ID = emp_department_id
+        AND JOB_ID = emp_job_id;
+
+        IF(emp_salary < emp_new_salary) THEN
+            emp_salary := emp_new_salary;
+        END IF;
+
+        emp_hd := sysdate;
+
+        UPDATE EMPLOYEES
+        SET DEPARTMENT_ID = emp_department_id,
+            JOB_ID = emp_job_id,
+            SALARY = emp_salary,
+            COMMISSION_PCT = emp_comission,
+            HIRE_DATE = emp_hd
+        WHERE EMPLOYEE_ID = emp_id;
+
+        -- se "finalizeaza" jobul vechi
+        UPDATE JOB_HISTORY
+        SET END_DATE = sysdate
+        WHERE EMPLOYEE_ID = emp_id
+        AND END_DATE = null;
+
+        -- se adauga noul job in history
+        INSERT INTO JOB_HISTORY(employee_id, start_date, end_date, job_id, department_id)
+        VALUES (emp_id, sysdate, null, emp_job_id, emp_department_id);
+    END;
+
+    --c
+    FUNCTION get_nr_subalterni(nume employees.last_name%TYPE, prenume employees.first_name%TYPE)
+        RETURN number IS
+        numar_subalterni number := 0;
+        id_angajat employees.employee_id%TYPE;
+    BEGIN
+        id_angajat := get_id_angajat(nume, prenume);
+        FOR i in (SELECT last_name AS nume, first_name AS prenume FROM employees WHERE manager_id = id_angajat)
+        LOOP
+            numar_subalterni := numar_subalterni + 1 + get_nr_subalterni(i.nume, i.prenume);
+        END LOOP;
+
+        RETURN numar_subalterni;
+    END;
+
+    --d nu inteleg cerinta
+
+    --e
+    PROCEDURE modifica_salariu(nume employees.last_name%TYPE, salariu_nou EMPLOYEES.salary%TYPE)
+    IS
+        numar_aparitii number;
+        emp_id EMPLOYEES.employee_id%TYPE;
+        emp_job_id EMPLOYEES.job_id%TYPE;
+        salariu_minim JOBS.MIN_SALARY%TYPE;
+        salariu_maxim JOBS.MAX_SALARY%TYPE;
+    BEGIN
+        SELECT count(*)
+        INTO numar_aparitii
+        FROM EMPLOYEES
+        where LAST_NAME = nume;
+
+        IF (numar_aparitii = 0) THEN
+            dbms_output.PUT_LINE('Nu exista angajati cu acest nume!');
+
+        ELSIF(numar_aparitii = 1) THEN
+            dbms_output.PUT_LINE('Mai multi angajati au acest nume!');
+
+            FOR i IN (Select first_name, last_name FROM employees WHERE last_name = nume)
+            LOOP
+                dbms_output.PUT_LINE(i.last_name || ' ' || i.first_name);
+            END LOOP;
+
+        ELSE
+            SELECT EMPLOYEE_ID, JOB_ID
+            INTO emp_id, emp_job_id
+            FROM EMPLOYEES
+            WHERE LAST_NAME = nume;
+
+            SELECT MIN_SALARY, MAX_SALARY
+            INTO salariu_minim, salariu_maxim
+            FROM JOBS
+            WHERE JOB_ID = emp_job_id;
+
+            IF(salariu_nou > salariu_maxim OR salariu_nou < salariu_minim) THEN
+                dbms_output.put_line('Salariul este in afara limitelor jobului');
+            ELSE
+                UPDATE EMPLOYEES
+                SET salary = salariu_nou
+                WHERE EMPLOYEE_ID = emp_id;
+            END IF;
+
+        END IF;
+    END;
+
+    --h
+    PROCEDURE get_lista_joburi_si_angajati IS
+        numar_aparitii number;
+        stadiu_job varchar2(50);
+    BEGIN
+        FOR job IN lista_joburi
+        LOOP
+            DBMS_OUTPUT.PUT_LINE('Se afiseaza jobul ' || job.JOB_TITLE);
+
+            FOR angajat in lista_angajati(job.JOB_ID)
+            LOOP
+                SELECT count(*)
+                INTO numar_aparitii
+                FROM JOB_HISTORY
+                WHERE EMPLOYEE_ID = angajat.EMPLOYEE_ID;
+
+                IF(numar_aparitii > 1) THEN
+                    stadiu_job := ' a mai avut acest job in trecut';
+                ELSE
+                    stadiu_job := ' nu a mai avut acest job in trecut';
+                END IF;
+                DBMS_OUTPUT.PUT_LINE(angajat.LAST_NAME || ' ' || angajat.FIRST_NAME || stadiu_job);
+            END LOOP;
+        END LOOP;
+    END;
+END;

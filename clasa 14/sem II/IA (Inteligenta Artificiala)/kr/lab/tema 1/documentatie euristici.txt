@@ -1,0 +1,41 @@
+Euristica 1 - banala:
+Pentru fieacare soarece consideram ca mai are o mutare pana la starea de final, daca nu este deja intr o stare finala, deci aceasta formula se rezuma la 1 pentru toti soarecii ce sunt in circuit si 0 pentru restul. Astfel ajungem sa obsercam ca h pentru nodul actual este len(soareci).
+
+Euristica 2 - admisibila:
+Consideram ca avem cazul urmator:
+
+s0 .  .
+.  .  .
+.  .  E
+
+Daca nu avem niciun perete in drum cel mai scurt drum al unui soarece pana la o iesire este suma diferentei coordonatelor intre soarece si cea mai apropiata iesire.
+Adica, poentru cazul de mai sus s0(0, 0) si E(2, 2) cel mai scurt drum este de abs(0-2) + abs(0-2) = 4:
+
+s0 1  2
+.  .  3
+.  .  4
+
+Euristica 3 - admisibila:
+Pentru aceasta euristica incercam sa calculam cat ar fi distatna daca ar fi un perete in drum.
+Pentru cazurile urmatoare:
+
+.  .  .        .  .  .
+s0 .  E        s0 1  2  
+
+.  .  .        1  2  3
+s0 #  E	       s0 #  4
+
+
+Iar pentru cazul:
+
+.  .  .  .     1  2  3  4
+s0 #  #  E     s0 #  #  5
+
+
+Observam ca daca adaugam un perete la un perete deja existent nu se modifica distanta fata de tabla in care nu ar fi fost peretele, iar fiecare cluster de pereti trebuie ocolit, deci fiecare cluster de pereti adauga 2 la drum.
+Deci h o sa fie numarul de clusteri de pereti din drum * 2 plus suma diferentei coordonatelor ca la euristica 2.
+
+Euristica 4 - inadmisibila:
+Tehnic, pentru un soarece oriunde s ar afla pe harta ar trebui sa poata sa ajung la o iesire in mai putin de coloane * linii miscari.
+Si daca generalizam ca pe fiecare casuta ar fi un soarece cu aceasta proprietate ajungem la h = (coloane * linii) ^ 2, pentru euristica inadmisibila.
+

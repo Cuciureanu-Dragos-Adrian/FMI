@@ -1,0 +1,25 @@
+--10
+select m.last_name as "Prenume", m.first_name as "Nume", r.copy_id as "Cod", t.title as "Titlu", count(*) as "Numar"
+from member m, rental r, title t
+where m.member_id = r.member_id
+and r.title_id = t.title_id
+group by m.last_name, m.first_name, r.copy_id, t.title,r.title_id
+order by m.last_name, m.first_name;
+
+
+--12.a
+select extract(day from r.book_date) as "Data", count(*) as "Imprumuturi"
+from rental r
+where extract (month from book_date) = extract (month from sysdate)
+and extract (day from r.book_date) between 1 and 2
+group by r.book_date
+order by r.book_date;
+
+--12.b
+select extract(day from r.book_date) as "Data", count(*) as "Imprumuturi"
+from rental r
+where extract (month from r.book_date) = extract(month from sysdate) 
+group by r.book_date 
+order by r.book_date;
+
+--12.c cel mai probabil se face cu cereri ierarhice

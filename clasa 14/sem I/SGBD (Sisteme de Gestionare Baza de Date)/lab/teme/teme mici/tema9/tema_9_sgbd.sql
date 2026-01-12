@@ -1,0 +1,303 @@
+set serveroutput on;
+set verify off;
+
+drop table error_dac;
+drop table emp_dac;
+drop table dept_dac;
+
+create table error_dac
+(
+cod number,
+mesaj varchar2(100)
+);
+create table emp_dac as select * from employees;
+create table dept_dac as select * from departments;
+create table loc_dac as select * from locations;
+
+
+--1.1 definirea unei exceptii de catre utilizator
+accept v_msj prompt 'introduceti un numar: '
+
+declare
+    v_cod number;
+    v_mesaj varchar2(100);
+    x number := &v_msj;
+    exceptie exception;
+    
+begin
+    if x < 0 then 
+        raise exceptie;
+    else 
+        x := sqrt(x);
+        
+        dbms_output.put_line(x);
+    end if;
+    
+    exception
+        when exceptie then 
+            v_cod := -20001;
+            v_mesaj := 'numarul dat este mai mic decat 0';
+            
+            insert into error_dac
+            values (v_cod, v_mesaj);
+end;
+/
+
+select *
+from error_dac;
+
+
+--1.2 captarea erorii interne a sistemului
+accept v_msj prompt 'introduceti un numar: '
+
+declare
+    v_cod number;
+    v_mesaj varchar2(100);
+    x number := &v_msj;
+    
+begin
+    x := sqrt(x);
+        
+    dbms_output.put_line(x);
+    
+    exception
+        when value_error then 
+            v_cod := sqlcode;
+            v_mesaj := substr(sqlerrm,1,100);
+            
+            insert into error_dac
+            values (v_cod, v_mesaj);
+end;
+/
+
+
+
+
+--2
+accept sal prompt 'introduceti un salariu: '
+
+declare
+    salariu emp_dac.last_name%type := &sal;
+    nume emp_dac.last_name%type;
+    
+begin
+    select e.last_name
+    into nume
+    from emp_dac e
+    where e.salary = salariu;
+        
+    dbms_output.put_line(nume);
+    
+    exception
+        when no_data_found then 
+            dbms_output.put_line('nu exista salariati care sa castige acest salariu');
+            
+        when too_many_rows then
+            dbms_output.put_line('exista mai mul?i salariati care castiga acest salariu');
+ 
+end;
+/
+
+
+
+
+--3
+accept id prompt 'introduceti codul unui departament: '
+accept id_nou prompt 'introduceti noul cod al departamentului: '
+
+declare
+    id_departament dept_dac.department_id%type := &id;
+    id_departament_nou dept_dac.department_id%type := &id_nou;
+    nr_angajati number;
+    exceptie exception;
+    
+begin
+    select count(*)
+    into nr_angajati
+    from emp_dac e
+    where e.department_id = id_departament;
+        
+    if nr_angajati > 0 then
+        raise exceptie;
+    else
+        update dept_dac
+        set department_id = id_departament_nou
+        where department_id = id_departament;
+    end if;
+    
+    exception
+        when exceptie then 
+            dbms_output.put_line('lucreaza angajati in acest departament');
+ 
+end;
+/
+
+rollback;
+
+
+
+
+--4
+accept minv prompt 'introduceti valoarea inferioara: '
+accept maxv prompt 'introduceti valoarea superioara: '
+
+declare
+    min_value number := &minv;
+    max_value number := &maxv;
+    temp number;
+    nr_angajati number;
+    nume_departament dept_dac.department_name%type;
+    exceptie exception;
+    
+    
+begin
+    if min_value > max_value then
+        temp := min_value;
+        min_value := max_value;
+        max_value := temp;
+    end if;
+
+    select count(*)
+    into nr_angajati
+    from emp_dac e
+    where e.department_id = 10;
+
+    if nr_angajati between min_value and max_value then
+        select d.department_name
+        into nume_departament
+        from dept_dac d
+        where d.department_id = 10;
+            
+        dbms_output.put_line(nume_departament);
+    else
+        raise exceptie;
+    end if;
+    
+    exception
+        when exceptie then 
+            dbms_output.put_line('numarul de angajati nu este in interval');
+ 
+end;
+/
+
+
+
+
+--5
+accept id prompt 'introduceti codul unui departament: '
+accept nume prompt 'introduceti noul nume al departamentului: '
+
+declare
+    id_departament dept_dac.department_id%type := &id;
+    nume_departament dept_dac.department_name%type := '&nume';
+    
+begin
+    update dept_dac
+        set department_name = nume_departament
+        where department_id = id_departament;
+    
+    if sql%notfound then
+        raise_application_error(-20001, 'departamentul nu exista');     
+    end if;
+end;
+/
+
+rollback;
+
+
+
+
+--6.1
+accept oras prompt 'introduceti orasul unui departamentului: '
+accept id prompt 'introduceti codul unui departament: '
+
+declare
+    nume_oras loc_dac.city%type := '&oras';
+    id_departament dept_dac.department_id%type := &id;
+    nume_departament1 dept_dac.department_name%type;
+    nume_departament2 dept_dac.department_name%type;
+    nr_comanda number := 1;
+    
+begin
+    select d.department_name
+    into nume_departament1
+    from dept_dac d, loc_dac l
+    where d.location_id = l.location_id
+    and lower(l.city) = lower(nume_oras);
+
+    nr_comanda := nr_comanda + 1;
+    
+    select d.department_name
+    into nume_departament2
+    from dept_dac d
+    where d.department_id = id_departament;
+    
+    dbms_output.put_line('departamentul de la comanda 1: ' || nume_departament1);
+    dbms_output.put_line('departamentul de la comanda 2: ' || nume_departament2);
+    
+    exception
+        when no_data_found then 
+            dbms_output.put_line('comanda ' || nr_comanda || ' a determinat eroarea');
+            
+        when too_many_rows then
+            dbms_output.put_line('comanda ' || nr_comanda || ' a determinat eroarea');
+end;
+/
+
+
+--6.2
+accept oras prompt 'introduceti orasul unui departamentului: '
+accept id prompt 'introduceti codul unui departament: '
+
+declare
+    nume_oras loc_dac.city%type := '&oras';
+    id_departament dept_dac.department_id%type := &id;
+    nume_departament1 dept_dac.department_name%type;
+    nume_departament2 dept_dac.department_name%type;
+    nr_comanda number := 1;
+    nr_dep1 number;
+    nr_dep2 number;
+    exceptie exception;
+    
+begin
+    select count(*)
+    into nr_dep1
+    from dept_dac d, loc_dac l
+    where d.location_id = l.location_id
+    and lower(l.city) = lower(nume_oras);
+
+    if nr_dep1 <> 1 then
+        raise exceptie;
+    end if;
+
+    select d.department_name
+    into nume_departament1
+    from dept_dac d, loc_dac l
+    where d.location_id = l.location_id
+    and lower(l.city) = lower(nume_oras);
+
+    nr_comanda := nr_comanda + 1;
+    
+    select count(*)
+    into nr_dep2
+    from dept_dac d
+    where d.department_id = id_departament;
+    
+    if nr_dep2 <> 1 then
+        raise exceptie;
+    end if;
+    
+    select d.department_name
+    into nume_departament2
+    from dept_dac d
+    where d.department_id = id_departament;
+    
+    dbms_output.put_line('departamentul de la comanda 1: ' || nume_departament1);
+    dbms_output.put_line('departamentul de la comanda 2: ' || nume_departament2);
+    
+    exception
+        when exceptie then 
+            dbms_output.put_line('comanda ' || nr_comanda || ' a determinat eroarea');
+end;
+/
+

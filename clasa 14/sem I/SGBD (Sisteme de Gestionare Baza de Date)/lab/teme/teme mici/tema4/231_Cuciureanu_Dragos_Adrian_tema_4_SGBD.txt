@@ -1,0 +1,492 @@
+set serveroutput on;
+
+-- 1
+declare
+    type vector is varray(5) of emp_dac.employee_id%type;
+    ids vector;
+    salariu_vechi number;
+    salariu_nou number;
+begin
+    select employee_id bulk collect into ids
+    from (select employee_id 
+        from emp_dac 
+        where commission_pct is null 
+        order by salary)
+    where rownum <= 5;
+    
+    for i in 1..5 loop
+        select salary into salariu_vechi 
+        from emp_dac 
+        where employee_id = ids(i);
+        
+        update emp_dac 
+        set salary = salary * 1.05 
+        where employee_id = ids(i);
+        
+        select salary into salariu_nou 
+        from emp_dac 
+        where employee_id = ids(i);
+        
+        DBMS_OUTPUT.put_line('Salariu vechi: ' || salariu_vechi || ', Salariu nou: ' || salariu_nou);
+    end loop;
+    rollback;
+end;
+
+select salary 
+from emp_dac
+order by 1;
+
+
+
+--2
+drop table excursie_dac;
+
+
+create table excursie_dac (
+    cod_excursie number(20),
+    denumire varchar2(20),
+    status varchar2(20)
+);
+
+create or replace type tip_orase_dac is table of varchar2(20);
+/
+alter table excursie_dac
+add (orase tip_orase_dac)
+nested table orase store as tabel_orase_dac;
+
+
+--a 5 inserari in tabel
+begin
+    for i in 1..5 loop
+        insert into excursie_dac (cod_excursie, denumire, orase, status) values (i, 'Excursie '|| i, tip_orase_dac('Oras1', 'Oras2'), 'disponibila');
+    end loop;
+end;
+
+    
+--b.1 adaugati un oras nou, care va fi ultimul din lista
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+
+    orase_curente.extend();
+    orase_curente(orase_curente.count) := 'Oras_Nou';
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+
+
+--b.2 adaugati un oras nou, care va fi al doilea din lista
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    orase_curente.extend();
+    
+    for i in reverse 2..orase_curente.count loop
+        orase_curente(i) := orase_curente(i-1);
+    end loop;
+    
+    orase_curente(2) := 'Oras_Nou2';
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+
+
+--b.3 inversati ordinea a 2 orase specificate
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    oras_vizitat1 varchar2(20);
+    oras_vizitat2 varchar2(20);
+    id_oras_1 number(20) := 1;
+    id_oras_2 number(20) := 1;
+    aux varchar2(20);
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    oras_vizitat1 := '&oras_vizitat1';
+    oras_vizitat2 := '&oras_vizitat2';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    for i in 1..orase_curente.count loop
+        if orase_curente(i) = oras_vizitat1 then
+            id_oras_1 := i;
+        end if;
+        if orase_curente(i) = oras_vizitat2 then
+            id_oras_2 := i;
+        end if;
+    end loop;
+    
+    aux := orase_curente(id_oras_1);
+    orase_curente(id_oras_1) := orase_curente(id_oras_2);
+    orase_curente(id_oras_2) := aux;
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+    
+    
+--b.4 eliminati un oras specificat
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    oras_specificat varchar2(20);
+    pozitie_sters number(20);
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    oras_specificat := '&oras_specificat';
+    for i in 1..orase_curente.count loop
+        if orase_curente(i) = oras_specificat then 
+            pozitie_sters := i;
+        end if;
+    end loop;
+    
+    for i in reverse pozitie_sters..(orase_curente.count - 1) loop
+        orase_curente(i) := orase_curente(i + 1);
+    end loop;
+    
+    orase_curente.trim;
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+    
+    
+--c pentru o excursie afisati numarul e orase si numele lor
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    dbms_output.put_line('Excursia cu codul ' || cod_excursie_specificat || ' are ' || orase_curente.count || ' orase:');
+    
+    for i in 1..orase_curente.count loop
+        dbms_output.put_line(orase_curente(i));
+    end loop;
+end;
+
+    
+--d pentru fiecare excursie afisati orasele vizitate
+declare
+    type tbl is table of excursie_dac.cod_excursie%type;
+    
+    orase_curente excursie_dac.orase%type;
+    excursii tbl;
+    
+begin
+    select cod_excursie bulk collect into excursii 
+    from excursie_dac;
+    
+    for i in 1..excursii.count loop
+        select orase into orase_curente
+        from excursie_dac
+        where cod_excursie = excursii(i);
+        
+        dbms_output.put_line('Excursia ' || excursii(i) || ' cu orasele: ');
+        
+        for i in 1..orase_curente.count loop
+            dbms_output.put_line(orase_curente(i));
+        end loop;
+    end loop;
+end;
+
+
+--e anulati excursiile cu cele mai putine orase vizitate
+declare
+    type tbl is table of excursie_dac.cod_excursie%type;
+    
+    orase_curente excursie_dac.orase%type;
+    excursii tbl;
+    nr_min number(20) := 10000;
+    
+begin
+    select cod_excursie bulk collect into excursii 
+    from excursie_dac;
+    
+    for i in 1..excursii.count loop
+        select orase into orase_curente
+        from excursie_dac
+        where cod_excursie = excursii(i);
+        
+        if nr_min > orase_curente.count then
+            nr_min := orase_curente.count;
+        end if;
+    end loop;
+    
+    for i in 1..excursii.count loop
+        select orase into orase_curente
+        from excursie_dac
+        where cod_excursie = excursii(i);
+        
+        if nr_min = orase_curente.count then
+            update excursie_dac 
+            set status = 'anulata' 
+            where cod_excursie = excursii(i);
+        end if;
+    end loop;
+end;
+    
+    
+select * from excursie_dac;
+
+
+
+
+
+--3
+drop table excursie_dac;
+
+create or replace type tip_orase_dac is varray(20) of varchar2(20);
+/
+create table excursie_dac (
+    cod_excursie number(20),
+    denumire varchar2(20),
+    orase tip_orase_dac,
+    status varchar2(20)
+);
+
+
+--a 5 inserari in tabel
+begin
+    for i in 1..5 loop
+        insert into excursie_dac values (i, 'Excursie '|| i, tip_orase_dac('Oras1', 'Oras2'), 'disponibila');
+    end loop;
+end;
+
+    
+--b.1 adaugati un oras nou, care va fi ultimul din lista
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+
+    orase_curente.extend();
+    orase_curente(orase_curente.count) := 'Oras_Nou';
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+
+
+--b.2 adaugati un oras nou, care va fi al doilea din lista
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    orase_curente.extend();
+    
+    for i in reverse 2..orase_curente.count loop
+        orase_curente(i) := orase_curente(i-1);
+    end loop;
+    
+    orase_curente(2) := 'Oras_Nou2';
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+
+
+--b.3 inversati ordinea a 2 orase specificate
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    oras_vizitat1 varchar2(20);
+    oras_vizitat2 varchar2(20);
+    id_oras_1 number(20) := 1;
+    id_oras_2 number(20) := 1;
+    aux varchar2(20);
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    oras_vizitat1 := '&oras_vizitat1';
+    oras_vizitat2 := '&oras_vizitat2';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    for i in 1..orase_curente.count loop
+        if orase_curente(i) = oras_vizitat1 then
+            id_oras_1 := i;
+        end if;
+        if orase_curente(i) = oras_vizitat2 then
+            id_oras_2 := i;
+        end if;
+    end loop;
+    
+    aux := orase_curente(id_oras_1);
+    orase_curente(id_oras_1) := orase_curente(id_oras_2);
+    orase_curente(id_oras_2) := aux;
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+    
+    
+--b.4 eliminati un oras specificat
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    oras_specificat varchar2(20);
+    pozitie_sters number(20);
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    oras_specificat := '&oras_specificat';
+    for i in 1..orase_curente.count loop
+        if orase_curente(i) = oras_specificat then 
+            pozitie_sters := i;
+        end if;
+    end loop;
+    
+    for i in reverse pozitie_sters..(orase_curente.count - 1) loop
+        orase_curente(i) := orase_curente(i + 1);
+    end loop;
+    
+    orase_curente.trim;
+    
+    update excursie_dac 
+    set orase = orase_curente 
+    where cod_excursie = cod_excursie_specificat;
+end;
+    
+    
+--c pentru o excursie afisati numarul e orase si numele lor
+declare
+    cod_excursie_specificat excursie_dac.cod_excursie%type;
+    orase_curente excursie_dac.orase%type;
+    
+begin
+    cod_excursie_specificat := '&cod_excursie';
+    
+    select orase into orase_curente 
+    from excursie_dac 
+    where cod_excursie = cod_excursie_specificat;
+    
+    dbms_output.put_line('Excursia cu codul ' || cod_excursie_specificat || ' are ' || orase_curente.count || ' orase:');
+    
+    for i in 1..orase_curente.count loop
+        dbms_output.put_line(orase_curente(i));
+    end loop;
+end;
+
+    
+--d pentru fiecare excursie afisati orasele vizitate
+declare
+    type vec is varray(20) of excursie_dac.cod_excursie%type;
+    
+    orase_curente excursie_dac.orase%type;
+    excursii vec;
+    
+begin
+    select cod_excursie bulk collect into excursii 
+    from excursie_dac;
+    
+    for i in 1..excursii.count loop
+        select orase into orase_curente
+        from excursie_dac
+        where cod_excursie = excursii(i);
+        
+        dbms_output.put_line('Excursia ' || excursii(i) || ' cu orasele: ');
+        
+        for i in 1..orase_curente.count loop
+            dbms_output.put_line(orase_curente(i));
+        end loop;
+    end loop;
+end;
+
+
+--e anulati excursiile cu cele mai putine orase vizitate
+declare
+    type vec is varray(20) of excursie_dac.cod_excursie%type;
+    
+    orase_curente excursie_dac.orase%type;
+    excursii vec;
+    nr_min number(20) := 10000;
+    
+begin
+    select cod_excursie bulk collect into excursii 
+    from excursie_dac;
+    
+    for i in 1..excursii.count loop
+        select orase into orase_curente
+        from excursie_dac
+        where cod_excursie = excursii(i);
+        
+        if nr_min > orase_curente.count then
+            nr_min := orase_curente.count;
+        end if;
+    end loop;
+    
+    for i in 1..excursii.count loop
+        select orase into orase_curente
+        from excursie_dac
+        where cod_excursie = excursii(i);
+        
+        if nr_min = orase_curente.count then
+            update excursie_dac 
+            set status = 'anulata' 
+            where cod_excursie = excursii(i);
+        end if;
+    end loop;
+end;
+    
+    
+select * from excursie_dac;
+rollback;

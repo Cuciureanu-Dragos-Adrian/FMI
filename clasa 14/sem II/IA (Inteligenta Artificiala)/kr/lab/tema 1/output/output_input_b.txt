@@ -1,0 +1,269 @@
+----------------BFS----------------
+
+Timpul de gasire pentru solutie: 0 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------DFS----------------
+
+Timpul de gasire pentru solutie: 0 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------DFI----------------
+
+Timpul de gasire pentru solutie: 0 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+----------------Normal A* Type 1----------------
+
+Timpul de gasire pentru solutie: 0 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------Normal A* Type 2----------------
+
+Timpul de gasire pentru solutie: 0 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------Normal A* Type 3----------------
+
+Timpul de gasire pentru solutie: 0 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------Normal A* Type 4----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 1----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 2----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 3----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 4----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------IDA* Type 1----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------IDA* Type 2----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------IDA* Type 3----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+
+----------------IDA* Type 4----------------
+
+Timpul de gasire pentru solutie: 1 milisecunde.
+Lungimea drumului: 1
+Costul total: 0
+Numarul de noduri calculate: 1
+Numarul maxim de noduri din meorie: 1
+
+
+Nodul cu indexul 0:
+
+s0  p0  E   
+
+
+
+
+----------------
+

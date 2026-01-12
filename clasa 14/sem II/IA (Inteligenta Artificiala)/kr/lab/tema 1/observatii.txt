@@ -1,0 +1,3 @@
+fiecare fisier de input trebuie sa aiba cel putin o iesire pentru a fi valid
+fiecare fisier de input tr sa aiba pe fiecare linie aceeasi lungime pentru a fi valid
+fiecare fisier de input tr sa aiba pe fiecare coloana aceeasi lungime pentru a fi valid

@@ -1,0 +1,6 @@
+1. Pentru a putea fi transmise mai mult de window segmente putem folosi TCP window scale option. Pentru a realiza asta specificam un numar care este maxim 14 ca valoare in antetul optiunilor.
+
+
+2. Mai multe exemple de probleme pe care controlul fluxului incearca sa le rezolve:
+mentinearea viabilitatii transmisiei tcp (evitarea situatiei in care senderul trimite date prea rapid pentru ca receiverul sa le poata procesa in mod fiabil)
+controlul congestiei.

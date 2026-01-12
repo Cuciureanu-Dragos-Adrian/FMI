@@ -1,0 +1,1135 @@
+----------------BFS----------------
+
+Timpul de gasire pentru solutie: 3 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 185
+Numarul maxim de noduri din meorie: 106
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 1:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 7:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 26:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 79:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------DFS----------------
+
+Timpul de gasire pentru solutie: 3 milisecunde.
+Lungimea drumului: 11
+Costul total: 13
+Numarul de noduri calculate: 29
+Numarul maxim de noduri din meorie: 18
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 3:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 9:
+
+.   s1  @   
+@   s0  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 17:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+s1  .   @   
+@   .   p0  
+.   .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 19:
+
+Soareci care s-au ascuns:
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+S1  .   p0  
+.   .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 21:
+
+s1  p0  @   
+@   .   .   
+.   .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 22:
+
+Soareci care s-au ascuns:
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   p0  @   
+S1  .   .   
+.   .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 23:
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   p0  @   
+@   .   .   
+s1  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 26:
+
+.   .   @   
+@   p0  .   
+.   s1  .   
+.   .   E   
+
+
+
+Nodul cu indexul 27:
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   s1  E   
+
+
+
+Nodul cu indexul 28:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------DFI----------------
+
+Timpul de gasire pentru solutie: 4 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 121
+Numarul maxim de noduri din meorie: 8
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 96:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 102:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 118:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 120:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+----------------Normal A* Type 1----------------
+
+Timpul de gasire pentru solutie: 6 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 99
+Numarul maxim de noduri din meorie: 60
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 1:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 7:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 28:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 88:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------Normal A* Type 2----------------
+
+Timpul de gasire pentru solutie: 6 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 19
+Numarul maxim de noduri din meorie: 12
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 3:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 4:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 10:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 18:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------Normal A* Type 3----------------
+
+Timpul de gasire pentru solutie: 7 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 19
+Numarul maxim de noduri din meorie: 12
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 3:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 4:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 10:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 18:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------Normal A* Type 4----------------
+
+Timpul de gasire pentru solutie: 9 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 154
+Numarul maxim de noduri din meorie: 83
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 1:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 7:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 43:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 94:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 1----------------
+
+Timpul de gasire pentru solutie: 10 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 42
+Numarul maxim de noduri din meorie: 42
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 3:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 4:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 37:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 41:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 2----------------
+
+Timpul de gasire pentru solutie: 10 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 19
+Numarul maxim de noduri din meorie: 19
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 3:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 4:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 14:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 18:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 3----------------
+
+Timpul de gasire pentru solutie: 11 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 19
+Numarul maxim de noduri din meorie: 19
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 3:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 4:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 14:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 18:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------A* Optimized Type 4----------------
+
+Timpul de gasire pentru solutie: 12 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 103
+Numarul maxim de noduri din meorie: 103
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 1:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 17:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 31:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 94:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------IDA* Type 1----------------
+
+Timpul de gasire pentru solutie: 13 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 88
+Numarul maxim de noduri din meorie: 8
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 63:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 69:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 85:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 87:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------IDA* Type 2----------------
+
+Timpul de gasire pentru solutie: 14 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 33
+Numarul maxim de noduri din meorie: 7
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 23:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 24:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 30:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 32:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------IDA* Type 3----------------
+
+Timpul de gasire pentru solutie: 15 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 33
+Numarul maxim de noduri din meorie: 7
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 23:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+Soarecele s1 s-a ascuns.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   S1  
+S0  .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 24:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 30:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 32:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+
+----------------IDA* Type 4----------------
+
+Timpul de gasire pentru solutie: 17 milisecunde.
+Lungimea drumului: 5
+Costul total: 6
+Numarul de noduri calculate: 227
+Numarul maxim de noduri din meorie: 8
+
+
+Nodul cu indexul 0:
+
+s0  s1  @   
+@   .   .   
+.   .   .   
+p0  .   E   
+
+
+
+Nodul cu indexul 194:
+
+Soareci care s-au ascuns:
+Soarecele s0 s-a ascuns.
+
+.   .   @   
+S0  s1  .   
+.   p0  .   
+.   .   E   
+
+
+
+Nodul cu indexul 200:
+
+Soareci care au fost mancati:
+Pisica p0 a mancat soarecele s0.
+
+.   .   @   
+@   .   s1  
+p0  .   .   
+.   .   E   
+
+
+
+Nodul cu indexul 224:
+
+.   .   @   
+@   .   .   
+.   p0  s1  
+.   .   E   
+
+
+
+Nodul cu indexul 226:
+
+Soareci care au iesit:
+Soarecele s1 a iesit de pe harta.
+
+Animale blocate:
+Pisica p0 nu s-a miscat.
+
+.   .   @   
+@   .   .   
+.   p0  .   
+.   .   E   
+
+
+
+
+----------------
+

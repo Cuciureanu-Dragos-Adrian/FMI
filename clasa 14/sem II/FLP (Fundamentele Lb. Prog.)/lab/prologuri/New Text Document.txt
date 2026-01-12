@@ -1,0 +1,109 @@
+%1
+word(abalone,a,b,a,l,o,n,e).
+word(abandon,a,b,a,n,d,o,n).
+word(enhance,e,n,h,a,n,c,e).
+word(anagram,a,n,a,g,r,a,m).
+word(connect,c,o,n,n,e,c,t).
+word(elegant,e,l,e,g,a,n,t).
+
+crosswd(V1, V2, V3, H1, H2, H3) :- word(V1, _, IntV1H1, _, IntV1H2, _, IntV1H3, _),
+    word(V2, _, IntV2H1, _, IntV2H2, _, IntV2H3, _),
+    word(V3, _, IntV3H1, _, IntV3H2, _, IntV3H3, _),
+    word(H1, _, IntV1H1, _, IntV2H1, _, IntV3H1, _),
+    word(H2, _, IntV1H2, _, IntV2H2, _, IntV3H2, _),
+    word(H3, _, IntV1H3, _, IntV2H3, _, IntV3H3, _).
+
+
+%2.1
+born(jan, date(20,3,1977)).
+born(jeroen, date(2,2,1992)).
+born(joris, date(17,3,1995)).
+born(jelle, date(1,1,2004)).
+born(joan, date(24,12,0)).
+born(joop, date(30,4,1989)).
+born(jannecke, date(17,3,1993)).
+born(jaap, date(16,11,1995)).
+
+year(N, P) :- born(P, date(_, _, N)).
+
+%2.2
+before(date(D1, M1, Y1), date(D2, M2, Y2)) :- Y1 < Y2; 
+    Y1 = Y2, M1 < M2; 
+    Y1 = Y2, M1 = M2, D1 < D2.
+
+%2.3
+older(P, X) :- born(P, D1), born(X, D2), before(D1, D2).
+
+
+%3
+connected(1,2).
+connected(3,4).
+connected(5,6).
+connected(7,8).
+connected(9,10).
+connected(12,13).
+connected(13,14).
+connected(15,16).
+connected(17,18).
+connected(19,20).
+connected(4,1).
+connected(6,3).
+connected(4,7).
+connected(6,11).
+connected(14,9).
+connected(11,15).
+connected(16,12).
+connected(14,17).
+connected(16,19).
+
+%3.1
+path(X, Z) :- connected(X, Z). 
+path(X, Z) :- connected(X, Y), path(Y, Z).
+
+%3.2
+path2(X, Z) :- pathFinder(X, Z, [X]). 
+
+pathFinder(X, Z, _) :- connected(X, Z).
+pathFinder(X, Z, V) :- connected(X, Y), 
+    \+ member(Y, V),
+    pathFinder(Y, Z, [X|V]).
+
+
+%4.1
+successor(V1, V2) :- V2 = [x|V1].
+
+%4.2
+times(V1, V2, Result) :- length(V1, N1), 
+    length(V2, N2), 
+    N is N1 * N2, 
+    inmul(N, Result).
+
+inmul(N, V) :- length(V, N), 
+    maplist(=(x), V).    
+
+
+%5
+element_at([H|_], 1, H).
+element_at([_|T], N, X) :- N1 is N - 1, element_at(T, N1, X).
+
+
+%6
+animal(alligator). 
+animal(tortue) .
+animal(caribou).
+animal(ours).
+animal(cheval).
+animal(vache).
+animal(lapin).
+
+mutant(X) :- animal(X1),
+    animal(X2)
+
+
+
+
+
+
+
+
+

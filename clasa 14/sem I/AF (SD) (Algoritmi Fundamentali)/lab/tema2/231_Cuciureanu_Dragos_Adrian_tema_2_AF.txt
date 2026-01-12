@@ -1,0 +1,19 @@
+linkuri pentru aprobleme:
+
+link de git pentru clasa completata:
+	https://github.com/Cuciureanu-Dragos-Adrian/FMI/blob/main/tema%20AF/tema2/231_Cuciureanu_Dragos_Adrian_tema_2_AF.cpp
+
+problema 1 - apm:
+	https://infoarena.ro/job_detail/2804188?action=view-source
+
+problema 2 - disjoint:
+	https://infoarena.ro/job_detail/2804171?action=view-source
+
+problema 3 - dijkstra:
+	https://infoarena.ro/job_detail/2796439?action=view-source (prima incarcare)
+	https://infoarena.ro/job_detail/2806336?action=view-source (a doua incarcare, dupa ce am modificat clasa)
+
+problema 4 - bellmanford:
+	https://infoarena.ro/job_detail/2796446?action=view-source (prima incarcare)
+	https://infoarena.ro/job_detail/2805689?action=view-source (a doua incarcare, dupa ce am modificat clasa)
+

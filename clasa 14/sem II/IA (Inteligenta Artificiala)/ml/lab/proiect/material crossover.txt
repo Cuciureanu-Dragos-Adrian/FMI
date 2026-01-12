@@ -1,0 +1,21 @@
+modele pentru crossover:
+proiect_naive_bayes_bow_v1 - 74%
+proiect_gradient_bow_v1 - 62%
+proiect_decision_tree_bow_v1 - 32% (:)
+proiect_gradient_count_v1 - 65.8%
+proiect_xgboost_bow - 68.8%
+
+de incarcat maine:
+random_forest
+adaboost
+qda
+neural_net
+
+crossover:
+proiect_naive_bayes_bow_v1 - 74%
+proiect_gradient_bow_v1 - 62%
+proiect_gradient_count_v1 - 65.8%
+proiect_xgboost_bow - 68.8%
+adaboost
+qda
+neural_net

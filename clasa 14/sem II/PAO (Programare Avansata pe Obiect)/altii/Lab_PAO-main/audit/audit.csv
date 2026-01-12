@@ -1,0 +1,37 @@
+action-name,timestamp
+Printed-clients,04-05-2022 21:03:36
+Printed-employees,04-05-2022 21:03:36
+Printed-products,04-05-2022 21:03:36
+Printed-bosses,04-05-2022 21:03:40
+Printed-employee-with-max-salary,04-05-2022 21:03:43
+Printed-products-ordered-by-price,04-05-2022 21:03:50
+Printed-products-ordered-by-discount,04-05-2022 21:03:55
+Create-client PF,06-05-2022 16:55:35
+Printed-clients,06-05-2022 16:55:48
+Created-employee Manager,06-05-2022 17:04:19
+Created-employee Mechanic,06-05-2022 17:04:35
+Set-manager employee - 77a69be3-8994-4369-9a00-870ac47bb050 manager - 84cb7767-204f-4f6a-b274-b7ab82fb1b6d,06-05-2022 17:04:47
+Printed-employees,06-05-2022 17:05:16
+Printed-employees,06-05-2022 17:06:24
+Printed-employee-with-max-salary,06-05-2022 17:09:52
+Created-employee Salesman,06-05-2022 17:10:16
+Printed-employees,06-05-2022 17:10:19
+Printed-products,06-05-2022 17:11:06
+Created-product Merchandise,06-05-2022 17:11:19
+Created-product Merchandise,06-05-2022 17:11:34
+Created-product Car sedan,06-05-2022 17:12:01
+Created-product UtilityVehicle van,06-05-2022 17:16:21
+Printed-clients,06-05-2022 17:16:34
+Printed-employees,06-05-2022 17:16:34
+Printed-products,06-05-2022 17:16:34
+Printed-products-ordered-by-price,06-05-2022 17:16:46
+Printed-products-ordered-by-discount,06-05-2022 17:18:58
+Printed-products-ordered-by-discount,06-05-2022 17:19:50
+Printed-products-ordered-by-discount,06-05-2022 17:20:34
+Printed-products,06-05-2022 17:20:42
+Created-discount id - 9deb19f6-4436-4e63-b645-d4f530d84ab9,06-05-2022 17:20:49
+Printed-products-ordered-by-discount,06-05-2022 17:21:06
+Printed-products-ordered-by-price,06-05-2022 17:22:58
+Printed-products,08-05-2022 13:01:24
+Printed-clients,08-05-2022 13:01:43
+Printed-clients,10-05-2022 16:00:13

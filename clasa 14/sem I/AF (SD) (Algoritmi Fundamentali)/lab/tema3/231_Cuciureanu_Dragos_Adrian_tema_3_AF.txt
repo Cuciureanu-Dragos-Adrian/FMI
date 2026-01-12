@@ -1,0 +1,15 @@
+linkuri pentru aprobleme:
+
+link de git pentru clasa completata:
+	https://github.com/Cuciureanu-Dragos-Adrian/FMI/blob/main/tema%20AF/tema3/231_Cuciureanu_Dragos_Adrian_tema_3_AF.cpp
+
+problema 1 - darb:
+	https://infoarena.ro/job_detail/2805766?action=view-source
+
+problema 2 - royfloyd:
+	https://infoarena.ro/job_detail/2805714?action=view-source
+
+problema 3 - maxflow:
+	https://infoarena.ro/job_detail/2811585?action=view-source (prima incarcare)
+	https://infoarena.ro/job_detail/2811588?action=view-source (a doua incarcare, dupa ce am adaugat comentarii)
+

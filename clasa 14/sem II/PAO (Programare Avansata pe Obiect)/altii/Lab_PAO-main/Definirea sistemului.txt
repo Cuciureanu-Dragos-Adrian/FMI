@@ -1,0 +1,31 @@
+Gestionarea unui dealership de autovehicule
+
+Entitati:
+
+Angajat - abstract
+Manager, Vanzator, Mecanic <-> derivati din angajat
+
+Produs - abstract
+Vehicul - abstract,  Bun (ex: odorizant, breloc, preș) <-> derivati din Produs
+automobil, autoutilitara <-> derivate din Vehicul
+
+Client - abstract
+Persoana fizica, persoana juridica <-> derivate din Client
+
+=> 8 tipuri de obiecte instantiabile = Persoana fizica, Persoana juridica, Bun, Automobil, Autoutilitara, Manager, Vanzator, Mecanic
+
+Actiuni/interogari:
+
+Adaugarea/stergerea oricareia dintre clasele de mai sus
+Punerea in subordine a unui angajat fata de un manager
+Afisarea subordonatilor directi ai unui manager 
+Afisarea subordonatilor directi si indirecti (recursiv) ai unui manager 
+Afisarea sefului/sefilor (angajatul fara manager)
+Afisarea angajatului cu salariu maxim
+Modificarea stocului unui produs (scadere in cazul bunului sau stergere in cazul vehiculului)
+Reducerea pretului unui produs (setare discount) sau eliminarea discountului
+Afisarea bunului in stoc cel mai mare
+Afisarea produselor ordonate dupa pret si discount
+Cumpararea unui produs de catre un client (PF plateste TVA 24%, PJ nu plateste TVA)
+
+=> Adaugare/stergere pe oricare dintre clase + 11 actiuni si interogari

@@ -1,0 +1,15 @@
+linkuri pentru aprobleme:
+
+link de git pentru clasa completata:
+	https://github.com/Cuciureanu-Dragos-Adrian/FMI/blob/main/tema%20AF/tema4/231_Cuciureanu_Dragos_Adrian_tema_4_AF.cpp
+
+problema 1 - ciclueuler:
+	https://infoarena.ro/job_detail/2815577?action=view-source (incarcarea cu clasa ce obtine 80 de puncte, deoarece este mai inceata)
+	https://infoarena.ro/job_detail/2815583?action=view-source (incarcarea cu clasa simplificata ce are 100 de puncte)
+	
+problema 2 - hamilton:
+	https://infoarena.ro/job_detail/2818475
+
+problema 3 - cuplaj:
+	https://infoarena.ro/job_detail/2815908
+

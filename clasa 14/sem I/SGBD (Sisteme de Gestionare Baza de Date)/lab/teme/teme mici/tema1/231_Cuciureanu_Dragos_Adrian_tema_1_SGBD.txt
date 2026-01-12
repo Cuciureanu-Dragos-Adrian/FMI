@@ -1,0 +1,11 @@
+--lab1 23
+
+set pagesize 0
+set feedback off
+spool C:\Users\Adi\Desktop\inserare_inregistrari.sql;
+
+select 'insert into departments values(' 
+|| d.DEPARTMENT_ID || ', ''' ||  d.DEPARTMENT_NAME ||  ''', ' || d.MANAGER_ID || ', ' || d.LOCATION_ID || ');'
+from departments d;
+
+spool off;

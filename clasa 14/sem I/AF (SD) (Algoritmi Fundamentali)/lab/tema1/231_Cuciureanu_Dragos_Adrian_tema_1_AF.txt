@@ -1,0 +1,30 @@
+linkuri pentru aprobleme:
+
+link de git pentru clasa completata:
+	https://github.com/Cuciureanu-Dragos-Adrian/FMI/blob/main/tema%20AF/tema1/231_Cuciureanu_Dragos_Adrian_tema_1_AF.cpp
+
+problema 1 - bfs: 
+	https://infoarena.ro/job_detail/2789605?action=view-source
+
+problema 2 - dfs:
+	https://infoarena.ro/job_detail/2789342?action=view-source
+
+problema 3 - Componente biconexe:
+	https://infoarena.ro/job_detail/2788088?action=view-source (prima incarcare)
+	https://infoarena.ro/job_detail/2788950?action=view-source (a doua incarcare, dupa ce am adaugat comentarii pe cod)
+
+problema 4 - Componente tare conexe:
+	https://infoarena.ro/job_detail/2788553?action=view-source
+
+problema 5 - Sortare topologica:
+	https://infoarena.ro/job_detail/2789592?action=view-source
+
+problema 6 - Havel Hakimi:
+	am realizat aceasta problema in metoda HavelHakimi a clasei mele
+
+problema 7 - 1192. Critical Connections in a Network:
+	https://github.com/Cuciureanu-Dragos-Adrian/FMI/blob/main/tema%20AF/tema1/leetcode_1192_Critical_Connections_in_a_Network.cpp
+	(cum aceasta problema este pe leetcode nu v am putut atasa link catre sursa, dar am copiat rezolvarea mea pe git)
+
+problema 8 (problema suplimentara) - Graf:
+	https://www.infoarena.ro/job_detail/2788947?action=view-source
